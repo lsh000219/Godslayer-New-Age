@@ -9,8 +9,8 @@ namespace Godslayer_New_Age.LJM
     internal class Monster : Unit
     {
         public Monster(string name, float hp, float mp, float damage, float defence,
-       int gold, float critRate, float critDmg, float dodgeRate)
-       : base(name, hp, mp, damage, defence, gold, critRate, critDmg, dodgeRate)
+       int gold, float critRate, float critDmg, float speed, float dodgeRate)
+       : base(name, hp, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate)
         {
            
         }
@@ -20,6 +20,6 @@ namespace Godslayer_New_Age.LJM
         //    주의!
         //    이 데이터를 가져다 그대로 사용하게 될 경우 전체 데이터가 뒤틀려
         //    체력 0짜리 몬스터가 계속 나타날 수 있음!
-        public Monster monsterUnit = new Monster("슬라임", 50f, 0f, 10f, 2f, 0, 0.05f, 1.2f, 0.1f);
+        public Monster monsterUnit = new Monster("슬라임", 50f, 0f, 10f, 2f, 0, 0.05f, 1.2f, 1f, 0.1f);
     }
 }

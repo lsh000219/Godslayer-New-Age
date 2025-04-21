@@ -18,6 +18,7 @@ namespace Godslayer_New_Age.LJM
         public int Gold { get; set; }
         public float CritRate { get; set; }
         public float CritDmg { get; set; }
+        public float Speed { get; set; }
         public float DodgeRate { get; set; }
 
         //    장비 - 무기
@@ -27,7 +28,7 @@ namespace Godslayer_New_Age.LJM
 
         //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
         public Unit(string name, int level, float exp, float hp, float mp, float damage, float defence, 
-            int gold, float critRate, float critDmg, float dodgeRate) 
+            int gold, float critRate, float critDmg, float speed, float dodgeRate) 
         {
             Name = name;
             Level = level;
@@ -39,12 +40,13 @@ namespace Godslayer_New_Age.LJM
             Gold = gold;
             CritRate = critRate;
             CritDmg = critDmg;
+            Speed = speed;
             DodgeRate = dodgeRate;
         }
 
         //    적 생성자
         public Unit(string name, float hp, float mp, float damage, float defence,
-            int gold, float critRate, float critDmg, float dodgeRate)
+            int gold, float critRate, float critDmg, float speed, float dodgeRate)
         {
             Name = name;
             HP = hp;
@@ -54,6 +56,7 @@ namespace Godslayer_New_Age.LJM
             Gold = gold;
             CritRate = critRate;
             CritDmg = critDmg;
+            Speed = speed;
             DodgeRate = dodgeRate;
         }
        

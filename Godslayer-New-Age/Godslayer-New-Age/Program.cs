@@ -1,4 +1,4 @@
-﻿using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
