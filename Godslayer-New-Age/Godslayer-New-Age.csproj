@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16D3896D-C735-46B5-9503-1F74FEAE1955}</ProjectGuid>
+    <ProjectGuid>{C1969190-C319-4790-893B-D15BC6D43266}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Godslayer_New_Age</RootNamespace>
     <AssemblyName>Godslayer-New-Age</AssemblyName>
@@ -44,10 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bgm_player.cs" />
+    <Compile Include="LJM\Monster.cs" />
+    <Compile Include="LJM\Player.cs" />
+    <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".editorconfig" />
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
