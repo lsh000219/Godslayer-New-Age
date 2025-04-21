@@ -56,16 +56,6 @@ namespace Godslayer_New_Age.LJM
             CritDmg = critDmg;
             DodgeRate = dodgeRate;
         }
-
-        //    플레이어 생성자 예시. 만약 처음 이름이나 다른 선택지가 있다면 다른곳에서 관리
-        public Player playerUnit = new Player("플레이어", 1, 0f, 100f, 50f, 20f, 5f, 100, 0.1f, 1.5f, 0.05f);
-        
-
-        //    몬스터 예시
-        //    몬스터가 생길 때 마다 추가로 만든 후 객채로 생성하여 사용
-        //    주의!
-        //    이 데이터를 가져다 그대로 사용하게 될 경우 전체 데이터가 뒤틀려
-        //    체력 0짜리 몬스터가 계속 나타날 수 있음!
-        public Monster monsterUnit = new Monster("슬라임", 50f, 0f, 10f, 2f, 0, 0.05f, 1.2f, 0.1f);
+       
     }
 }
