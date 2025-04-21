@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godslayer-New-Age", "Godslayer-New-Age\Godslayer-New-Age.csproj", "{16D3896D-C735-46B5-9503-1F74FEAE1955}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2D20B24-113E-47EE-8559-C86F4DFFED19}
+	EndGlobalSection
+EndGlobal
