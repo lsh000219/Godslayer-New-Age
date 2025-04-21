@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Godslayer_New_Age.LJM
 {
     internal class Monster : Unit
@@ -14,6 +13,7 @@ namespace Godslayer_New_Age.LJM
        int gold, float critRate, float critDmg, float speed, float dodgeRate)
        : base(name, hp, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate)
         {
+
             //    아이템
         }
 
