@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wooseong\Utils\Constants.cs" />
+    <Compile Include="Wooseong\Utils\PrintTest.cs" />
     <Compile Include="Wooseong\Utils\PrintUtil.cs" />
   </ItemGroup>
   <ItemGroup>
