@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +8,13 @@ namespace Godslayer_New_Age.LJM
 {
     internal class Monster : Unit
     {
+        //    아이템 - 만약 드롭 아이템을 만든다 하면 추가!
+
         public Monster(string name, float hp, float mp, float damage, float defence,
        int gold, float critRate, float critDmg, float speed, float dodgeRate)
        : base(name, hp, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate)
         {
-           
+            //    아이템
         }
 
         //    몬스터 예시

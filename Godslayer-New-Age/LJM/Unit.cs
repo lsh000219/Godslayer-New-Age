@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,8 +27,8 @@ namespace Godslayer_New_Age.LJM
 
 
         //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
-        public Unit(string name, int level, float exp, float hp, float mp, float damage, float defence, 
-            int gold, float critRate, float critDmg, float speed, float dodgeRate) 
+        public Unit(string name, int level, float exp, float hp, float mp, float damage, float defence,
+            int gold, float critRate, float critDmg, float speed, float dodgeRate)
         {
             Name = name;
             Level = level;
@@ -59,6 +59,6 @@ namespace Godslayer_New_Age.LJM
             Speed = speed;
             DodgeRate = dodgeRate;
         }
-       
+
     }
 }
