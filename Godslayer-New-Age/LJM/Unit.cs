@@ -21,12 +21,9 @@ namespace Godslayer_New_Age.LJM
         public float Speed { get; set; }
         public float DodgeRate { get; set; }
 
-        //    장비 - 무기
-        //    장비 - 방어구
-        //    장비 - 장신구
 
 
-        //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
+        //    플레이어 생성자 
         public Unit(string name, int level, float exp, float hp, float mp, float damage, float defence,
             int gold, float critRate, float critDmg, float speed, float dodgeRate)
         {

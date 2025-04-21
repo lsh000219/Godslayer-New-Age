@@ -18,11 +18,13 @@ namespace Godslayer_New_Age.LJM
         public Player(string name, int level, float exp, float hp, float mp, float damage,
             float defence, int gold, float critRate, float critDmg, float speed, float dodgeRate)
         : base(name, level, exp, hp, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate)
-        {
-            //    장비 - 무기
-            //    장비 - 방어구
-            //    장비 - 장신구
-        }
+        
+
+            {
+                //    장비 - 무기
+                //    장비 - 방어구
+                //    장비 - 장신구
+            }
 
         //    플레이어 생성자 예시. 만약 처음 이름이나 다른 선택지가 있다면 다른곳에서 관리
         //    현재는 장비가 장착이 안되어 있음
