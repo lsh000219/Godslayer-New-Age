@@ -11,7 +11,8 @@ namespace Godslayer_New_Age
     {
         static void Main(string[] args)
         {
-            
+            //bgm_player bgm_Player = new bgm_player();
+            //bgm_Player.Battle_SinChangSup();
         }
     }
 }

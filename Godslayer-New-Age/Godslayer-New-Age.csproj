@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bgm_player.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
     <Compile Include="LJM\Unit.cs" />
