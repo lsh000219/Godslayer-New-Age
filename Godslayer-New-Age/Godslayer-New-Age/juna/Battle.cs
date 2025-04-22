@@ -107,12 +107,12 @@ namespace Godslayer_New_Age.juna
             }
         }
 
-        public void EnemyTurn(string enemyname)
+        public void EnemyTurn(string enemyname,int turn)
         {
             Random random = new Random();
-            if(enemyname == "신창섭")
+            if (enemyname == "신창섭" && turn == 1)
             {
-
+                //정상화 실행
             }
             int randskill = random.Next();
         }
@@ -120,9 +120,9 @@ namespace Godslayer_New_Age.juna
 
         public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
         {
-            while(playerHp != 0 && (enemy1Hp != 0))
+            int turn = 1;
+            while (playerHp != 0 && (enemy1Hp != 0))
             {
-                int turn = 1; 
                 Random random = new Random();
                 float player_rand_Spd = random.Next(0, 4)+playerSpd;
                 float enemy1_rand_Spd = random.Next(0, 4);
@@ -132,40 +132,40 @@ namespace Godslayer_New_Age.juna
                     PlayerTurn();
                     if(enemy1_rand_Spd >= enemy2_rand_Spd)
                     {
-                        EnemyTurn(enemy1name);
-                        EnemyTurn(enemy2name);
+                        EnemyTurn(enemy1name, turn);
+                        EnemyTurn(enemy2name, turn);
                     }
                     else
                     {
-                        EnemyTurn(enemy2name);
-                        EnemyTurn(enemy1name);
+                        EnemyTurn(enemy2name, turn);
+                        EnemyTurn(enemy1name, turn);
                     }
                 }
                 else if (enemy1_rand_Spd >= player_rand_Spd && enemy1_rand_Spd >= enemy2_rand_Spd)
                 {
-                    EnemyTurn(enemy1name);
+                    EnemyTurn(enemy1name, turn);
                     if (player_rand_Spd >= enemy2_rand_Spd)
                     {
                         PlayerTurn();
-                        EnemyTurn(enemy2name);
+                        EnemyTurn(enemy2name, turn);
                     }
                     else
                     {
-                        EnemyTurn(enemy2name);
+                        EnemyTurn(enemy2name, turn);
                         PlayerTurn();
                     }
                 }
                 else
                 {
-                    EnemyTurn(enemy2name);
+                    EnemyTurn(enemy2name, turn);
                     if (player_rand_Spd >= enemy1_rand_Spd)
                     {
                         PlayerTurn();
-                        EnemyTurn(enemy1name);
+                        EnemyTurn(enemy1name, turn);
                     }
                     else
                     {
-                        EnemyTurn(enemy1name);
+                        EnemyTurn(enemy1name, turn);
                         PlayerTurn();
                     }
                 }
@@ -174,6 +174,7 @@ namespace Godslayer_New_Age.juna
         }
         public void StartBattle_2(string bossname)//보스전
         {
+            int turn = 1;
             while (playerHp != 0 && enemy1Hp != 0)
             {
                 Random random = new Random();
@@ -182,13 +183,14 @@ namespace Godslayer_New_Age.juna
                 if (playerSpd + player_rand_num >= enemy1Spd + enemy_rand_num)
                 {
                     PlayerTurn();
-                    EnemyTurn(bossname);//안에 적의 수 넣기
+                    EnemyTurn(bossname, turn);//안에 적의 수 넣기
                 }
                 else
                 {
-                    EnemyTurn(bossname);
+                    EnemyTurn(bossname, turn);
                     PlayerTurn();
                 }
+                turn++;
             }
         }
     }
