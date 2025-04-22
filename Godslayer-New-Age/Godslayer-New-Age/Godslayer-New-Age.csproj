@@ -46,21 +46,20 @@
     <Compile Include="bgm_player.cs" />
     <Compile Include="juna\Battle.cs" />
     <Compile Include="juna\Dungeon.cs" />
-    <Compile Include="kiahn\Inventory.cs" />
-    <Compile Include="kiahn\ItemData.cs" />
-    <Compile Include="kiahn\Shop.cs" />
+    <Compile Include="Kiahn\Inventory.cs" />
+    <Compile Include="Kiahn\ItemData.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
     <Compile Include="LJM\Skill.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Kiahn\Shop.cs" />
     <Compile Include="Wooseong\Constants.cs" />
     <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".editorconfig" />
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
