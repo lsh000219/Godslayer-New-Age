@@ -14,16 +14,17 @@ namespace Godslayer_New_Age
         static void Main(string[] args)
         {
 
-             //bgm_player bgm_Player = new bgm_player();
-             //bgm_Player.Music_Start("Battle_Musk1.wav", false);
-             //bgm_Player.Music_Start("Battle_Musk2.wav", true);
-             //bgm_Player.WaitForExit("Battle_Musk2.wav 루프 재생 중입니다.");
+            //bgm_player bgm_Player = new bgm_player();
+            //bgm_Player.Music_Start("Battle_Musk1.wav", false);
+            //bgm_Player.Music_Start("Battle_Musk2.wav", true);
+            //Console.ReadLine();
+            //bgm_Player.Music_Exit();
 
-             Console.OutputEncoding = Encoding.UTF8;
-             Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-             PrintUtil.CreateBox();
-             Console.ReadLine();
+             //Console.OutputEncoding = Encoding.UTF8;
+             //Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
+             //Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
+             //PrintUtil.CreateBox();
+             //Console.ReadLine();
 
 
 
