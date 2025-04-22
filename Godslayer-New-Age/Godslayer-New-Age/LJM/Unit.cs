@@ -77,9 +77,17 @@ namespace Godslayer_New_Age.LJM
         }
 
         //    공격 회피하기 
+        //    만약 아래의 bool을 거쳐 true가 나온다면 공격 회피
         public bool TryDodge()
         {
             return RandomManager.Instance.Next(0, 100) < DodgeRate;
+        }
+
+        //    크리티컬 구하기
+        //    만약 아래의 bool을 거쳐 true가 나온다면 크리티컬 공격
+        public bool GetCrit()
+        {
+            return RandomManager.Instance.Next(0, 100) < CritRate;
         }
 
     }

@@ -76,7 +76,7 @@ namespace Godslayer_New_Age.LJM
             Console.WriteLine($"{Name}이 레벨업! HP, MP, Damage 증가!");
         }
 
-        //    토탈 경험치 계산기
+        //    int값 만큼의 레벨이 되기 위해 필요한 누적 총 경험치
         float GetTotalExpForLevel(int level)
         {
             float total = 0;
@@ -89,7 +89,7 @@ namespace Godslayer_New_Age.LJM
         }
 
         //    경험치를 얻었을 때 레벨업이 가능한지 확인하기
-        public void CheckLevelUp()
+        void CheckLevelUp()
         {
             while (EXP >= GetTotalExpForLevel(Level + 1))
             {
