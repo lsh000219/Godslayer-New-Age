@@ -155,8 +155,10 @@ namespace Godslayer_New_Age
                         Console.Write($"DEF: {item.Def}  ".PadRight(3));
                     }
                 }
-                
-                    Console.ForegroundColor = ConsoleColor.White;
+
+
+                Console.ForegroundColor = ConsoleColor.White;
+
                 Console.Write($"{item.Desc}  ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"{item.Price} G");
