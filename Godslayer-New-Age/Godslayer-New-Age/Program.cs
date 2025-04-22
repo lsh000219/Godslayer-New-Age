@@ -21,6 +21,8 @@ namespace Godslayer_New_Age
             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
             PrintUtil.CreateBox();
             Console.ReadLine();
+
+
         }
     }
 }
