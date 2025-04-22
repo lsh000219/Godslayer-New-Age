@@ -14,11 +14,11 @@ namespace Godslayer_New_Age
         static void Main(string[] args)
         {
 
-            bgm_player bgm_Player = new bgm_player();
+            //bgm_player bgm_Player = new bgm_player();
             //bgm_Player.Music_Start("Battle_Musk1.wav", false);
-            bgm_Player.Music_Start("Maple_Easy.wav", true);
-            Console.ReadLine();
-            bgm_Player.Music_Exit();
+            //bgm_Player.Music_Start("Maple_Easy.wav", true);
+            //Console.ReadLine();
+            //bgm_Player.Music_Exit();
 
             //Shop shop = new Shop();
             //shop.SetItemList();
