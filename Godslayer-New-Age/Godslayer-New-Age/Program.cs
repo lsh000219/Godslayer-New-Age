@@ -20,15 +20,15 @@ namespace Godslayer_New_Age
             //Console.ReadLine();
             //bgm_Player.Music_Exit();
 
-            Shop shop = new Shop();
-            shop.SetItemList();
-            shop.Display();
+            //Shop shop = new Shop();
+            //shop.SetItemList();
+            //shop.Display();
 
-            Console.OutputEncoding = Encoding.UTF8;
-            Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-            Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-            PrintUtil.CreateBox();
-            Console.ReadLine();
+            //Console.OutputEncoding = Encoding.UTF8;
+            //Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
+            //Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
+            //PrintUtil.CreateBox();
+            //Console.ReadLine();
 
 
 
