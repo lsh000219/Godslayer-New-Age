@@ -8,6 +8,11 @@ namespace Godslayer_New_Age.LJM
 {
     internal class Unit
     {
+        //    대미지 갭
+        protected static Random random = new Random();
+        
+
+
         public string Name { get; set; }
         public int Level { get; set; }
         public float EXP { get; set; }
@@ -16,6 +21,7 @@ namespace Godslayer_New_Age.LJM
         public float MaxMP { get;set; }
         public float MP { get; set; }
         public float Damage { get; set; }
+        public int DamageGap { get; set; } = 3;
         public float Defence { get; set; }
         public int Gold { get; set; }
         public float CritRate { get; set; }
@@ -23,7 +29,10 @@ namespace Godslayer_New_Age.LJM
         public float Speed { get; set; }
         public float DodgeRate { get; set; }
         public bool CanMove { get; set; }
-        
+
+
+
+
         //    플레이어 생성자
         public Unit(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage, float defence, 
             int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove) 
@@ -62,6 +71,20 @@ namespace Godslayer_New_Age.LJM
             CanMove = canMove;
         }
 
+        //    대미지 갭에 따른 대미지 계산하기
+        public int GetRandomDamage()
+        {
+            //    min은 공격력이 0 이하로 내려가지 않게 해준다
+            int min = Math.Max(0, (int)(Damage - DamageGap));
+            int max = (int)(Damage + DamageGap);
+            return random.Next(min, max + 1);
+        }
+
+        //    공격 회피하기 
+        public bool TryDodge()
+        {
+            return random.Next(0, 100) < DodgeRate;
+        }
         
     }
 }
