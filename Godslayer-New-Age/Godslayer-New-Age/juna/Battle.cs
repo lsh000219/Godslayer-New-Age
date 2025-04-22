@@ -1,3 +1,4 @@
+using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,60 +9,22 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
-        string playerName = "Bob";
-        float playerMaxHp = 100;
-        float playerMaxMp = 100;
-        float playerHp = 100;
-        float playerMp = 100;
-        float playerAtk = 10;
-        float playerDef = 10;
-        int playerLv = 2;
-        float playerSpd = 10;
-        float playerCrt = 3.0f;
-        float playerEva = 3.0f;
-        int playerGold = 1000;
 
-
-        string enemy1Name = "slime";
-        float enemy1MaxHp = 100;
-        float enemy1MaxMp = 100;
-        float enemy1Hp = 100;
-        float enemy1Mp = 100;
-        float enemy1Atk = 10;
-        float enemy1Def = 10;
-        int enemy1Lv = 2;
-        int enemy1Spd = 10;
-        float enemy1Crt = 3.0f;
-        float enemy1Eva = 3.0f;
-        int enemy1Gold = 100;
-
-        string enemy2Name = "주황버섯";
-        float enemy2MaxHp = 100;
-        float enemy2MaxMp = 100;
-        float enemy2Hp = 100;
-        float enemy2Mp = 100;
-        float enemy2Atk = 10;
-        float enemy2Def = 10;
-        int enemy2Lv = 2;
-        int enemy2Spd = 10;
-        float enemy2Crt = 3.0f;
-        float enemy2Eva = 3.0f;
-        int enemy2Gold = 100;
         //위에 변수들은 나중에 Player클래스에서 받아오기
 
         //a *(100/100+d)데미지 주는 방식
         //Math.Round(value,1)
 
-        public int CheckInput(int min,int max)
+        public int CheckInput(int min, int max)
         {
             while (true)
             {
                 if (int.TryParse(Console.ReadLine(), out int input))
                 {
-                   if(input>= min&& input <= max)
-                   {
+                    if (input >= min && input <= max)
+                    {
                         return input;
-                   }
+                    }
                 }
                 Console.WriteLine("잘못된 입력입니다");
             }
@@ -107,7 +70,7 @@ namespace Godslayer_New_Age.juna
             }
         }
 
-        public void EnemyTurn(string enemyname,int turn)
+        public void EnemyTurn(string enemyname, int turn)
         {
             Random random = new Random();
             if (enemyname == "신창섭" && turn == 1)
@@ -124,13 +87,13 @@ namespace Godslayer_New_Age.juna
             while (playerHp != 0 && (enemy1Hp != 0))
             {
                 Random random = new Random();
-                float player_rand_Spd = random.Next(0, 4)+playerSpd;
+                float player_rand_Spd = random.Next(0, 4) + playerSpd;
                 float enemy1_rand_Spd = random.Next(0, 4);
                 float enemy2_rand_Spd = random.Next(0, 4);
                 if (player_rand_Spd >= enemy1_rand_Spd && player_rand_Spd >= enemy2_rand_Spd)
                 {
                     PlayerTurn();
-                    if(enemy1_rand_Spd >= enemy2_rand_Spd)
+                    if (enemy1_rand_Spd >= enemy2_rand_Spd)
                     {
                         EnemyTurn(enemy1name, turn);
                         EnemyTurn(enemy2name, turn);
