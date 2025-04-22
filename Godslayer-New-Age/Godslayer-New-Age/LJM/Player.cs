@@ -9,6 +9,13 @@ namespace Godslayer_New_Age.LJM
     //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
     internal class Player : Unit
     {
+        public enum Job  
+        {
+            RiceMonkey = 0,
+            CEO,
+            ProGamer
+        }
+
 
         //    장비 - 무기
         //    장비 - 방어구
@@ -16,23 +23,26 @@ namespace Godslayer_New_Age.LJM
 
         public List<Skill> PlayerSkills = new List<Skill>();
 
+        public Job PlayerJob { get; set; }
         //    레벨업에 필요한 경험치로 레벨에 비례해 커짐
         public float RequiredExp => (float)(50 * Math.Pow(1.15, Level - 1));
         //    50 * (1.15 ^ 레벨 - 1)
-
-        public Player(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage,
+         
+        public Player(Job playerJob, string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage,
             float defence, int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         : base(name, level, exp, maxHP, hp, maxMP, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate, canMove)
         {
+            PlayerJob = playerJob;
+
             //    장비 - 무기
             //    장비 - 방어구
             //    장비 - 장신구
-
         }
 
         //    플레이어 생성자 예시. 만약 처음 이름이나 다른 선택지가 있다면 다른곳에서 관리
         //    현재는 장비가 장착이 안되어 있음
         public static Player playerUnit = new Player(
+            0,
             "플레이어",  //    이름
             1, //    레벨
             0f, //    경험치
@@ -66,6 +76,34 @@ namespace Godslayer_New_Age.LJM
             Console.WriteLine($"{Name}이 레벨업! HP, MP, Damage 증가!");
         }
 
+        //    토탈 경험치 계산기
+        float GetTotalExpForLevel(int level)
+        {
+            float total = 0;
+            for(int i = 0; i < Level; i++)
+            {
+                //    토탈 경험치 = 최대 경험치 증가식
+                total += 50f * (float)Math.Pow(1.15f, i - 1);
+            }
+            return total;
+        }
+
+        //    경험치를 얻었을 때 레벨업이 가능한지 확인하기
+        public void CheckLevelUp()
+        {
+            while(EXP >= GetTotalExpForLevel(Level + 1))
+            {
+                LevelUp();
+            }
+        }
+
+        //    경험치를 얻는 함수로
+        //    적을 죽일 시 적의 exp를 넣어서 경험치를 얻게 함
+        public void GainEXP(float exp)
+        {
+            EXP += exp;
+            CheckLevelUp();
+        }
 
     }
 }
