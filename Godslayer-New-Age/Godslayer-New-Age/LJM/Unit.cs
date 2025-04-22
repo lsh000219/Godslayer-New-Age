@@ -8,10 +8,6 @@ namespace Godslayer_New_Age.LJM
 {
     internal class Unit
     {
-        //    대미지 갭
-        protected static Random random = new Random();
-        
-
 
         public string Name { get; set; }
         public int Level { get; set; }
@@ -77,13 +73,13 @@ namespace Godslayer_New_Age.LJM
             //    min은 공격력이 0 이하로 내려가지 않게 해준다
             int min = Math.Max(0, (int)(Damage - DamageGap));
             int max = (int)(Damage + DamageGap);
-            return random.Next(min, max + 1);
+            return RandomManager.Instance.Next(min, max + 1);
         }
 
         //    공격 회피하기 
         public bool TryDodge()
         {
-            return random.Next(0, 100) < DodgeRate;
+            return RandomManager.Instance.Next(0, 100) < DodgeRate;
         }
         
     }
