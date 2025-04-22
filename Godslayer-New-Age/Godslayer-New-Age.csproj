@@ -46,8 +46,8 @@
     <Compile Include="bgm_player.cs" />
     <Compile Include="juna\Battle.cs" />
     <Compile Include="juna\Dungeon.cs" />
-    <Compile Include="kiahn\Item.cs" />
-    <Compile Include="kiahn\ItemDate.cs" />
+    <Compile Include="kiahn\Inventory.cs" />
+    <Compile Include="kiahn\ItemData.cs" />
     <Compile Include="kiahn\Shop.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />

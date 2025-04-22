@@ -11,8 +11,10 @@ namespace Godslayer_New_Age
     {
         static void Main(string[] args)
         {
-            //bgm_player bgm_Player = new bgm_player();
-            //bgm_Player.Battle_Musk();
+            bgm_player bgm_Player = new bgm_player();
+            bgm_Player.Music_Start("Battle_Musk1.wav", false);
+            bgm_Player.Music_Start("Battle_Musk2.wav", true);
+            bgm_Player.WaitForExit("Battle_Musk2.wav 루프 재생 중입니다.");
         }
     }
 }
