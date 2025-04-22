@@ -22,13 +22,13 @@ namespace Godslayer_New_Age.juna
                         return input;
                     }
                 }
-                Console.WriteLine("잘못된 입력입니다");
+                Console.WriteLine("�߸��� �Է��Դϴ�");
             }
         }
         public void SelectDungeon(int min,int max)
         {
-            Console.WriteLine("가고싶은 장소를 선택해 주세요");
-            Console.WriteLine("1. 단풍향이 피어나는 곳   2. 강아지와 우주선이 오르락내리락하는 곳  3. 협곡  0. 나가기");
+            Console.WriteLine("������� ��Ҹ� ������ �ּ���");
+            Console.WriteLine("1. ��ǳ���� �Ǿ�� ��   2. �������� ���ּ��� ������������ϴ� ��  3. ����  0. ������");
             dungeontype = CheckInput(0, 4);
             switch (dungeontype)
             {
@@ -42,7 +42,7 @@ namespace Godslayer_New_Age.juna
                     Lol();
                     break;
                 case 4:
-                    Console.WriteLine("잘못된 입력입니다");
+                    Console.WriteLine("�߸��� �Է��Դϴ�");
                     break;
                 case 0:
                     break;
@@ -51,31 +51,31 @@ namespace Godslayer_New_Age.juna
         
         public void Maple()
         {
-            Console.WriteLine("본섭의 눈물을 듣고 신이 되기로 결정한 신창섭");
-            Console.WriteLine("리슝좍 10만명을 척결하고 신이 된 그는 이번에는 쌀숭이들 정상화시키려고 한다");
-            Console.WriteLine("당신과 얼마 안남은 동료들의 생계를 위해 그를 죽여야만 한다... ");
+            Console.WriteLine("������ ������ ��� ���� �Ǳ�� ������ ��â��");
+            Console.WriteLine("������ 10������ ô���ϰ� ���� �� �״� �̹����� �Ҽ��̵� ����ȭ��Ű���� �Ѵ�");
+            Console.WriteLine("��Ű� �� �ȳ��� ������� ���踦 ���� �׸� �׿��߸� �Ѵ�... ");
             Dungeon_Select();
         }
 
         public void Coin()
         {
-            Console.WriteLine("화성과 코인에 의한 여러 밈으로 인해 신이된 자 일론 머스크");
-            Console.WriteLine("여러분의 주식을 사주는 개미들이 코인을 하러 떠나는 것을 막기 위해 그를 죽여야만 한다");
+            Console.WriteLine("ȭ���� ���ο� ���� ���� ������ ���� ���̵� �� �Ϸ� �ӽ�ũ");
+            Console.WriteLine("�������� �ֽ��� ���ִ� ���̵��� ������ �Ϸ� ������ ���� ���� ���� �׸� �׿��߸� �Ѵ�");
             Dungeon_Select();
         }
         public void Lol()
         {
-            Console.WriteLine("리그오브 레전드 게임에서 전무후무한 대기록을 세우며 '롤의 신'이라고 칭송받는 자 페이커");
-            Console.WriteLine("롤의 신을 넘어 E-sports의 신이 되어 당신의 커리어를 위협한다");
-            Console.WriteLine("우승이 없는 커리어를 만들지 않으려면 그를 죽여야한다");
+            Console.WriteLine("���׿��� ������ ���ӿ��� �����Ĺ��� ������ ����� '���� ��'�̶�� Ī�۹޴� �� ����Ŀ");
+            Console.WriteLine("���� ���� �Ѿ� E-sports�� ���� �Ǿ� ����� Ŀ��� �����Ѵ�");
+            Console.WriteLine("����� ���� Ŀ��� ������ �������� �׸� �׿����Ѵ�");
             Dungeon_Select();
         }
         public void Dungeon_Select()
         {
             while (true)
             {
-                Console.WriteLine("원하시는 행동을 선택해 주세요");
-                Console.WriteLine("1. 앞으로 나아간다   0. 마을로 돌아간다");
+                Console.WriteLine("���Ͻô� �ൿ�� ������ �ּ���");
+                Console.WriteLine("1. ������ ���ư���   0. ������ ���ư���");
                 int playerselect = CheckInput(0, 1);
                 switch (playerselect)
                 {

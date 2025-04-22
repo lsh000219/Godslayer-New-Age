@@ -20,7 +20,7 @@ namespace Godslayer_New_Age.juna
         float playerCrt = 3.0f;
         float playerEva = 3.0f;
         int playerGold = 1000;
-        
+
 
         string enemy1Name = "slime";
         float enemy1MaxHp = 100;
