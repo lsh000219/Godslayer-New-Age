@@ -18,7 +18,7 @@ namespace Godslayer_New_Age.LJM
        : base(name, hp, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate, canMove)
         {
             //    아이템
-            monsterSkill = MonsterSkill;
+            MonsterSkill = monsterSkill;
         }
 
 
