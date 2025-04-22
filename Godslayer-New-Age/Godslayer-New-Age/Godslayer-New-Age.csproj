@@ -51,9 +51,12 @@
     <Compile Include="kiahn\Shop.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
+    <Compile Include="LJM\Skill.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wooseong\Constants.cs" />
+    <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
   </ItemGroup>
   <ItemGroup>
