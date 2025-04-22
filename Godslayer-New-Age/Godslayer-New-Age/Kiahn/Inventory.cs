@@ -35,7 +35,15 @@ namespace Godslayer_New_Age.Kiahn
             //}
 
             //PrintDB.box1Data = inventoryText;
+        }
 
+        // 인벤토리에서 아이템 장착
+        public static void Equip()
+        {
+            int input = int.Parse(Console.ReadLine());
+            int num = input - 1;
+            equippedList.Add(inventoryList[num]);
+            //장비 UI 뜨게
         }
     }
 }
