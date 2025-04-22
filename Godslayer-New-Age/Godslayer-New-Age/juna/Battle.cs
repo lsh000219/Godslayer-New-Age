@@ -9,6 +9,18 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
+        private Player _player;
+        private Monster _monster;
+
+        public Battle(Player player)
+        {
+            _player = player;
+        }
+        public Battle(Monster monster)
+        {
+            _monster = monster;
+        }
+
 
         //위에 변수들은 나중에 Player클래스에서 받아오기
 
@@ -84,12 +96,12 @@ namespace Godslayer_New_Age.juna
         public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
         {
             int turn = 1;
-            while (playerHp != 0 && (enemy1Hp != 0))
+            while (_player.HP != 0 && ( _monster.HP!= 0))
             {
                 Random random = new Random();
-                float player_rand_Spd = random.Next(0, 4) + playerSpd;
-                float enemy1_rand_Spd = random.Next(0, 4);
-                float enemy2_rand_Spd = random.Next(0, 4);
+                float player_rand_Spd = random.Next(0, 4) + _player.HP;
+                float enemy1_rand_Spd = random.Next(0, 4) + _monster.HP;
+                float enemy2_rand_Spd = random.Next(0, 4) + _monster.HP;
                 if (player_rand_Spd >= enemy1_rand_Spd && player_rand_Spd >= enemy2_rand_Spd)
                 {
                     PlayerTurn();
