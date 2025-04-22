@@ -46,14 +46,17 @@
     <Compile Include="bgm_player.cs" />
     <Compile Include="juna\Battle.cs" />
     <Compile Include="juna\Dungeon.cs" />
-    <Compile Include="kiahn\Item.cs" />
-    <Compile Include="kiahn\ItemDate.cs" />
+    <Compile Include="kiahn\Inventory.cs" />
+    <Compile Include="kiahn\ItemData.cs" />
     <Compile Include="kiahn\Shop.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
+    <Compile Include="LJM\Skill.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Wooseong\Constants.cs" />
+    <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
   </ItemGroup>
   <ItemGroup>
