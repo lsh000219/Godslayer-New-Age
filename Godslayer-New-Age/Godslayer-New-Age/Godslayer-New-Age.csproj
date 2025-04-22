@@ -50,6 +50,7 @@
     <Compile Include="Kiahn\ItemData.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
+    <Compile Include="LJM\RandomManager.cs" />
     <Compile Include="LJM\Skill.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />

@@ -56,6 +56,12 @@ namespace Godslayer_New_Age
             WaitForExit("intro.wav 재생 중입니다.");
         }
 
+        public void Maple_Easy()
+        {
+            Music_Start("Maple_Easy.wav");
+            WaitForExit("Maple_Easy.wav 재생 중입니다.");
+        }
+
         public void Battle_SinChangSup()
         {
             Music_Start("Battle_SinChangSup.wav");
