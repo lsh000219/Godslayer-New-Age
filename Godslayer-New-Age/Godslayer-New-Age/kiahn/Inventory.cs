@@ -13,9 +13,10 @@ namespace Godslayer_New_Age.Kiahn
         // 장착된 아이템 리스트
         static List<ItemData> equippedList = new List<ItemData>();
 
-        // 인벤토리 보기
+
         public void Display()
         {
+
         }
 
         // 인벤토리에서 아이템 장착
