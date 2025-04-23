@@ -9,6 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils;
 
+//인벤토리 장착 관리
+//장착 중인 아이템은 [장착 중] 표시
+//장착관리 선택 -> 아이템 선택 -> 우측 UI에 아이템 추가 -> 장착 문구 출력
+//장착관리 선택 -> 장착 중인 아이템 선택 -> 우측 UI에 아이템 제거 -> 장착 해제 문구 출력
+
+//UI 우성님과 진행
+//플레이어 공격력, 방어력 추가 기능은 종민님과 진행
+
 namespace Godslayer_New_Age.Kiahn
 {
     internal static class Inventory
@@ -23,14 +31,12 @@ namespace Godslayer_New_Age.Kiahn
         public static void Display()
         {
             int i = 0;
-            inventoryText.Add($"`darkGreen,black`[번호] `darkGray,black`[분류] `white,black`[아이템명] " +
-                    $"`red,black`[공격력] `cyan,black`[방어력] `white,black`[설명......................] `yellow,black`[가격]");
-            inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
             foreach (var item in inventoryList)
             {
                 i++;
-                inventoryText.Add($"`darkGreen,black`[{i}] `darkGray,black`[{item.TypeName}] `white,black`{item.Name} `yellow,black`{item.PassiveDesc} " +
-                    $"`red,black`ATK: {item.Atk} `cyan,black`DEF: {item.Def} `white,black`{item.Desc} `yellow,black`{item.Price} G");
+                string isEquipped = equippedList.Contains(item) ? "[장착 중]" : "";
+                inventoryText.Add($"`darkGreen,black`[{i}] `darkGray,black`[{item.TypeName}] `white,black`{item.Name} `yellow,black`{item.PassiveDesc}");
+                inventoryText.Add($"           `red,black`ATK: {item.Atk} `cyan,black`DEF: {item.Def} `white,black`{item.Desc} `yellow,black`{isEquipped}");
                 inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
             }
 

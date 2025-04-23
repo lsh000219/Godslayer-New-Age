@@ -16,6 +16,19 @@ using Utils;
 //Shop.SetShopItemList();
 //Shop.Display();
 
+//상점UI 구매, 판매 선택
+
+//구매 선택 -> 번호 입력
+//구매 완료 -> 인벤토리 리스트에 추가
+//인벤토리 리스트에 존재할 경우 -> 구매 실패 -> 구매 실패 문구 출력
+
+//판매 선택 -> 번호 입력
+//판매 완료 -> 인벤토리 리스트에서 삭제
+//인벤토리 리스트에 존재할 경우 -> 판매 실패 -> 판매 실패 문구 출력
+
+//UI는 우성님과 진행
+//골드는 종민님과 진행
+
 namespace Godslayer_New_Age.Kiahn
 {
     internal static class Shop
