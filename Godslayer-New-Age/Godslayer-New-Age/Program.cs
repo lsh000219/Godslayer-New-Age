@@ -19,7 +19,7 @@ namespace Godslayer_New_Age
             //bgm test
             /*
             bgm_player bgm_Player = new bgm_player();
-            bgm_Player.Music_Start("Victory.wav", false);
+            bgm_Player.Music_Start("Finally_Awake.wav", false);
             bgm_Player.Music_Start("Battle_Musk2.wav", true);
             Console.ReadLine();
             bgm_Player.Music_Exit();
