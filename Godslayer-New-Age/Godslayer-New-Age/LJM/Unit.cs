@@ -51,12 +51,11 @@ namespace Godslayer_New_Age.LJM
         }
 
         //    적 생성자
-        public Unit(string name, float hp, float mp, float damage, float defence,
+        public Unit(string name, float hp, float damage, float defence,
             int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         {
             Name = name;
             HP = hp;
-            MP = mp;
             Damage = damage;
             Defence = defence;
             Gold = gold;
