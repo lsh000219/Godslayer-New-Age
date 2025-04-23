@@ -24,7 +24,7 @@ namespace Godslayer_New_Age.juna
         }
 
         private int dungeontype;
-        private bool[] dungeonclear = { false, false, false, false };
+        private bool[] dungeonclear = { false, false, false, false};
         public int CheckInput(int min, int max)
         {
             while (true)
@@ -81,7 +81,7 @@ namespace Godslayer_New_Age.juna
                     Console.Write("       ");
                 }
             }
-            Console.Write("0. 나가기");
+            Console.WriteLine("0. 나가기");
 
             dungeontype = CheckInput(0, 4);
             switch (dungeontype)
@@ -142,9 +142,20 @@ namespace Godslayer_New_Age.juna
                     }
                     break;
                 }
-                if (room == 11)
+                if (playerselect == 0 || Player.Instance.HP == 0)
                 {
-                    dungeonclear[num - 1] = true;
+                    if (Player.Instance.HP == 0)
+                    {
+                        Player.Instance.HP = 1.0f;
+                    }
+                    monsters.Clear();
+                    break;
+                }
+                if (room==11)
+                {
+                    dungeonclear[num-1] = true;
+                    monsters.Clear();
+                    break;
                 }
             }
         }

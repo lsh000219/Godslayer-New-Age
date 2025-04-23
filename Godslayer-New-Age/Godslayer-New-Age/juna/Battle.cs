@@ -10,6 +10,7 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
+        private int life_point = 5;
         Random random = new Random();
 
         public int CheckInput(int min, int max)
@@ -43,26 +44,26 @@ namespace Godslayer_New_Age.juna
                      (monster2_rand_Spd, monster2)
                 };
 
-                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));//순서 정렬
 
-                foreach (var entry in turnList)
+                foreach (var entry in turnList)//순서에 따라 하나씩 실행
                 {
                     if (entry.character is Player)
                     {
-                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
+                        PlayerTurn();
                     }
                     else if (entry.character is Monster monster)
                     {
                         MonsterTurn(monster);
                     }
                 }
-                if (monster1.HP == 0)
+                if(monster1.HP == 0)
                 {
                     Player.Instance.EXP += monster1.EXP;
                     Console.WriteLine($"{monster1.Name}을 쓰러뜨렸습니다.");
                     Console.WriteLine($"{monster1.EXP} 경험치를 획득하였습니다.");
                 }
-                if (monster2.HP == 0)
+                if(monster2.HP == 0)
                 {
                     Player.Instance.EXP += monster2.EXP;
                     Console.WriteLine($"{monster2.Name}을 쓰러뜨렸습니다.");
@@ -72,8 +73,10 @@ namespace Godslayer_New_Age.juna
             }
             if (Player.Instance.HP == 0)
             {
-                Console.WriteLine("패배하였습니다");
                 Console.WriteLine("신살을 실패하였습니다");
+                life_point--;
+                CheckLife();
+                Console.WriteLine("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
                 Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
                 Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                 Player.Instance.Gold = Player.Instance.Gold / 2;
@@ -130,9 +133,10 @@ namespace Godslayer_New_Age.juna
             }
             if (Player.Instance.HP == 0)
             {
-                Console.WriteLine("패배하였습니다");
                 Console.WriteLine("신살을 실패하였습니다");
-                Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
+                life_point--;
+                CheckLife();
+                Console.WriteLine("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
                 Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                 Player.Instance.Gold = Player.Instance.Gold / 2;
             }
@@ -166,7 +170,7 @@ namespace Godslayer_New_Age.juna
 
                     break;
             }
-        }
+        }//스킬이 아직...
         public void PlayerAtk()
         {
             Console.WriteLine("원하시는 공격을 선택해주세요");
@@ -190,21 +194,21 @@ namespace Godslayer_New_Age.juna
                     PlayerAtk();
                     break;
             }
-        }
+        }//스킬이 아직...
 
         public void MonsterTurn(Monster monster)
         {
 
-        }
+        }//스킬이 아직...
         public bool HasPlusGold()
         {
-            string[] namesToCheck = { "솜크빈", "자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지" };
+            string[] namesToCheck = { "솜크빈","자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지"};
 
             return Inventory.equippedList.Any(item => namesToCheck.Contains(item.Name));
         }
         public void BossDrop(string bossname)
         {
-            if (bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
+            if(bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
             {
                 ItemData absolcalibur = new ItemData("앱솔칼리버", eItemType.Weapon, 100, 0, "신창섭의 가호를 받은 기간제 무기", "", 8500);
                 Inventory.inventoryList.Add(absolcalibur);
@@ -227,6 +231,18 @@ namespace Godslayer_New_Age.juna
                 ItemData costumePlay = new ItemData("롤드컵 우승 기념 챔피언 코스프레", eItemType.Armor, 0, 85, "대상혁이 언젠가 입었을지도...", "", 9000);
                 Inventory.inventoryList.Add(costumePlay);
                 Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {trophy.Name}와 {costumePlay.Name}를 획득하였다!!");
+            }
+        }
+        public void CheckLife()
+        {
+            if (life_point > 0)
+            {
+                Console.WriteLine($"기회가 {life_point}번 남았습니다...");//요 부분은 글자색을 빨강색으로 하면 좋을듯?
+            }
+            else if (life_point == 0)
+            {
+                Console.WriteLine("You Die...");
+                //강종과 save데이터 삭제하는 함수 추가
             }
         }
     }
