@@ -81,7 +81,7 @@ namespace Godslayer_New_Age.juna
                     Console.Write("       ");
                 }
             }
-            Console.Write("0. 나가기");
+            Console.WriteLine("0. 나가기");
 
             dungeontype = CheckInput(0, 4);
             switch (dungeontype)
@@ -140,11 +140,14 @@ namespace Godslayer_New_Age.juna
                     {
                         Player.Instance.HP = 1.0f;
                     }
+                    monsters.Clear();
                     break;
                 }
                 if (room==11)
                 {
                     dungeonclear[num-1] = true;
+                    monsters.Clear();
+                    break;
                 }
             }
         }
