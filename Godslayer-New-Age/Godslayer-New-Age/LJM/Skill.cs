@@ -39,6 +39,7 @@ namespace Godslayer_New_Age.LJM
             MaxUseCount = maxUseCount;
         }
 
+        //    대미지가 1f인 이유는 (대미지 * 1f)
         public static Skill jumpAtk = new Skill(SkillTarget.Player, "띄어오르기", 0f, 1f, 0f, 100f, 0, -1);
 
     }

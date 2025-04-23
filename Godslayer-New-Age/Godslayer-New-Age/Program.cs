@@ -33,20 +33,20 @@ namespace Godslayer_New_Age
 
             PrintUtil.CreateBox();
             Console.ReadLine();
-            
+
 
 
 
             //    dodge test
             /*
-            if (Player.playerUnit.TryDodge())
+            if (Player.Instance.TryDodge())
             {
                 Console.WriteLine("회피에 성공함!");
             }
             else
             {
                 Console.WriteLine("회피에 실패!!");
-                Console.WriteLine($"{Player.playerUnit.GetRandomDamage()} 만큼의 데미지를 받음!");
+                Console.WriteLine($"{Player.Instance.GetRandomDamage()} 만큼의 데미지를 받음!");
             }
             */
 
