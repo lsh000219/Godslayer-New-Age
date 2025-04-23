@@ -29,8 +29,6 @@ using Utils;
 //UI는 우성님과 진행
 //골드는 종민님과 진행
 
-//던전 클리어 시, 구매 가능한 아이템 -> 준아님과 진행
-
 namespace Godslayer_New_Age.Kiahn
 {
     internal class Shop
