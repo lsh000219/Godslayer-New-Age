@@ -1,0 +1,57 @@
+using Core;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Utils;
+
+namespace Scenes
+{
+    public class ShopScene : IScene
+    {
+        public GameState SceneType => GameState.Shop;
+
+        public GameState Run(int phase)
+        {
+            PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
+            PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
+
+            PrintUtil.CreateBox();
+
+            // 입력에 따라 다음 상태 반환
+            string input = Console.ReadLine();
+            if (input == "1") return GameState.Shop;
+            if (input == "2") return GameState.Main;
+            if (input == "0") return GameState.Pop;
+
+            return GameState.Retry; // 다시 실행
+        }
+
+        public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
+        public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
+
+        public ShopScene()
+        {
+            box1Text[0] = new List<string>()
+            {
+                ""
+            };
+
+            box3Text[0] = new List<string>()
+            {
+                ""
+            };
+
+            box1Text[1] = new List<string>()
+            {
+                ""
+            };
+
+            box3Text[1] = new List<string>()
+            {
+                ""
+            };
+        }
+    }
+}
