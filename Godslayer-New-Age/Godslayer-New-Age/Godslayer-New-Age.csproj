@@ -58,9 +58,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Kiahn\Shop.cs" />
     <Compile Include="Wooseong\Constants.cs" />
+    <Compile Include="Wooseong\Core\GameState.cs" />
+    <Compile Include="Wooseong\Core\Interfaces.cs" />
     <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
     <Compile Include="Wooseong\SceneManager.cs" />
+    <Compile Include="Wooseong\Scenes\IntroScene.cs" />
+    <Compile Include="Wooseong\Scenes\ShopScene.cs" />
+    <Compile Include="Wooseong\Scenes\StartScene.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
