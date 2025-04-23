@@ -30,8 +30,6 @@ namespace Godslayer_New_Age
             PrintUtil.CreateBox();
             Console.ReadLine();
 
-
-
         }
     }
 }
