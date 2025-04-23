@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Godslayer_New_Age
+namespace Godslayer_New_Age.Kiahn
 {
     //아이템 타입 열거형
     enum eItemType
@@ -27,21 +27,7 @@ namespace Godslayer_New_Age
         private string name;
 
         //아이템 이름은 3~8자 사이로 설정
-        public string Name
-        {
-            get { return name; }
-            set 
-            {
-                if (value.Length < 3 || value.Length > 8)
-                {
-                    this.name = "";
-                }
-                else
-                {
-                    this.name = value;
-                }
-            }
-        }
+        public string Name { get; set; }
 
         //아이템 타입
         private eItemType Type { get; set; }
@@ -128,6 +114,7 @@ namespace Godslayer_New_Age
             Desc = _desc;
             PassiveDesc = _passiveDesc;
             Price = _price;
+
         }
     }
 }

@@ -45,5 +45,5 @@ namespace Godslayer_New_Age.LJM
             Console.WriteLine($"{target.Name}의 공격력 증가 효과가 끝났어.");
         }
     */
-    }
+}
 }
