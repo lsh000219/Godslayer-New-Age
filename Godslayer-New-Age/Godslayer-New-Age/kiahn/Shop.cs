@@ -76,7 +76,7 @@ namespace Godslayer_New_Age.Kiahn
                 //ItemData titaniumSpacesuit = new ItemData("티타늄 우주복", eItemType.Armor, 0, 85, "티타늄을 제작된 전설의 우주복", "", 9000);
                 //장신구
                 ItemData dogeCoin = new ItemData("빛바랜 도지코인", eItemType.accessory, 5, 3, "결국, 곤두박질친 도지코인", "", 1500);
-                ItemData spacexWreck = new ItemData("스페이스X의 잔해", eItemType.accessory, 10, 5, "가지면 마스터를 갈 것만 같지만 너의 착각이다", "", 2500);
+                ItemData spacexWreck = new ItemData("스페이스X의 잔해", eItemType.accessory, 10, 5, "실패한 발사체의 잔해다", "", 2500);
                 ItemData teslaGearKnob = new ItemData("테슬라 기어봉", eItemType.accessory, 0, 0, "맨들맨들한 기어봉", "(골드 추가보상 100%)", 5000);
                 ItemData marsMask = new ItemData("화성인 가면", eItemType.accessory, 40, 0, "이거 쓰고 화성갈꺼니까앗", "(골드 추가보상 100%)", 6000);
 
