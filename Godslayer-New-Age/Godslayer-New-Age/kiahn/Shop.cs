@@ -29,10 +29,22 @@ using Utils;
 //UI는 우성님과 진행
 //골드는 종민님과 진행
 
+//던전 클리어 시, 구매 가능한 아이템 -> 준아님과 진행
+
 namespace Godslayer_New_Age.Kiahn
 {
-    internal static class Shop
+    internal class Shop
     {
+        //싱글톤
+        private static Shop instance;
+        public static Shop Instance()
+        {
+            if (instance == null)
+            {
+                instance = new Shop();
+            }
+            return instance;
+        }
 
         public static List<ItemData> shopItemList = new List<ItemData>();
         public static List<string> itemDataText = new List<string>() { };
