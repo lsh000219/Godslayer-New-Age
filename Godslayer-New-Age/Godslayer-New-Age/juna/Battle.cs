@@ -12,12 +12,6 @@ namespace Godslayer_New_Age.juna
     {
         Random random = new Random();
 
-        private Inventory _inventory;
-        public Battle(Inventory inventory)
-        {
-            _inventory = inventory;
-        }
-
         public int CheckInput(int min, int max)
         {
             while (true)
@@ -62,6 +56,18 @@ namespace Godslayer_New_Age.juna
                         MonsterTurn(monster);
                     }
                 }
+                if(monster1.HP == 0)
+                {
+                    Player.Instance.EXP += monster1.EXP;
+                    Console.WriteLine($"{monster1.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster1.EXP} 경험치를 획득하였습니다.");
+                }
+                if(monster2.HP == 0)
+                {
+                    Player.Instance.EXP += monster2.EXP;
+                    Console.WriteLine($"{monster2.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster2.EXP} 경험치를 획득하였습니다.");
+                }
                 turn++;
             }
             if (Player.Instance.HP == 0)
@@ -75,8 +81,16 @@ namespace Godslayer_New_Age.juna
             else
             {
                 Console.WriteLine("승리하였습니다");
-                
-                Console.WriteLine($"+{monster1.Gold + monster2.Gold}");
+                if (HasPlusGold())
+                {
+                    Console.WriteLine($"+{(monster1.Gold + monster2.Gold) * 2}gold");
+                    Player.Instance.Gold += (monster1.Gold + monster2.Gold) * 2;
+                }
+                else
+                {
+                    Console.WriteLine($"+{monster1.Gold + monster2.Gold}gold");
+                    Player.Instance.Gold += monster1.Gold + monster2.Gold;
+                }
             }
         }
         public void StartBattle(Monster boss)//보스전
@@ -106,7 +120,36 @@ namespace Godslayer_New_Age.juna
                         MonsterTurn(monster);
                     }
                 }
+                if (boss.HP == 0)
+                {
+                    Player.Instance.EXP += boss.EXP;
+                    Console.WriteLine($"{boss.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{boss.EXP} 경험치를 획득하였습니다.");
+                }
                 turn++;
+            }
+            if (Player.Instance.HP == 0)
+            {
+                Console.WriteLine("패배하였습니다");
+                Console.WriteLine("신살을 실패하였습니다");
+                Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
+                Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
+                Player.Instance.Gold = Player.Instance.Gold / 2;
+            }
+            else
+            {
+                Console.WriteLine("승리하였습니다");
+                if (HasPlusGold())
+                {
+                    Console.WriteLine($"+{boss.Gold * 2}gold");
+                    Player.Instance.Gold += boss.Gold * 2;
+                }
+                else
+                {
+                    Console.WriteLine($"+{boss.Gold}gold");
+                    Player.Instance.Gold += boss.Gold;
+                }
+                BossDrop(boss.Name);
             }
         }
         public void PlayerTurn()
@@ -151,8 +194,40 @@ namespace Godslayer_New_Age.juna
 
         public void MonsterTurn(Monster monster)
         {
-            int randskill = random.Next();
+            
         }
+        public bool HasPlusGold()
+        {
+            string[] namesToCheck = { "솜크빈","자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지"};
 
+            return Inventory.equippedList.Any(item => namesToCheck.Contains(item.Name));
+        }
+        public void BossDrop(string bossname)
+        {
+            if(bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
+            {
+                ItemData absolcalibur = new ItemData("앱솔칼리버", eItemType.Weapon, 100, 0, "신창섭의 가호를 받은 기간제 무기", "", 8500);
+                Inventory.inventoryList.Add(absolcalibur);
+                ItemData challengerArmor = new ItemData("도전자의_갑옷", eItemType.Armor, 0, 80, "신창섭의 가호를 받은 기간제 갑옷", "", 9000);
+                Inventory.inventoryList.Add(challengerArmor);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {absolcalibur.Name}와 {challengerArmor.Name}을 획득하였다!!");
+            }
+            else if (bossname == "일론 머스크" && Player.Instance.PlayerJob == Player.Job.CEO)
+            {
+                ItemData videoGame = new ItemData("일론의 비디오게임", eItemType.Weapon, 110, 0, "일론머스크가 베이직으로 개발한 비디오 게임", "", 12000);
+                Inventory.inventoryList.Add(videoGame);
+                ItemData titaniumSpacesuit = new ItemData("티타늄 우주복", eItemType.Armor, 0, 85, "티타늄을 제작된 전설의 우주복", "", 9000);
+                Inventory.inventoryList.Add(titaniumSpacesuit);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {videoGame.Name}과 {titaniumSpacesuit.Name}을 획득하였다!!");
+            }
+            else if (bossname == "신" && Player.Instance.PlayerJob == Player.Job.ProGamer)
+            {
+                ItemData trophy = new ItemData("롤드컵 우승트로피", eItemType.Weapon, 110, 0, "대상혁의 월드 챔피언십 우승 트로피", "", 12000);
+                Inventory.inventoryList.Add(trophy);
+                ItemData costumePlay = new ItemData("롤드컵 우승 기념 챔피언 코스프레", eItemType.Armor, 0, 85, "대상혁이 언젠가 입었을지도...", "", 9000);
+                Inventory.inventoryList.Add(costumePlay);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {trophy.Name}와 {costumePlay.Name}를 획득하였다!!");
+            }
+        }
     }
 }
