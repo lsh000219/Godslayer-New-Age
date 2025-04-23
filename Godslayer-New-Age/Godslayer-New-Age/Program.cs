@@ -1,5 +1,6 @@
 using Godslayer_New_Age.Kiahn;
 using Godslayer_New_Age.LJM;
+using Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,18 @@ namespace Godslayer_New_Age
             PrintUtil.CreateBox();
             Console.ReadLine();
             */
+
+
+            // UI test2
+            /*
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+            Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+
+            SceneManager.Run();
+            */
+
+
 
 
 
