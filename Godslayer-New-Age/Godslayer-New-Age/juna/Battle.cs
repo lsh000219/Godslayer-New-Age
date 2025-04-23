@@ -96,7 +96,7 @@ namespace Godslayer_New_Age.juna
         public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
         {
             int turn = 1;
-            while (_player.HP != 0 && ( _monster.HP!= 0))
+            while (_player.HP != 0 && ( _monster.monsterUnit.HP!= 0))
             {
                 Random random = new Random();
                 float player_rand_Spd = random.Next(0, 4) + _player.HP;
@@ -150,12 +150,12 @@ namespace Godslayer_New_Age.juna
         public void StartBattle_2(string bossname)//보스전
         {
             int turn = 1;
-            while (playerHp != 0 && enemy1Hp != 0)
+            while (_player.HP != 0 && _monster.monsterUnit.HP != 0)
             {
                 Random random = new Random();
                 int player_rand_num = random.Next(0, 4);
                 int enemy_rand_num = random.Next(0, 4);
-                if (playerSpd + player_rand_num >= enemy1Spd + enemy_rand_num)
+                if (_monster.monsterUnit.HP + player_rand_num >= _monster.monsterUnit.HP + enemy_rand_num)
                 {
                     PlayerTurn();
                     EnemyTurn(bossname, turn);//안에 적의 수 넣기

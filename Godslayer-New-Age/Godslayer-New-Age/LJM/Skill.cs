@@ -16,7 +16,7 @@ namespace Godslayer_New_Age.LJM
         public int DelayTurns { get; set; }         //    딜레이 턴 (기본 0 = 즉시발동)
 
         //    스킬 목록
-        public static Skill justHit = new Skill("평타", 0, 5f, 0f, 0f);
+       
 
     }
 }
