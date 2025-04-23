@@ -33,6 +33,8 @@ namespace Godslayer_New_Age
             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
             Player.Instance.PlayerJob = Player.Job.CEO;
             Shop.SetItemList();
+            Shop.Buy(1);
+            Shop.Buy(2);
             Shop.Display();
             PrintUtil.CreateBox();
             Console.ReadLine();
