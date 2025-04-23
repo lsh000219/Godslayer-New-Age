@@ -1,3 +1,4 @@
+using Godslayer_New_Age.Kiahn;
 using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
@@ -9,23 +10,8 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
-        private Player _player;
-        private Monster _monster;
-
-        public Battle(Player player)
-        {
-            _player = player;
-        }
-        public Battle(Monster monster)
-        {
-            _monster = monster;
-        }
-
-
-        //위에 변수들은 나중에 Player클래스에서 받아오기
-
-        //a *(100/100+d)데미지 주는 방식
-        //Math.Round(value,1)
+        private int life_point = 5;
+        Random random = new Random();
 
         public int CheckInput(int min, int max)
         {
@@ -42,6 +28,134 @@ namespace Godslayer_New_Age.juna
             }
         }
 
+        public void StartBattle(Monster monster1, Monster monster2)//일반몹(2명씩 나올 예정)
+        {
+            int turn = 1;
+
+            while (Player.Instance.HP != 0 && (monster1.HP != 0 || monster2.HP != 0))
+            {
+                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
+                float monster1_rand_Spd = random.Next(0, 5) + monster1.Speed;
+                float monster2_rand_Spd = random.Next(0, 5) + monster2.Speed;
+                var turnList = new List<(float speed, object character)>
+                {
+                     (player_rand_Spd, Player.Instance),
+                     (monster1_rand_Spd, monster1),
+                     (monster2_rand_Spd, monster2)
+                };
+
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));//순서 정렬
+
+                foreach (var entry in turnList)//순서에 따라 하나씩 실행
+                {
+                    if (entry.character is Player)
+                    {
+                        PlayerTurn();
+                    }
+                    else if (entry.character is Monster monster)
+                    {
+                        MonsterTurn(monster);
+                    }
+                }
+                if(monster1.HP == 0)
+                {
+                    Player.Instance.EXP += monster1.EXP;
+                    Console.WriteLine($"{monster1.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster1.EXP} 경험치를 획득하였습니다.");
+                }
+                if(monster2.HP == 0)
+                {
+                    Player.Instance.EXP += monster2.EXP;
+                    Console.WriteLine($"{monster2.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster2.EXP} 경험치를 획득하였습니다.");
+                }
+                turn++;
+            }
+            if (Player.Instance.HP == 0)
+            {
+                Console.WriteLine("신살을 실패하였습니다");
+                life_point--;
+                CheckLife();
+                Console.WriteLine("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
+                Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
+                Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
+                Player.Instance.Gold = Player.Instance.Gold / 2;
+            }
+            else
+            {
+                Console.WriteLine("승리하였습니다");
+                if (HasPlusGold())
+                {
+                    Console.WriteLine($"+{(monster1.Gold + monster2.Gold) * 2}gold");
+                    Player.Instance.Gold += (monster1.Gold + monster2.Gold) * 2;
+                }
+                else
+                {
+                    Console.WriteLine($"+{monster1.Gold + monster2.Gold}gold");
+                    Player.Instance.Gold += monster1.Gold + monster2.Gold;
+                }
+            }
+        }
+        public void StartBattle(Monster boss)//보스전
+        {
+            int turn = 1;
+
+            while (Player.Instance.HP != 0 && (boss.HP != 0))
+            {
+                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
+                float boss_rand_Spd = random.Next(0, 5) + boss.Speed;
+                var turnList = new List<(float speed, object character)>
+                {
+                     (player_rand_Spd, Player.Instance),
+                     (boss_rand_Spd, boss)
+                };
+
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
+
+                foreach (var entry in turnList)
+                {
+                    if (entry.character is Player)
+                    {
+                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
+                    }
+                    else if (entry.character is Monster monster)
+                    {
+                        MonsterTurn(monster);
+                    }
+                }
+                if (boss.HP == 0)
+                {
+                    Player.Instance.EXP += boss.EXP;
+                    Console.WriteLine($"{boss.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{boss.EXP} 경험치를 획득하였습니다.");
+                }
+                turn++;
+            }
+            if (Player.Instance.HP == 0)
+            {
+                Console.WriteLine("신살을 실패하였습니다");
+                life_point--;
+                CheckLife();
+                Console.WriteLine("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
+                Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
+                Player.Instance.Gold = Player.Instance.Gold / 2;
+            }
+            else
+            {
+                Console.WriteLine("승리하였습니다");
+                if (HasPlusGold())
+                {
+                    Console.WriteLine($"+{boss.Gold * 2}gold");
+                    Player.Instance.Gold += boss.Gold * 2;
+                }
+                else
+                {
+                    Console.WriteLine($"+{boss.Gold}gold");
+                    Player.Instance.Gold += boss.Gold;
+                }
+                BossDrop(boss.Name);
+            }
+        }
         public void PlayerTurn()
         {
             Console.WriteLine("원하시는 행동을 선택해주세요");
@@ -56,7 +170,7 @@ namespace Godslayer_New_Age.juna
 
                     break;
             }
-        }
+        }//스킬이 아직...
         public void PlayerAtk()
         {
             Console.WriteLine("원하시는 공격을 선택해주세요");
@@ -80,92 +194,55 @@ namespace Godslayer_New_Age.juna
                     PlayerAtk();
                     break;
             }
-        }
+        }//스킬이 아직...
 
-        public void EnemyTurn(string enemyname, int turn)
+        public void MonsterTurn(Monster monster)
         {
-            Random random = new Random();
-            if (enemyname == "신창섭" && turn == 1)
+
+        }//스킬이 아직...
+        public bool HasPlusGold()
+        {
+            string[] namesToCheck = { "솜크빈","자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지"};
+
+            return Inventory.equippedList.Any(item => namesToCheck.Contains(item.Name));
+        }
+        public void BossDrop(string bossname)
+        {
+            if(bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
             {
-                //정상화 실행
+                ItemData absolcalibur = new ItemData("앱솔칼리버", eItemType.Weapon, 100, 0, "신창섭의 가호를 받은 기간제 무기", "", 8500);
+                Inventory.inventoryList.Add(absolcalibur);
+                ItemData challengerArmor = new ItemData("도전자의_갑옷", eItemType.Armor, 0, 80, "신창섭의 가호를 받은 기간제 갑옷", "", 9000);
+                Inventory.inventoryList.Add(challengerArmor);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {absolcalibur.Name}와 {challengerArmor.Name}을 획득하였다!!");
             }
-            int randskill = random.Next();
-        }
-
-
-        public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
-        {
-            int turn = 1;
-            while (_player.HP != 0 && (_monster.monsterUnit.HP != 0))
+            else if (bossname == "일론 머스크" && Player.Instance.PlayerJob == Player.Job.CEO)
             {
-                Random random = new Random();
-                float player_rand_Spd = random.Next(0, 4) + _player.HP;
-                float enemy1_rand_Spd = random.Next(0, 4) + _monster.HP;
-                float enemy2_rand_Spd = random.Next(0, 4) + _monster.HP;
-                if (player_rand_Spd >= enemy1_rand_Spd && player_rand_Spd >= enemy2_rand_Spd)
-                {
-                    PlayerTurn();
-                    if (enemy1_rand_Spd >= enemy2_rand_Spd)
-                    {
-                        EnemyTurn(enemy1name, turn);
-                        EnemyTurn(enemy2name, turn);
-                    }
-                    else
-                    {
-                        EnemyTurn(enemy2name, turn);
-                        EnemyTurn(enemy1name, turn);
-                    }
-                }
-                else if (enemy1_rand_Spd >= player_rand_Spd && enemy1_rand_Spd >= enemy2_rand_Spd)
-                {
-                    EnemyTurn(enemy1name, turn);
-                    if (player_rand_Spd >= enemy2_rand_Spd)
-                    {
-                        PlayerTurn();
-                        EnemyTurn(enemy2name, turn);
-                    }
-                    else
-                    {
-                        EnemyTurn(enemy2name, turn);
-                        PlayerTurn();
-                    }
-                }
-                else
-                {
-                    EnemyTurn(enemy2name, turn);
-                    if (player_rand_Spd >= enemy1_rand_Spd)
-                    {
-                        PlayerTurn();
-                        EnemyTurn(enemy1name, turn);
-                    }
-                    else
-                    {
-                        EnemyTurn(enemy1name, turn);
-                        PlayerTurn();
-                    }
-                }
-                turn++;
+                ItemData videoGame = new ItemData("일론의 비디오게임", eItemType.Weapon, 110, 0, "일론머스크가 베이직으로 개발한 비디오 게임", "", 12000);
+                Inventory.inventoryList.Add(videoGame);
+                ItemData titaniumSpacesuit = new ItemData("티타늄 우주복", eItemType.Armor, 0, 85, "티타늄을 제작된 전설의 우주복", "", 9000);
+                Inventory.inventoryList.Add(titaniumSpacesuit);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {videoGame.Name}과 {titaniumSpacesuit.Name}을 획득하였다!!");
+            }
+            else if (bossname == "신" && Player.Instance.PlayerJob == Player.Job.ProGamer)
+            {
+                ItemData trophy = new ItemData("롤드컵 우승트로피", eItemType.Weapon, 110, 0, "대상혁의 월드 챔피언십 우승 트로피", "", 12000);
+                Inventory.inventoryList.Add(trophy);
+                ItemData costumePlay = new ItemData("롤드컵 우승 기념 챔피언 코스프레", eItemType.Armor, 0, 85, "대상혁이 언젠가 입었을지도...", "", 9000);
+                Inventory.inventoryList.Add(costumePlay);
+                Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {trophy.Name}와 {costumePlay.Name}를 획득하였다!!");
             }
         }
-        public void StartBattle_2(string bossname)//보스전
+        public void CheckLife()
         {
-            int turn = 1;
-            while (_player.HP != 0 && _monster.monsterUnit.HP != 0)
+            if (life_point > 0)
             {
-                Random random = new Random();
-                int player_rand_num = random.Next(0, 4);
-                int enemy_rand_num = random.Next(0, 4);
-                if (_monster.monsterUnit.HP + player_rand_num >= _monster.monsterUnit.HP + enemy_rand_num)
-                {
-                    PlayerTurn();
-                    EnemyTurn(bossname, turn);//안에 적의 수 넣기
-                }
-                else
-                {
-                    EnemyTurn(bossname, turn);
-                    PlayerTurn();
-                }
-                turn++;
+                Console.WriteLine($"기회가 {life_point}번 남았습니다...");//요 부분은 글자색을 빨강색으로 하면 좋을듯?
+            }
+            else if (life_point == 0)
+            {
+                Console.WriteLine("You Die...");
+                //강종과 save데이터 삭제하는 함수 추가
             }
         }
     }

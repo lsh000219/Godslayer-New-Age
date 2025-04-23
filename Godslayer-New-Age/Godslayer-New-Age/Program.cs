@@ -19,7 +19,7 @@ namespace Godslayer_New_Age
             //bgm test
             /*
             bgm_player bgm_Player = new bgm_player();
-            bgm_Player.Music_Start("Battle_Musk1.wav", false);
+            bgm_Player.Music_Start("Finally_Awake.wav", false);
             bgm_Player.Music_Start("Battle_Musk2.wav", true);
             Console.ReadLine();
             bgm_Player.Music_Exit();
@@ -33,6 +33,8 @@ namespace Godslayer_New_Age
             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
             Player.Instance.PlayerJob = Player.Job.CEO;
             Shop.SetItemList();
+            Shop.Buy(1);
+            Shop.Buy(2);
             Shop.Display();
             PrintUtil.CreateBox();
             Console.ReadLine();

@@ -41,7 +41,7 @@ namespace Godslayer_New_Age.LJM
         }
 
 
-        public enum Job
+        public enum Job  
         {
             RiceMonkey = 0,
             CEO,
@@ -59,7 +59,7 @@ namespace Godslayer_New_Age.LJM
         //    레벨업에 필요한 경험치로 레벨에 비례해 커짐
         public float RequiredExp => (float)(50 * Math.Pow(1.15, Level - 1));
         //    50 * (1.15 ^ 레벨 - 1)
-
+         
         public Player(Job playerJob, string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage,
             float defence, int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         : base(name, level, exp, maxHP, hp, maxMP, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate, canMove)
@@ -75,7 +75,7 @@ namespace Godslayer_New_Age.LJM
         public void LevelUp()
         {
             Level++;
-
+            
             HP += 10f;
             MP += 5f;
             Damage += 0.5f;
@@ -95,7 +95,7 @@ namespace Godslayer_New_Age.LJM
         //    경험치를 얻었을 때 레벨업이 가능한지 확인하기
         void CheckLevelUp()
         {
-            while (EXP >= GetTotalExpForLevel(Level + 1))
+            while(EXP >= GetTotalExpForLevel(Level + 1))
             {
                 LevelUp();
             }

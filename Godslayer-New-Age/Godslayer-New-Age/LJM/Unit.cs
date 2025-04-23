@@ -12,9 +12,9 @@ namespace Godslayer_New_Age.LJM
         public string Name { get; set; }
         public int Level { get; set; }
         public float EXP { get; set; }
-        public float MaxHP { get; set; }
+        public float MaxHP { get;set; }
         public float HP { get; set; }
-        public float MaxMP { get; set; }
+        public float MaxMP { get;set; }
         public float MP { get; set; }
         public float Damage { get; set; }
         public int DamageGap { get; set; } = 3;
@@ -30,8 +30,8 @@ namespace Godslayer_New_Age.LJM
 
 
         //    플레이어 생성자
-        public Unit(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage, float defence,
-            int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
+        public Unit(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage, float defence, 
+            int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove) 
         {
             Name = name;
             Level = level;
