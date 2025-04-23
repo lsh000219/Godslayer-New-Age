@@ -17,7 +17,6 @@ namespace Godslayer_New_Age.juna
 
         private Monster _monster;
         private Battle _battle;
-        private Inventory _inventory;
         public Dungeon(Monster monster)
         {
             _monster = monster;
@@ -25,10 +24,6 @@ namespace Godslayer_New_Age.juna
         public Dungeon(Battle battle)
         {
             _battle = battle;
-        }
-        public Dungeon(Inventory inventory)
-        {
-            _inventory = inventory;
         }
 
         public int dungeontype { get; set; }
