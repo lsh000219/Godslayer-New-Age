@@ -26,14 +26,14 @@ namespace Godslayer_New_Age
 
 
             // UI test
-            
+            /*
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
 
             PrintUtil.CreateBox();
             Console.ReadLine();
-
+            */
 
 
 
