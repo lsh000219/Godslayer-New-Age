@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 using Utils;
 
 //Program.cs에 추가할 것
-//
-//
-//shop.SetShopItemList();
-//
+//Player.Instance.PlayerJob = Player.Job.직업;
+//Player.Instance.
+//Shop.SetShopItemList();
+//Shop.Display();
 
 namespace Godslayer_New_Age.Kiahn
 {
