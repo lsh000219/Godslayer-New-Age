@@ -16,10 +16,35 @@ using Utils;
 //Shop.SetShopItemList();
 //Shop.Display();
 
+//상점UI 구매, 판매 선택
+
+//구매 선택 -> 번호 입력
+//구매 완료 -> 인벤토리 리스트에 추가
+//인벤토리 리스트에 존재할 경우 -> 구매 실패 -> 구매 실패 문구 출력
+
+//판매 선택 -> 번호 입력
+//판매 완료 -> 인벤토리 리스트에서 삭제
+//인벤토리 리스트에 존재할 경우 -> 판매 실패 -> 판매 실패 문구 출력
+
+//UI는 우성님과 진행
+//골드는 종민님과 진행
+
+//던전 클리어 시, 구매 가능한 아이템 -> 준아님과 진행
+
 namespace Godslayer_New_Age.Kiahn
 {
-    internal static class Shop
+    internal class Shop
     {
+        //싱글톤
+        private static Shop instance;
+        public static Shop Instance()
+        {
+            if (instance == null)
+            {
+                instance = new Shop();
+            }
+            return instance;
+        }
 
         public static List<ItemData> shopItemList = new List<ItemData>();
         public static List<string> itemDataText = new List<string>() { };
@@ -76,7 +101,7 @@ namespace Godslayer_New_Age.Kiahn
                 //ItemData titaniumSpacesuit = new ItemData("티타늄 우주복", eItemType.Armor, 0, 85, "티타늄을 제작된 전설의 우주복", "", 9000);
                 //장신구
                 ItemData dogeCoin = new ItemData("빛바랜 도지코인", eItemType.accessory, 5, 3, "결국, 곤두박질친 도지코인", "", 1500);
-                ItemData spacexWreck = new ItemData("스페이스X의 잔해", eItemType.accessory, 10, 5, "가지면 마스터를 갈 것만 같지만 너의 착각이다", "", 2500);
+                ItemData spacexWreck = new ItemData("스페이스X의 잔해", eItemType.accessory, 10, 5, "실패한 발사체의 잔해다", "", 2500);
                 ItemData teslaGearKnob = new ItemData("테슬라 기어봉", eItemType.accessory, 0, 0, "맨들맨들한 기어봉", "(골드 추가보상 100%)", 5000);
                 ItemData marsMask = new ItemData("화성인 가면", eItemType.accessory, 40, 0, "이거 쓰고 화성갈꺼니까앗", "(골드 추가보상 100%)", 6000);
 
