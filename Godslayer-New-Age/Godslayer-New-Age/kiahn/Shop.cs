@@ -33,8 +33,18 @@ using Utils;
 
 namespace Godslayer_New_Age.Kiahn
 {
-    internal static class Shop
+    internal class Shop
     {
+        //싱글톤
+        private static Shop instance;
+        public static Shop Instance()
+        {
+            if (instance == null)
+            {
+                instance = new Shop();
+            }
+            return instance;
+        }
 
         public static List<ItemData> shopItemList = new List<ItemData>();
         public static List<string> itemDataText = new List<string>() { };

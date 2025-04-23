@@ -19,8 +19,19 @@ using Utils;
 
 namespace Godslayer_New_Age.Kiahn
 {
-    internal static class Inventory
+    internal class Inventory
     {
+        //싱글톤
+        private static Inventory inventory;
+        public static Inventory Instance()
+        {
+            if (inventory == null)
+            {
+                inventory = new Inventory();
+            }
+            return inventory;
+        }
+
         // 인벤토리 리스트
         public static List<ItemData> inventoryList = new List<ItemData>();
         // 장착된 아이템 리스트
