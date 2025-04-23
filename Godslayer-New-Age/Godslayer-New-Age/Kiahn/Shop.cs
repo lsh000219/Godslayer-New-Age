@@ -19,10 +19,17 @@ namespace Godslayer_New_Age.Kiahn
 {
     internal static class Shop
     {
+<<<<<<< HEAD
 
         public static List<ItemData> shopItemList = new List<ItemData>();
         public static List<string> itemDataText = new List<string>() { };
 
+=======
+
+        public static List<ItemData> shopItemList = new List<ItemData>();
+        public static List<string> itemDataText = new List<string>() { };
+
+>>>>>>> develop
         public static void SetItemList(int _num)
         {
             if (_num == 1)
@@ -162,6 +169,7 @@ namespace Godslayer_New_Age.Kiahn
                 //UI박스에 추가 예정
             }
         }
+
 
         public static void Sell(int _input)
         {
