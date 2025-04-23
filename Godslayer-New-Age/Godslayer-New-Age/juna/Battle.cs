@@ -9,18 +9,14 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
-        private Player _player;
-        private Monster _monster;
+        Random random = new Random();
 
-        public Battle(Player player)
-        {
-            _player = player;
-        }
+        private Monster _monster;       
         public Battle(Monster monster)
         {
             _monster = monster;
         }
-
+        
 
         //위에 변수들은 나중에 Player클래스에서 받아오기
 
@@ -82,72 +78,45 @@ namespace Godslayer_New_Age.juna
             }
         }
 
-        public void EnemyTurn(string enemyname, int turn)
+        public void MonsterTurn(Monster monster)
         {
-            Random random = new Random();
-            if (enemyname == "신창섭" && turn == 1)
-            {
-                //정상화 실행
-            }
             int randskill = random.Next();
         }
 
-
-        public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
+        public void StartBattle(Monster monster1, Monster monster2)//일반몹(2명씩 나올 예정)
         {
             int turn = 1;
-            while (_player.HP != 0 && ( _monster.monsterUnit.HP!= 0))
+            
+
+            while (Player.Instance.HP != 0 && ( _monster.slime.HP!= 0))
             {
-                Random random = new Random();
-                float player_rand_Spd = random.Next(0, 4) + _player.HP;
-                float enemy1_rand_Spd = random.Next(0, 4) + _monster.HP;
-                float enemy2_rand_Spd = random.Next(0, 4) + _monster.HP;
-                if (player_rand_Spd >= enemy1_rand_Spd && player_rand_Spd >= enemy2_rand_Spd)
+                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
+                float enemy1_rand_Spd = random.Next(0, 5) + monster1.Speed;
+                float enemy2_rand_Spd = random.Next(0, 5) + monster2.Speed;
+                var turnList = new List<(float speed, object character)>
                 {
-                    PlayerTurn();
-                    if (enemy1_rand_Spd >= enemy2_rand_Spd)
-                    {
-                        EnemyTurn(enemy1name, turn);
-                        EnemyTurn(enemy2name, turn);
-                    }
-                    else
-                    {
-                        EnemyTurn(enemy2name, turn);
-                        EnemyTurn(enemy1name, turn);
-                    }
-                }
-                else if (enemy1_rand_Spd >= player_rand_Spd && enemy1_rand_Spd >= enemy2_rand_Spd)
+                     (player_rand_Spd, Player.Instance),
+                     (enemy1_rand_Spd, monster1),
+                     (enemy2_rand_Spd, monster2)
+                };
+
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
+
+                foreach (var entry in turnList)
                 {
-                    EnemyTurn(enemy1name, turn);
-                    if (player_rand_Spd >= enemy2_rand_Spd)
+                    if (entry.character is Player)
                     {
-                        PlayerTurn();
-                        EnemyTurn(enemy2name, turn);
+                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
                     }
-                    else
+                    else if (entry.character is Monster monster)
                     {
-                        EnemyTurn(enemy2name, turn);
-                        PlayerTurn();
-                    }
-                }
-                else
-                {
-                    EnemyTurn(enemy2name, turn);
-                    if (player_rand_Spd >= enemy1_rand_Spd)
-                    {
-                        PlayerTurn();
-                        EnemyTurn(enemy1name, turn);
-                    }
-                    else
-                    {
-                        EnemyTurn(enemy1name, turn);
-                        PlayerTurn();
+                        MonsterTurn(monster);
                     }
                 }
                 turn++;
             }
         }
-        public void StartBattle_2(string bossname)//보스전
+        public void StartBattle(Monster boss)//보스전
         {
             int turn = 1;
             while (_player.HP != 0 && _monster.monsterUnit.HP != 0)
