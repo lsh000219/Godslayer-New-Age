@@ -22,19 +22,19 @@ namespace Godslayer_New_Age.Kiahn
 
         public static void Display()
         {
-            //int i = 0;
-            //inventoryText.Add($"`darkGreen,black`[번호] `darkGray,black`[분류] `white,black`[아이템명] " +
-            //        $"`red,black`[공격력] `cyan,black`[방어력] `white,black`[설명......................] `yellow,black`[가격]");
-            //inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
-            //foreach (var item in inventoryList)
-            //{
-            //    i++;
-            //    inventoryText.Add($"`darkGreen,black`[{i}] `darkGray,black`[{item.TypeName}] `white,black`{item.Name} `yellow,black`{item.PassiveDesc} " +
-            //        $"`red,black`ATK: {item.Atk} `cyan,black`DEF: {item.Def} `white,black`{item.Desc} `yellow,black`{item.Price} G");
-            //    inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
-            //}
+            int i = 0;
+            inventoryText.Add($"`darkGreen,black`[번호] `darkGray,black`[분류] `white,black`[아이템명] " +
+                    $"`red,black`[공격력] `cyan,black`[방어력] `white,black`[설명......................] `yellow,black`[가격]");
+            inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
+            foreach (var item in inventoryList)
+            {
+                i++;
+                inventoryText.Add($"`darkGreen,black`[{i}] `darkGray,black`[{item.TypeName}] `white,black`{item.Name} `yellow,black`{item.PassiveDesc} " +
+                    $"`red,black`ATK: {item.Atk} `cyan,black`DEF: {item.Def} `white,black`{item.Desc} `yellow,black`{item.Price} G");
+                inventoryText.Add($"`white,black`----------------------------------------------------------------------------------------------------");
+            }
 
-            //PrintDB.box1Data = inventoryText;
+            PrintDB.box1Data = inventoryText;
         }
 
         // 인벤토리에서 아이템 장착

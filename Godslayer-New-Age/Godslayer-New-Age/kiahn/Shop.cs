@@ -25,7 +25,7 @@ namespace Godslayer_New_Age.Kiahn
 
         public static void SetItemList(int _num)
         {
-            if (_num == 1)
+            if (Player.Instance.PlayerJob == Player.Job.RiceMonkey)
             {
                 //직업 : 쌀숭이
                 //무기
@@ -61,7 +61,7 @@ namespace Godslayer_New_Age.Kiahn
                 shopItemList.Add(magnetPet);
             }
 
-            else if (_num == 2)
+            else if (Player.Instance.PlayerJob == Player.Job.CEO)
             {
                 //직업 : CEO
                 ItemData blueStick = new ItemData("푸른색 막대기", eItemType.Weapon, 20, 0, "계속 떨어지는 당신의 주식 차트 색깔", "", 1500);
@@ -96,7 +96,7 @@ namespace Godslayer_New_Age.Kiahn
                 shopItemList.Add(marsMask);
             }
 
-            else if (_num == 3)
+            else if (Player.Instance.PlayerJob == Player.Job.ProGamer)
             {
                 //직업 : 프로게이머
                 ItemData gamingMouse = new ItemData("게이밍 마우스", eItemType.Weapon, 20, 0, "어디선가 주워온 싸구려 마우스", "", 1500);
@@ -159,6 +159,7 @@ namespace Godslayer_New_Age.Kiahn
             else
             {
                 Inventory.inventoryList.Add(shopItemList[num]);
+                Player.Instance.Gold -= shopItemList[num].Price;
                 //UI박스에 추가 예정
             }
         }
@@ -170,13 +171,12 @@ namespace Godslayer_New_Age.Kiahn
             {
                 Inventory.inventoryList.Remove(shopItemList[num]);
                 Console.WriteLine($"{shopItemList[num]}을(를) 판매하였습니다.");
+                Player.Instance.Gold += shopItemList[num].Price * 85 / 100;
                 //UI박스에서 삭제 예정
             }
             else
             {
                 Console.WriteLine($"{shopItemList[num]}은(는) 인벤토리에 없습니다.");
-
-
             }
 
         }

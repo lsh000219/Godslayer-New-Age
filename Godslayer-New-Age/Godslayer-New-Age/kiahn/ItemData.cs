@@ -24,7 +24,7 @@ namespace Godslayer_New_Age.Kiahn
             { eItemType.accessory, "장신구" }
         };
 
-        private static string name;
+        private string name;
 
         //아이템 이름은 3~8자 사이로 설정
         public string Name { get; set; }

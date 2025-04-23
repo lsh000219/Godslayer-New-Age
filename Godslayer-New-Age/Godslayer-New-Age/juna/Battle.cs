@@ -1,3 +1,4 @@
+using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,45 +9,19 @@ namespace Godslayer_New_Age.juna
 {
     class Battle
     {
-        string playerName = "Bob";
-        float playerMaxHp = 100;
-        float playerMaxMp = 100;
-        float playerHp = 100;
-        float playerMp = 100;
-        float playerAtk = 10;
-        float playerDef = 10;
-        int playerLv = 2;
-        float playerSpd = 10;
-        float playerCrt = 3.0f;
-        float playerEva = 3.0f;
-        int playerGold = 1000;
+        private Player _player;
+        private Monster _monster;
+
+        public Battle(Player player)
+        {
+            _player = player;
+        }
+        public Battle(Monster monster)
+        {
+            _monster = monster;
+        }
 
 
-        string enemy1Name = "slime";
-        float enemy1MaxHp = 100;
-        float enemy1MaxMp = 100;
-        float enemy1Hp = 100;
-        float enemy1Mp = 100;
-        float enemy1Atk = 10;
-        float enemy1Def = 10;
-        int enemy1Lv = 2;
-        int enemy1Spd = 10;
-        float enemy1Crt = 3.0f;
-        float enemy1Eva = 3.0f;
-        int enemy1Gold = 100;
-
-        string enemy2Name = "주황버섯";
-        float enemy2MaxHp = 100;
-        float enemy2MaxMp = 100;
-        float enemy2Hp = 100;
-        float enemy2Mp = 100;
-        float enemy2Atk = 10;
-        float enemy2Def = 10;
-        int enemy2Lv = 2;
-        int enemy2Spd = 10;
-        float enemy2Crt = 3.0f;
-        float enemy2Eva = 3.0f;
-        int enemy2Gold = 100;
         //위에 변수들은 나중에 Player클래스에서 받아오기
 
         //a *(100/100+d)데미지 주는 방식
@@ -121,12 +96,12 @@ namespace Godslayer_New_Age.juna
         public void StartBattle_1(string enemy1name, string enemy2name)//일반몹(2명씩 나올 예정)
         {
             int turn = 1;
-            while (playerHp != 0 && (enemy1Hp != 0))
+            while (_player.HP != 0 && (_monster.monsterUnit.HP != 0))
             {
                 Random random = new Random();
-                float player_rand_Spd = random.Next(0, 4) + playerSpd;
-                float enemy1_rand_Spd = random.Next(0, 4);
-                float enemy2_rand_Spd = random.Next(0, 4);
+                float player_rand_Spd = random.Next(0, 4) + _player.HP;
+                float enemy1_rand_Spd = random.Next(0, 4) + _monster.HP;
+                float enemy2_rand_Spd = random.Next(0, 4) + _monster.HP;
                 if (player_rand_Spd >= enemy1_rand_Spd && player_rand_Spd >= enemy2_rand_Spd)
                 {
                     PlayerTurn();
@@ -175,12 +150,12 @@ namespace Godslayer_New_Age.juna
         public void StartBattle_2(string bossname)//보스전
         {
             int turn = 1;
-            while (playerHp != 0 && enemy1Hp != 0)
+            while (_player.HP != 0 && _monster.monsterUnit.HP != 0)
             {
                 Random random = new Random();
                 int player_rand_num = random.Next(0, 4);
                 int enemy_rand_num = random.Next(0, 4);
-                if (playerSpd + player_rand_num >= enemy1Spd + enemy_rand_num)
+                if (_monster.monsterUnit.HP + player_rand_num >= _monster.monsterUnit.HP + enemy_rand_num)
                 {
                     PlayerTurn();
                     EnemyTurn(bossname, turn);//안에 적의 수 넣기
