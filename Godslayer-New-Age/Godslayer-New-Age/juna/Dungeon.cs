@@ -1,4 +1,5 @@
 using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.Kiahn;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Godslayer_New_Age.juna
 
         private Monster _monster;
         private Battle _battle;
+        private Inventory _inventory;
         public Dungeon(Monster monster)
         {
             _monster = monster;
@@ -23,6 +25,10 @@ namespace Godslayer_New_Age.juna
         public Dungeon(Battle battle)
         {
             _battle = battle;
+        }
+        public Dungeon(Inventory inventory)
+        {
+            _inventory = inventory;
         }
 
         public int dungeontype { get; set; }
@@ -100,15 +106,23 @@ namespace Godslayer_New_Age.juna
                 switch (playerselect)
                 {
                     case 1:
-                        showEnemy(room);
+                        ShowMonster(room);
                         room++;
                         break;
                     case 0:
                         break;
                 }
+                if(playerselect ==0 || Player.Instance.HP == 0)
+                {
+                    if(Player.Instance.HP == 0)
+                    {
+                        Player.Instance.HP = 1.0f;
+                    }
+                    break;
+                }
             }
         }
-        public void showEnemy(int room)
+        public void ShowMonster(int room)
         {
             switch (room)
             {

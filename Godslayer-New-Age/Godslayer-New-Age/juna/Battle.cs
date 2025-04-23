@@ -1,3 +1,4 @@
+using Godslayer_New_Age.Kiahn;
 using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,11 @@ namespace Godslayer_New_Age.juna
     {
         Random random = new Random();
 
-        private Monster _monster;       
-        public Battle(Monster monster)
+        private Inventory _inventory;
+        public Battle(Inventory inventory)
         {
-            _monster = monster;
+            _inventory = inventory;
         }
-        
-
-        //위에 변수들은 나중에 Player클래스에서 받아오기
-
-        //a *(100/100+d)데미지 주는 방식
-        //Math.Round(value,1)
 
         public int CheckInput(int min, int max)
         {
@@ -38,6 +33,82 @@ namespace Godslayer_New_Age.juna
             }
         }
 
+        public void StartBattle(Monster monster1, Monster monster2)//일반몹(2명씩 나올 예정)
+        {
+            int turn = 1;
+
+            while (Player.Instance.HP != 0 && (monster1.HP != 0 || monster2.HP != 0))
+            {
+                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
+                float monster1_rand_Spd = random.Next(0, 5) + monster1.Speed;
+                float monster2_rand_Spd = random.Next(0, 5) + monster2.Speed;
+                var turnList = new List<(float speed, object character)>
+                {
+                     (player_rand_Spd, Player.Instance),
+                     (monster1_rand_Spd, monster1),
+                     (monster2_rand_Spd, monster2)
+                };
+
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
+
+                foreach (var entry in turnList)
+                {
+                    if (entry.character is Player)
+                    {
+                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
+                    }
+                    else if (entry.character is Monster monster)
+                    {
+                        MonsterTurn(monster);
+                    }
+                }
+                turn++;
+            }
+            if (Player.Instance.HP == 0)
+            {
+                Console.WriteLine("패배하였습니다");
+                Console.WriteLine("신살을 실패하였습니다");
+                Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
+                Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
+                Player.Instance.Gold = Player.Instance.Gold / 2;
+            }
+            else
+            {
+                Console.WriteLine("승리하였습니다");
+                
+                Console.WriteLine($"+{monster1.Gold + monster2.Gold}");
+            }
+        }
+        public void StartBattle(Monster boss)//보스전
+        {
+            int turn = 1;
+
+            while (Player.Instance.HP != 0 && (boss.HP != 0))
+            {
+                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
+                float boss_rand_Spd = random.Next(0, 5) + boss.Speed;
+                var turnList = new List<(float speed, object character)>
+                {
+                     (player_rand_Spd, Player.Instance),
+                     (boss_rand_Spd, boss)
+                };
+
+                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
+
+                foreach (var entry in turnList)
+                {
+                    if (entry.character is Player)
+                    {
+                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
+                    }
+                    else if (entry.character is Monster monster)
+                    {
+                        MonsterTurn(monster);
+                    }
+                }
+                turn++;
+            }
+        }
         public void PlayerTurn()
         {
             Console.WriteLine("원하시는 행동을 선택해주세요");
@@ -83,59 +154,5 @@ namespace Godslayer_New_Age.juna
             int randskill = random.Next();
         }
 
-        public void StartBattle(Monster monster1, Monster monster2)//일반몹(2명씩 나올 예정)
-        {
-            int turn = 1;
-            
-
-            while (Player.Instance.HP != 0 && ( _monster.slime.HP!= 0))
-            {
-                float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
-                float enemy1_rand_Spd = random.Next(0, 5) + monster1.Speed;
-                float enemy2_rand_Spd = random.Next(0, 5) + monster2.Speed;
-                var turnList = new List<(float speed, object character)>
-                {
-                     (player_rand_Spd, Player.Instance),
-                     (enemy1_rand_Spd, monster1),
-                     (enemy2_rand_Spd, monster2)
-                };
-
-                turnList.Sort((a, b) => b.speed.CompareTo(a.speed));
-
-                foreach (var entry in turnList)
-                {
-                    if (entry.character is Player)
-                    {
-                        PlayerTurn(); // 또는 ((Player)entry.character).어쩌고
-                    }
-                    else if (entry.character is Monster monster)
-                    {
-                        MonsterTurn(monster);
-                    }
-                }
-                turn++;
-            }
-        }
-        public void StartBattle(Monster boss)//보스전
-        {
-            int turn = 1;
-            while (_player.HP != 0 && _monster.monsterUnit.HP != 0)
-            {
-                Random random = new Random();
-                int player_rand_num = random.Next(0, 4);
-                int enemy_rand_num = random.Next(0, 4);
-                if (_monster.monsterUnit.HP + player_rand_num >= _monster.monsterUnit.HP + enemy_rand_num)
-                {
-                    PlayerTurn();
-                    EnemyTurn(bossname, turn);//안에 적의 수 넣기
-                }
-                else
-                {
-                    EnemyTurn(bossname, turn);
-                    PlayerTurn();
-                }
-                turn++;
-            }
-        }
     }
 }
