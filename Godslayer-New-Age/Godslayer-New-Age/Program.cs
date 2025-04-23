@@ -30,7 +30,9 @@ namespace Godslayer_New_Age
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
             Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-
+            Player.Instance.PlayerJob = Player.Job.CEO;
+            Shop.SetItemList();
+            Shop.Display();
             PrintUtil.CreateBox();
             Console.ReadLine();
 
