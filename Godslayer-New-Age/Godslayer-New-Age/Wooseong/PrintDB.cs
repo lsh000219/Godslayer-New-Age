@@ -20,28 +20,28 @@ namespace Utils
 
         public static List<string> box2Data = new List<string>
         {
-            PrintUtil.AlignLeft($" `red,white`aaa `blue,gray`(쌀숭이)`null,black`", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" Lv 01 (50/100)", BOX2_WIDTH),
+            $" aaa (쌀숭이)",
+            $" Lv 01 (50/100)",
             GaugeViewer(50,100,"yellow"),   //view exp percentage
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
             "",
-            PrintUtil.AlignLeft($" HP 70 / 100", BOX2_WIDTH),
+            $" HP 70 / 100",
             GaugeViewer(70,100,"red"),      //view hp percentage
-            PrintUtil.AlignLeft($" MP 90 / 100", BOX2_WIDTH),
-            GaugeViewer(70,100,"blue"),     //view mp percentage
+            $" MP 90 / 100",
+            GaugeViewer(90,100,"blue"),     //view mp percentage
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            PrintUtil.AlignLeft($" ATK {null} {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" DEF {null} {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" CRT {null} {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" EVA {null} {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" SPD {null} {null}", BOX2_WIDTH),
+            $" ATK {null} {null}",
+            $" DEF {null} {null}",
+            $" CRT {null} {null}",
+            $" EVA {null} {null}",
+            $" SPD {null} {null}",
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            PrintUtil.AlignLeft(" [장비]", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" {null}", BOX2_WIDTH),
-            PrintUtil.AlignLeft($" {null}", BOX2_WIDTH),
+            " [장비]",
+            $" {null}",
+            $" {null}",
+            $" {null}",
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
             " Gold) " + PrintUtil.AlignRight($"{null} G", BOX2_WIDTH-8)
@@ -50,8 +50,8 @@ namespace Utils
         //2 lines
         public static List<string> box3Data = new List<string>
         {
-            PrintUtil.AlignLeft("하고 싶은 행동을 고르시오.", BOX3_WIDTH),
-            PrintUtil.AlignLeft("1. 자기     4. 저장     5. 불러오기     0. 게임종료", BOX3_WIDTH),
+            "하고 싶은 행동을 고르시오.",
+            "1. 자기     4. 저장     5. 불러오기     0. 게임종료"
         };
 
 

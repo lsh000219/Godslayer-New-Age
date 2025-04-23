@@ -59,6 +59,7 @@
     <Compile Include="Wooseong\Constants.cs" />
     <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
+    <Compile Include="Wooseong\SceneManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
