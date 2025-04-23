@@ -18,6 +18,7 @@ namespace Utils
          * ` << backtick
          */
 
+        // TODO: introScene 비활성화
         public static List<string> box2Data = new List<string>
         {
             $" aaa (쌀숭이)",

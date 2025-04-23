@@ -1,4 +1,6 @@
 using Godslayer_New_Age.LJM;
+using Managers;
+using Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +19,10 @@ namespace Godslayer_New_Age
             //bgm_Player.Battle_Musk();
 
             Console.OutputEncoding = Encoding.UTF8;
-            Console.SetWindowSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-            Console.SetBufferSize(CONSOLE_WIDTH, CONSOLE_HEIGTH);
-            PrintUtil.CreateBox();
-            Console.ReadLine();
+            Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+            Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
 
-
+            SceneManager.Run();
         }
     }
 }
