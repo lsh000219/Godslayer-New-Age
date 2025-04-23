@@ -12,8 +12,9 @@ using Utils;
 
 //Program.cs에 추가할 것
 //
-//Shop shop = new Shop();
+//
 //shop.SetShopItemList();
+//
 
 namespace Godslayer_New_Age.Kiahn
 {
@@ -23,7 +24,7 @@ namespace Godslayer_New_Age.Kiahn
         public static List<ItemData> shopItemList = new List<ItemData>();
         public static List<string> itemDataText = new List<string>() { };
 
-        public static void SetItemList(int _num)
+        public static void SetItemList()
         {
             if (Player.Instance.PlayerJob == Player.Job.RiceMonkey)
             {
