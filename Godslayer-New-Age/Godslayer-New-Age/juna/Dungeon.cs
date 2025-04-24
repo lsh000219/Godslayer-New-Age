@@ -208,6 +208,9 @@ namespace Godslayer_New_Age.juna
                     monsters.Add(_monster.kkOma);
                     monsters.Add(_monster.GOD);
                     break;
+                case 4:
+                    //히든 몬스터 
+                    break;
             }
         }
     }
