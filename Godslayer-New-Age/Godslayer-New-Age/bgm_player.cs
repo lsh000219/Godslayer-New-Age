@@ -2,20 +2,27 @@
 using System;
 using System.IO;
 using System.Media;
+using Godslayer_New_Age.Kiahn;
 
 /*
- bgm_player bgm_Player = new bgm_player();
- * 
-bgm 시작(한 번) == bgm_Player.Music_Start("Gaming_Faker1.wav", loop: false);
-bgm 시작(루프) == bgm_Player.Music_Start("Gaming_Faker2.wav", loop: true);
+bgm 시작 == BGM_Player.Instance().Play_Intro();
 
-bgm 끝(루프 종료) == bgm_Player.Music_Exit()
+bgm 끝(루프 종료) == BGM_Player.Instance().Music_Exit();
 */
 
 namespace Godslayer_New_Age
 {
-	internal class bgm_player
+	internal class BGM_Player
 	{
+        private static BGM_Player bgm_player;
+        public static BGM_Player Instance()
+        {
+            if (bgm_player == null)
+            {
+                bgm_player = new BGM_Player();
+            }
+            return bgm_player;
+        }
 
         private SoundPlayer currentPlayer = null;
 
@@ -58,77 +65,65 @@ namespace Godslayer_New_Age
             currentPlayer?.Stop();
         }
 
-        public void Intro()
+        public void Play_Intro()
         {
             Music_Start("intro.wav");
-            WaitForExit("intro.wav 재생 중입니다.");
         }
 
-        public void Victory()
+        public void Play_Victory()
         {
             Music_Start("Victory.wav");
-            WaitForExit("Victory.wav 재생 중입니다.");
         }
 
-        public void Lose()
+        public void Play_Lose()
         {
             Music_Start("Victory.wav");
-            WaitForExit("Victory.wav 재생 중입니다.");
         }
 
-        public void Maple_Easy()
+        public void Play_Maple_Easy()
         {
             Music_Start("Maple_Easy.wav");
-            WaitForExit("Maple_Easy.wav 재생 중입니다.");
         }
 
-        public void Maple_Gang()
+        public void Play_Maple_Gang()
         {
             Music_Start("Maple_Gang.wav");
-            WaitForExit("Maple_Gang.wav 재생 중입니다.");
         }
 
-        public void Maple_SinChangSup()
+        public void Play_Maple_SinChangSup()
         {
             Music_Start("Maple_SinChangSup.wav");
-            WaitForExit("Maple_SinChangSup.wav 재생 중입니다.");
         }
 
-        public void Stock_Easy()
+        public void Play_Stock_Easy()
         {
             Music_Start("Stock_Easy.wav", true);
-            WaitForExit("Stock_Easy.wav 루프 재생 중입니다.");
         }
-        public void Stock_Doge()
+        public void Play_Stock_Doge()
         {
             Music_Start("Stock_Doge.wav", true);
-            WaitForExit("Stock_Doge.wav 루프 재생 중입니다.");
         }
 
-        public void Stock_Musk()
+        public void Play_Stock_Musk()
         {
             Music_Start("Stock_Musk1.wav", false);
             Music_Start("Stock_Musk2.wav", true);
-            WaitForExit("Stock_Musk2.wav 루프 재생 중입니다.");
         }
 
-        public void Gaming_Easy()
+        public void Play_Gaming_Easy()
         {
             Music_Start("Gaming_Easy.wav", loop: true);
-            WaitForExit("Gaming_Easy.wav 루프 재생 중입니다.");
         }
 
-        public void Gaming_Kkoma()
+        public void Play_Gaming_Kkoma()
         {
             Music_Start("Gaming_Kkoma.wav", loop: true);
-            WaitForExit("Gaming_Kkoma.wav 루프 재생 중입니다.");
         }
 
-        public void Gaming_Faker()
+        public void Play_Gaming_Faker()
         {
             Music_Start("Gaming_Faker1.wav", loop: false);
             Music_Start("Gaming_Faker2.wav", loop: true);
-            WaitForExit("Gaming_Faker2.wav 루프 재생 중입니다.");
         }
 
     }
