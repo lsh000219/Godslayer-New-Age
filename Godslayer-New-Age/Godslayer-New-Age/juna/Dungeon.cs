@@ -41,6 +41,10 @@ namespace Godslayer_New_Age.juna
                 Console.WriteLine("잘못된 입력입니다");
             }
         }
+        public bool isClear(int num)
+        {
+            return dungeonclear[num];
+        }
         public void SelectDungeon(int min, int max)
         {
             Console.WriteLine("가고싶은 장소를 선택해 주세요");

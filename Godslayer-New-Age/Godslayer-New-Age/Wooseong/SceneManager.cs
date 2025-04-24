@@ -93,6 +93,12 @@ namespace Managers
                     return new DungeonScene();
                 case GameState.Rest:
                     return new RestScene();
+                case GameState.Maple:
+                    return new MapleScene();
+                case GameState.Space:
+                    return new SpaceScene();
+                case GameState.LOL:
+                    return new LOLScene();
                 default:
                     throw new InvalidOperationException("등록되지 않은 씬입니다.");
             }
