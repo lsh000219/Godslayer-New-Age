@@ -32,7 +32,7 @@ namespace Godslayer_New_Age.LJM
                         0.1f,           // 크리 확률
                         1.5f,           // 크리 대미지
                         1f,             // 속도
-                        50f,            // 회피율
+                        50f,            // 회피율           
                         true            // 행동 가능 여부
                     );
                 }
@@ -109,5 +109,6 @@ namespace Godslayer_New_Age.LJM
             CheckLevelUp();
         }
 
+       
     }
 }

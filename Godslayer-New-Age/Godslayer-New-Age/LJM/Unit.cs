@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.LJM
 {
-    internal class Unit
+    public class Unit
     {
 
         public string Name { get; set; }
@@ -27,6 +27,8 @@ namespace Godslayer_New_Age.LJM
         public bool CanMove { get; set; }
 
 
+        //    버프 리스트
+        public List<Buff> Buffs { get; set; } = new List<Buff>();
 
 
         //    플레이어 생성자
@@ -87,6 +89,26 @@ namespace Godslayer_New_Age.LJM
         public bool GetCrit()
         {
             return RandomManager.Instance.Next(0, 100) < CritRate;
+        }
+
+
+
+
+
+        //    버프 작동시키기
+        public void ProcessBuffs()
+        {
+            for (int i = Buffs.Count - 1; i >= 0; i--)
+            {
+                var buff = Buffs[i];
+                buff.Apply(this); // 자기 자신에게 적용
+
+                if (buff.RemainingTurn <= 0)
+                {
+                    Buffs.RemoveAt(i);
+                    Console.WriteLine("버프가 사라졌어!");
+                }
+            }
         }
 
     }

@@ -43,11 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LJM\EffectManager.cs" />
+    <Compile Include="LJM\Buff.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
     <Compile Include="LJM\RandomManager.cs" />
     <Compile Include="LJM\Skill.cs" />
+    <Compile Include="LJM\Effect.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

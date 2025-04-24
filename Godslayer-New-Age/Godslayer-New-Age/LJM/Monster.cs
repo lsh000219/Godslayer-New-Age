@@ -22,7 +22,6 @@ namespace Godslayer_New_Age.LJM
             MonsterSkills = monsterSkills;
         }
 
-
         //    몬스터 예시
         //    몬스터가 생길 때 마다 추가로 만든 후 객채로 생성하여 사용
 
@@ -31,6 +30,7 @@ namespace Godslayer_New_Age.LJM
         //    체력 0짜리 몬스터가 계속 나타날 수 있음
 
         //    메이플
+        /*
         public Monster slime = new Monster("슬라임", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
             new List<Skill> { Skill.jumpAtk });
         public Monster orangeMushroom = new Monster("주황버섯", 65f, 15f, 5f, 20, 10f, 1.5f, 1f, 5f, true, 
@@ -59,6 +59,6 @@ namespace Godslayer_New_Age.LJM
             new List<Skill> { Skill.jumpAtk });
         public Monster GOD = new Monster("신", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
             new List<Skill> { Skill.jumpAtk });
-
+        */
     }
 }

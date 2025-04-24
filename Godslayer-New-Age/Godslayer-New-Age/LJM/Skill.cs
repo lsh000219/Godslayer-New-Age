@@ -1,46 +1,61 @@
-using System;
+using Godslayer_New_Age.LJM;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace Godslayer_New_Age.LJM
+public class Skill
 {
-    public class Skill
+    public string SkillName { get; set; }
+    public float Cost { get; set; }
+    public float Probability { get; set; }
+    public List<Effect> Effects { get; set; } = new List<Effect>();
+    public List<Buff> Buffs { get; set; } = new List<Buff>();
+
+    public Skill(string name, float cost, float probability, List<Effect> effects, List<Buff> buffs = null)
     {
-        public enum SkillTarget
+        SkillName = name;
+        Cost = cost;
+        Probability = probability;
+        Effects = effects;
+        Buffs = buffs;
+    }
+
+
+    public static Skill justHit = new Skill("때리기", 0, 100, 
+        new List<Effect> {
+            new Effect(EffectType.Damage, 30)
+        });
+
+
+    public static Skill heavyStrike = new Skill("헤비 스트라이크", 0, 100, 
+        new List<Effect> {
+    new Effect(EffectType.DamageWithAtkScale, 2.0f)
+        });  // 공격력 x 2의 대미지 주기
+
+
+
+    //    justHit.Use(target);
+    public void Use(Unit target, Unit user = null)
+    {
+        if (RandomManager.Instance.Next(0, 100) > Probability)
         {
-            Player,
-            Enemy,
+            Console.WriteLine($"{SkillName}은(는) 발동하지 않았다!");
+            return;
         }
 
-        public string SkillName { get; set; }             // 스킬 이름
-        public float Cost { get; set; }                   // 자원 소모 (MP or HP)
-        public float Damage { get; set; }                 // 데미지 보정 (ex. 기본 공격력 * 계수)
-        public float Heal { get; set; }                   // 회복량
-        public float Probability { get; set; }            // 확률 기반 스킬일 경우 발동 확률
-        public int Cooldown { get; set; }                 // 재사용 대기시간 (턴 수)
-        public int MaxUseCount { get; set; }              // 사용 횟수 제한 (-1은 무제한)
-        //public float HealthPercentDamage { get; set; }    // 체력 % 기반 데미지
-        public SkillTarget Target { get; set; }           // 대상 (적, 아군, 전체 등)
-        //public List<IStatusEffect> Effects { get; set; }  // 버프/디버프 같은 추가 효과 리스트
+        Console.WriteLine($"{SkillName} 발동!");
 
-
-        Skill(SkillTarget target, string skillName, float cost, float damage, float heal,
-            float probability, int cooldown, int maxUseCount)
+        foreach (var effect in Effects)
         {
-            Target = target;
-            SkillName = skillName;
-            Cost = cost;
-            Damage = damage;
-            Heal = heal;
-            Probability = probability;
-            Cooldown = cooldown;
-            MaxUseCount = maxUseCount;
+            effect.Apply(target, user);
         }
 
-        //    대미지가 1f인 이유는 (대미지 * 1f)
-        public static Skill jumpAtk = new Skill(SkillTarget.Player, "띄어오르기", 0f, 1f, 0f, 100f, 0, -1);
-
+        //    해당 스킬에 버프가 없을수 도 있으니
+        if (Buffs != null)
+        {
+            foreach (var buff in Buffs)
+            {
+                target.Buffs.Add(new Buff(buff._Effect, buff.RemainingTurn));
+            }
+        }
     }
 }
