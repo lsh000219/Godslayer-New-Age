@@ -40,17 +40,17 @@ namespace Godslayer_New_Age
             return fullPath;
         }
 
-        public void Music_Start(string filename, bool loop = true)
+        public void Music_Start(string filename, int i)
         {
             string path = GetFullPath(filename);
             if (string.IsNullOrEmpty(path)) return;
 
             currentPlayer = new SoundPlayer(path);
 
-            if (loop)
+            if (i == 0)
                 currentPlayer.PlayLooping();
-            else
-                currentPlayer.PlaySync();
+            else if (i == 1)
+                currentPlayer.Play();
         }
 
         public void Music_Exit()
@@ -60,63 +60,66 @@ namespace Godslayer_New_Age
 
         public void Play_Intro_Loop()
         {
-            Music_Start("intro.wav", true);
+            Music_Start("intro.wav", 0);
+        }
+
+        public void Play_Finally_Awake()
+        {
+            Music_Start("Finally_Awake.wav", 1);
         }
 
         public void Play_Victory()
         {
-            Music_Start("Victory.wav", false);
+            Music_Start("Victory.wav", 1);
         }
 
         public void Play_Lose()
         {
-            Music_Start("Victory.wav", false);
+            Music_Start("Victory.wav", 1);
         }
 
         public void Play_Maple_Easy_Loop()
         {
-            Music_Start("Maple_Easy.wav");
+            Music_Start("Maple_Easy.wav", 0);
         }
 
         public void Play_Maple_Gang_Loop()
         {
-            Music_Start("Maple_Gang.wav");
+            Music_Start("Maple_Gang.wav", 0);
         }
 
         public void Play_Maple_SinChangSup_Loop()
         {
-            Music_Start("Maple_SinChangSup.wav");
+            Music_Start("Maple_SinChangSup.wav", 0);
         }
 
         public void Play_Stock_Easy_Loop()
         {
-            Music_Start("Stock_Easy.wav", true);
+            Music_Start("Stock_Easy.wav", 0);
         }
         public void Play_Stock_Doge_Loop()
         {
-            Music_Start("Stock_Doge.wav", true);
+            Music_Start("Stock_Doge.wav", 0);
         }
 
         public void Play_Stock_Musk_Loop()
         {
-            Music_Start("Stock_Musk1.wav", false);
-            Music_Start("Stock_Musk2.wav", true);
+            Music_Start("Stock_Musk.wav", 0);
         }
 
         public void Play_Gaming_Easy_Loop()
         {
-            Music_Start("Gaming_Easy.wav", loop: true);
+            Music_Start("Gaming_Easy.wav", 0);
         }
 
         public void Play_Gaming_Kkoma_Loop()
         {
-            Music_Start("Gaming_Kkoma.wav", loop: true);
+            Music_Start("Gaming_Kkoma.wav", 0);
         }
 
         public void Play_Gaming_Faker_Loop()
         {
-            Music_Start("Gaming_Faker1.wav", loop: false);
-            Music_Start("Gaming_Faker2.wav", loop: true);
+            Music_Start("Gaming_Faker.wav", 0);
         }
 
     }

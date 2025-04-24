@@ -72,8 +72,10 @@ namespace Godslayer_New_Age.Wooseong.Scenes
         public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
         public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
 
+        
         public CreateCharacterScene()
         {
+            
             box1Text[0] = new List<string>()
             {
                 "⠀      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢄⠢⠨⡂⠢⠢⢠⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⣗⣗⣽⣺⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -102,7 +104,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "                   ⠀⠀⠀⠀⠀⠀⠀⣀⣔⣗⣽⣯⢿⢽⢝⢵⢕⡕⣝⢜⡜⣽⡟⣯⣿⢿⡾⣿⣾⣿⣷⣿⣻⣿⣿⢿⣿⣿⣿⢿⣾⣿⡮⣺⡕⡕⢌⢑⢌⢎⢮⣺⡿⣯⣟⣷⣻⣳⣻⣾⣯⢿⡳⡯⣟⣟⣟⢟⠯⡯⡺⡪⡎⡯⣪⡳⡳⣕⢽⢜⡵",
                 "                   ⠀⠀⠀⠀⠀⣠⢲⣕⡷⣷⣻⣾⣻⡪⣇⢗⡳⣕⢕⡵⣝⢾⠅⠙⣿⣿⣻⣯⡿⣿⣟⣿⣿⣽⣾⣿⣿⣾⣿⢿⣿⢟⢫⠣⡑⡑⡱⡐⢌⢎⢎⣾⡽⡯⣟⡾⡽⡽⣝⡮⣺⡪⢮⢝⢜⢖⡳⡝⡽⡸⡪⡚⡎⡳⡱⡹⡱⣕⢕⢧⢳"
             };
-
+            BGM_Player.Instance().Play_Finally_Awake();
             box3Text[0] = new List<string>()
             {
                 "이름을 입력해주세요. (공백 입력시 취소)"
