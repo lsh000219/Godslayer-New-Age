@@ -86,6 +86,7 @@ namespace Managers
                 case GameState.Load:
                     return new LoadScene();
                 case GameState.Main:
+                    BGM_Player.Instance().Play_Main_Loop();
                     return new MainScene();
                 case GameState.Inventory:
                     return new InventoryScene();

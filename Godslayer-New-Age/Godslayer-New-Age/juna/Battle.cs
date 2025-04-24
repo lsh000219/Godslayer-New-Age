@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Utils;
 
 namespace Godslayer_New_Age.juna
 {
@@ -139,6 +140,7 @@ namespace Godslayer_New_Age.juna
             }
             if (Player.Instance.HP == 0)
             {
+                BGM_Player.Instance().Play_Lose();  //bgm 재생
                 Console.WriteLine("신살을 실패하였습니다");
                 life_point--;
                 CheckLife();
@@ -148,6 +150,7 @@ namespace Godslayer_New_Age.juna
             }
             else
             {
+                BGM_Player.Instance().Play_Victory();  //bgm 재생
                 Console.WriteLine("승리하였습니다");
                 if (HasPlusGold())
                 {
