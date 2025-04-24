@@ -21,12 +21,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             PrintUtil.CreateBox();
 
             string input = Console.ReadLine()?.Trim();
-
+            
 
             switch (phase)
             {
-                case 0:
 
+                case 0:
+                    BGM_Player.Instance().Play_Job_Select_Loop();
                     if (string.IsNullOrWhiteSpace(input))
                         return GameState.Pop;
 
@@ -35,6 +36,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     return GameState.Retry;
 
                 case 1:
+                    
                     if (input == "0")
                     {
                         SceneManager.SetPhase(0);
@@ -57,6 +59,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     }
 
                     SceneManager.SetPhase(2);
+                    BGM_Player.Instance().Music_Exit();
                     return GameState.Retry;
 
                 case 2:

@@ -60,65 +60,90 @@ namespace Godslayer_New_Age
 
         public void Play_Intro_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("intro.wav", 0);
         }
 
         public void Play_Finally_Awake()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Finally_Awake.wav", 1);
+        }
+
+        public void Play_Job_Select_Loop()
+        {
+            BGM_Player.Instance().Music_Exit();
+            Music_Start("Job_Select.wav", 0);
+        }
+
+        public void Play_Main_Loop()
+        {
+            BGM_Player.Instance().Music_Exit();
+            Music_Start("Main.wav", 0);
         }
 
         public void Play_Victory()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Victory.wav", 1);
         }
 
         public void Play_Lose()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Victory.wav", 1);
         }
 
         public void Play_Maple_Easy_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Maple_Easy.wav", 0);
         }
 
         public void Play_Maple_Gang_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Maple_Gang.wav", 0);
         }
 
         public void Play_Maple_SinChangSup_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Maple_SinChangSup.wav", 0);
         }
 
         public void Play_Stock_Easy_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Stock_Easy.wav", 0);
         }
         public void Play_Stock_Doge_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Stock_Doge.wav", 0);
         }
 
         public void Play_Stock_Musk_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Stock_Musk.wav", 0);
         }
 
         public void Play_Gaming_Easy_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Gaming_Easy.wav", 0);
         }
 
         public void Play_Gaming_Kkoma_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Gaming_Kkoma.wav", 0);
         }
 
         public void Play_Gaming_Faker_Loop()
         {
+            BGM_Player.Instance().Music_Exit();
             Music_Start("Gaming_Faker.wav", 0);
         }
 
