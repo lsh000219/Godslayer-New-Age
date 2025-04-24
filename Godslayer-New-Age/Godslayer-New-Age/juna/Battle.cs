@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.juna
 {
@@ -13,6 +12,7 @@ namespace Godslayer_New_Age.juna
         private int life_point = 5;
         Random random = new Random();
 
+        List<Monster> enemyMonster = new List<Monster>();
         public int CheckInput(int min, int max)
         {
             while (true)
@@ -31,6 +31,10 @@ namespace Godslayer_New_Age.juna
         public void StartBattle(Monster monster1, Monster monster2)//일반몹(2명씩 나올 예정)
         {
             int turn = 1;
+            enemyMonster.Add(monster1);
+            enemyMonster.Add(monster2);
+
+            Console.WriteLine($"{monster1.Name}와(과) {monster2.Name}이(가) 공격해온다!");
 
             while (Player.Instance.HP != 0 && (monster1.HP != 0 || monster2.HP != 0))
             {
@@ -60,13 +64,13 @@ namespace Godslayer_New_Age.juna
                 if(monster1.HP == 0)
                 {
                     Player.Instance.EXP += monster1.EXP;
-                    Console.WriteLine($"{monster1.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster1.Name}을(를) 쓰러뜨렸습니다.");
                     Console.WriteLine($"{monster1.EXP} 경험치를 획득하였습니다.");
                 }
                 if(monster2.HP == 0)
                 {
                     Player.Instance.EXP += monster2.EXP;
-                    Console.WriteLine($"{monster2.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{monster2.Name}을(를) 쓰러뜨렸습니다.");
                     Console.WriteLine($"{monster2.EXP} 경험치를 획득하였습니다.");
                 }
                 turn++;
@@ -77,7 +81,6 @@ namespace Godslayer_New_Age.juna
                 life_point--;
                 CheckLife();
                 Console.WriteLine("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                Console.WriteLine("당신은 의식만 간신히 유지한채 도망쳐나왔습니다.");
                 Console.WriteLine($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                 Player.Instance.Gold = Player.Instance.Gold / 2;
             }
@@ -95,10 +98,13 @@ namespace Godslayer_New_Age.juna
                     Player.Instance.Gold += monster1.Gold + monster2.Gold;
                 }
             }
+            enemyMonster.Clear();
         }
         public void StartBattle(Monster boss)//보스전
         {
             int turn = 1;
+            enemyMonster.Add(boss);
+            Console.WriteLine($"{boss.Name}이(가) 공격해온다!");
 
             while (Player.Instance.HP != 0 && (boss.HP != 0))
             {
@@ -126,7 +132,7 @@ namespace Godslayer_New_Age.juna
                 if (boss.HP == 0)
                 {
                     Player.Instance.EXP += boss.EXP;
-                    Console.WriteLine($"{boss.Name}을 쓰러뜨렸습니다.");
+                    Console.WriteLine($"{boss.Name}을(를) 쓰러뜨렸습니다.");
                     Console.WriteLine($"{boss.EXP} 경험치를 획득하였습니다.");
                 }
                 turn++;
@@ -154,52 +160,52 @@ namespace Godslayer_New_Age.juna
                     Player.Instance.Gold += boss.Gold;
                 }
                 BossDrop(boss.Name);
+                enemyMonster.Clear();
             }
         }
+        
         public void PlayerTurn()
         {
-            Console.WriteLine("원하시는 행동을 선택해주세요");
-            Console.WriteLine("1. 공격   2. ");
-            int playerselect = CheckInput(1, 2);
-            switch (playerselect)
+            if(Player.Instance.CanMove)
             {
-                case 1:
-                    PlayerAtk();
-                    break;
-                case 2:
-
-                    break;
+                Console.WriteLine("원하시는 공격을 선택해주세요");
+                Console.WriteLine($"1.   2.   3.   4.   ");//스킬이나 평타 이름을 저장한 것을 넣기
+                int playerselect = CheckInput(1, 4);
+                switch (playerselect)
+                {
+                    case 1:
+                        //해당 스킬에 해당하는 함수 호출
+                        break;
+                    case 2:
+                        //해당 스킬에 해당하는 함수 호출
+                        break;
+                    case 3:
+                        //해당 스킬에 해당하는 함수 호출
+                        break;
+                    case 4:
+                        //해당 스킬에 해당하는 함수 호출
+                        break;
+                }
             }
-        }//스킬이 아직...
-        public void PlayerAtk()
-        {
-            Console.WriteLine("원하시는 공격을 선택해주세요");
-            Console.WriteLine($"1.   2.   3.   4.   ");//스킬이나 평타 이름을 저장한 것을 넣기
-            int playerselect = CheckInput(0, 4);
-            switch (playerselect)
+            else
             {
-                case 1:
-                    //해당 스킬에 해당하는 함수 호출
-                    break;
-                case 2:
-                    //해당 스킬에 해당하는 함수 호출
-                    break;
-                case 3:
-                    //해당 스킬에 해당하는 함수 호출
-                    break;
-                case 4:
-                    //해당 스킬에 해당하는 함수 호출
-                    break;
-                case 0:
-                    PlayerAtk();
-                    break;
+                Console.WriteLine($"{Player.Instance.Name}은(는) 기절 상태입니다");
             }
-        }//스킬이 아직...
+        }
 
         public void MonsterTurn(Monster monster)
         {
-
-        }//스킬이 아직...
+            if(monster.CanMove)
+            {
+                int num = monster.MonsterSkills.Count;
+                int skillnum = random.Next(0, num);
+                //monster.MonsterSkills[skillnum]
+            }
+            else
+            {
+                Console.WriteLine($"{monster.Name}은(는) 기절 상태입니다");
+            }
+        }
         public bool HasPlusGold()
         {
             string[] namesToCheck = { "솜크빈","자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지"};
@@ -231,6 +237,25 @@ namespace Godslayer_New_Age.juna
                 ItemData costumePlay = new ItemData("롤드컵 우승 기념 챔피언 코스프레", eItemType.Armor, 0, 85, "대상혁이 언젠가 입었을지도...", "", 9000);
                 Inventory.inventoryList.Add(costumePlay);
                 Console.WriteLine($"{Player.Instance.Name}은(는) {bossname}을 꺾고 {trophy.Name}와 {costumePlay.Name}를 획득하였다!!");
+            }
+        }
+        public void Target()
+        {
+            Console.WriteLine("공격 대상을 선택해주세요");
+            Console.Write($"1.{enemyMonster[0].Name} ");//스킬이나 평타 이름을 저장한 것을 넣기
+            if (enemyMonster[1] != null)
+            {
+                Console.WriteLine($"2.{enemyMonster[1].Name}");
+            }
+            int playerselect = CheckInput(1, enemyMonster.Count);
+            switch (playerselect)
+            {
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
             }
         }
         public void CheckLife()
