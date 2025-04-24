@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Utils;
 
 namespace Godslayer_New_Age.juna
 {
@@ -17,13 +18,14 @@ namespace Godslayer_New_Age.juna
 
         private Monster _monster;
         private Battle _battle;
+
+        private int dungeontype;
         public Dungeon(Monster monster, Battle battle)
         {
             _monster = monster;
             _battle = battle;
         }
 
-        private int dungeontype;
         private bool[] dungeonclear = { false, false, false, false};
         public int CheckInput(int min, int max)
         {
