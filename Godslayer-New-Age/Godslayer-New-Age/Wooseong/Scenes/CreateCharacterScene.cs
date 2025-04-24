@@ -1,4 +1,6 @@
 using Core;
+using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.lsh;
 using Managers;
 using System;
 using System.Collections.Generic;
@@ -31,7 +33,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     if (string.IsNullOrWhiteSpace(input))
                         return GameState.Pop;
 
-                    TempPlayerData.TempPlayerName = input;
+                    Player.Instance.Name = input;
                     SceneManager.SetPhase(1);
                     return GameState.Retry;
 
@@ -46,13 +48,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     switch (input)
                     {
                         case "1":
-                            TempPlayerData.TempPlayerJob = "쌀숭이";
+                            Player.Instance.PlayerJob = (Player.Job)0;
                             break;
                         case "2":
-                            TempPlayerData.TempPlayerJob = "주갤러";
+                            Player.Instance.PlayerJob = (Player.Job)1;
                             break;
                         case "3":
-                            TempPlayerData.TempPlayerJob = "프로게이머";
+                            Player.Instance.PlayerJob = (Player.Job)2;
                             break;
                         default:
                             return GameState.Retry;
@@ -76,7 +78,10 @@ namespace Godslayer_New_Age.Wooseong.Scenes
         public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
         public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
 
-        
+        Player player1 = SaveLoad.LoadPlayer("player1.dat");
+        Player player2 = SaveLoad.LoadPlayer("player2.dat");
+        Player player3 = SaveLoad.LoadPlayer("player3.dat");
+
         public CreateCharacterScene()
         {
             
@@ -159,14 +164,14 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "⠀    ⠀⠀⠀⠀⠀⡮⣳⢵⢹⢜⢕⡝⣜⢮⢲⢱⢣⢳⢹⢸⢪⢺⢸⡱⡹⣸⢱⢽⠀⠀⠀⠀⠀⠀⠀⡠⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡳⡫⣗⡄⠀⠀⠀⠀⠀⢰⠁⡐⢀⠡⠀⠂⠄⢐⠀⠅⠡⠈⠄⠡⠉⠌⠡⠡⠑⠠⢁⠡⢁⢰⠬⡹⡂⠀⠀",
                 "⠀    ⠀⠀⠀⠀⢐⢝⢮⡪⡳⠓⠓⠓⠑⠓⠓⠙⠊⠓⠙⠊⠓⠓⠓⠑⡏⣎⢞⢾⢝⡆⠀⠀⠀⣠⢪⢪⢪⢪⠪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡳⣝⢶⡄⠀⠀⠀⢸⠠⢐⢀⢂⠡⢈⢐⢀⠂⠡⠈⠄⠡⠈⠄⠡⠈⠄⠡⠈⠄⢂⠐⢜⢝⡎⡇⠀⠀",
                 "⠀    ⠀⠀⠀⠀⢸⢕⣗⢝⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣏⢎⢮⢯⣳⠃⠀⠀⠈⡖⡕⡕⡕⠕⠱⠑⠕⠱⠑⠕⠕⠕⠕⠕⠕⠕⠕⠕⢕⢕⢕⢜⢵⣻⠀⠀⠀⠀⠣⢣⠲⡰⠱⡢⠲⡰⡡⠥⠥⠥⠥⡡⡡⡅⡅⣅⡅⢅⢕⠄⠅⣇⢗⡕⡇⠀⠀",
-                "⠀    ⠀⠀⠀⠀⡪⡳⡕⡧⡇" + PrintUtil.AlignLeft($"레벨변수자리",14) + "⢀⢗⢕⣳⡳⣵⠁⠀⠀⢈⢮⢪⠪⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢨⢪⢺⣺⠀⠀⠀⠀⠀⢸⠐⡈⠈⠈⠈⠐⠈⠈⠈⠈⠈⠂⠑⠐⠑⠐⠨⠘⠌⠪⠩⡊⡣⢪⠃⠀⠀",
-                "⠀    ⠀⠀⠀⠀⡯⣺⢕⣳⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢱⢣⡳⣝⠾⠀⠀⠀⢀⢇⢇⢇⡇" + PrintUtil.AlignCenter($"이름변수자리",14) + "⠀⢸⢸⢸⢨⡳⣵⠀⠀⠀⠀⠀⠸⢀⠐⠀" + PrintUtil.AlignLeft($"날짜변수자리",14) + "⠀⠀⠀⠐⠠⠈⠼⠀⠀⠀",
-                "⠀    ⠀⠀⠀⢠⢫⢮⡣⣳⠀" + PrintUtil.AlignRight($"이름변수자리",14) + "⢸⢱⢣⣻⡪⡇⠀⠀⠀⠠⡣⡣⡣⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠸⡸⡺⣺⠀⠀⠀⠀⠀⡣⠀⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠂⠡⡃⠀⠀⠀",
-                "⠀    ⠀⠀⠀⢸⢕⡗⣝⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⣎⢧⡳⣝⡇⠀⠀⠀⢐⢕⢕⢕⠇" + PrintUtil.AlignLeft($"레벨변수자리",14) + "⠀⢸⢸⢸⢘⢮⣫⠀⠀⠀⠀⠀⡇⠈⠄⠀" + PrintUtil.AlignLeft($"레벨변수자리",14) + "⠀⠀⠀⠂⠄⢡⠃⠀⠀⠀",
+                "⠀    ⠀⠀⠀⠀⡪⡳⡕⡧⡇" + PrintUtil.AlignLeft($"Level : {player1.Level}",14) + "⢀⢗⢕⣳⡳⣵⠁⠀⠀⢈⢮⢪⠪⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢨⢪⢺⣺⠀⠀⠀⠀⠀⢸⠐⡈⠈⠈⠈⠐⠈⠈⠈⠈⠈⠂⠑⠐⠑⠐⠨⠘⠌⠪⠩⡊⡣⢪⠃⠀⠀",
+                "⠀    ⠀⠀⠀⠀⡯⣺⢕⣳⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢱⢣⡳⣝⠾⠀⠀⠀⢀⢇⢇⢇⡇" + PrintUtil.AlignCenter($"{player2.Name}",14) + "⠀⢸⢸⢸⢨⡳⣵⠀⠀⠀⠀⠀⠸⢀⠐⠀" + PrintUtil.AlignLeft($"날짜변수자리",14) + "⠀⠀⠀⠐⠠⠈⠼⠀⠀⠀",
+                "⠀    ⠀⠀⠀⢠⢫⢮⡣⣳⠀" + PrintUtil.AlignRight($"{player1.Name}",14) + "⢸⢱⢣⣻⡪⡇⠀⠀⠀⠠⡣⡣⡣⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠸⡸⡺⣺⠀⠀⠀⠀⠀⡣⠀⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠂⠡⡃⠀⠀⠀",
+                "⠀    ⠀⠀⠀⢸⢕⡗⣝⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⣎⢧⡳⣝⡇⠀⠀⠀⢐⢕⢕⢕⠇" + PrintUtil.AlignLeft($"Level : {player2.Level}",14) + "⠀⢸⢸⢸⢘⢮⣫⠀⠀⠀⠀⠀⡇⠈⠄⠀" + PrintUtil.AlignLeft($"Level :  {player3.Level}",14) + "⠀⠀⠀⠂⠄⢡⠃⠀⠀⠀",
                 "    ⠀⠀⠀⠀⣜⢵⢝⡲⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⡮⣪⢾⢵⠁⠀⠀⠀⢐⡕⡕⡕⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠸⡸⣱⢽⠀⠀⠀⠀⢨⠂⡁⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⡈⢸⠀⠀⠀⠀",
                 "    ⠀⠀⠀⠀⣗⢵⢳⢭⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢣⡳⣕⡟⣞⠀⠀⠀⠀⠠⡣⡣⡪⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢸⣪⣻⠀⠀⠀⠀⡘⠠⠐⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠄⠐⡌⠀⠀⠀⠀",
-                "    ⠀⠀⠀⢠⡳⣹⢕⢽⠀" + PrintUtil.AlignRight($"날짜변수자리",14) + "⢸⢱⡱⡵⣝⢞⠀⠀⠀⠀⢈⡇⡇⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢰⢕⢷⠀⠀⠀⠀⡎⠀⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠈⠄⡇⠀⠀⠀⠀",
-                "    ⠀⠀⠀⢸⡪⣳⢹⡌              ⠀⡪⣣⢳⢽⣪⠇⠀⠀⠀⠀⠠⡇⡇⡇⡇⠀" + PrintUtil.AlignCenter($"날짜변수자리",14) + "⢸⢸⢘⢬⢫⢯⠀⠀⠀⠠⡡⠈⠄⠀⠀" + PrintUtil.AlignRight($"이름변수자리",14) + "⠀⠀⢂⠐⠸⡀⠀⠀⠀⠀",
+                "    ⠀⠀⠀⢠⡳⣹⢕⢽⠀" + PrintUtil.AlignRight($"{Player.Instance.Name}",14) + "⢸⢱⡱⡵⣝⢞⠀⠀⠀⠀⢈⡇⡇⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢰⢕⢷⠀⠀⠀⠀⡎⠀⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠈⠄⡇⠀⠀⠀⠀",
+                "    ⠀⠀⠀⢸⡪⣳⢹⡌              ⠀⡪⣣⢳⢽⣪⠇⠀⠀⠀⠀⠠⡇⡇⡇⡇⠀" + PrintUtil.AlignCenter($"날짜변수자리",14) + "⢸⢸⢘⢬⢫⢯⠀⠀⠀⠠⡡⠈⠄⠀⠀" + PrintUtil.AlignRight($"{player3.Name}",14) + "⠀⠀⢂⠐⠸⡀⠀⠀⠀⠀",
                 "    ⠀⠀⠀⡼⣸⡕⣕⢧⢳⢪⡲⡕⡮⡲⡕⣎⢖⡕⡮⡲⡪⣲⢱⢝⢜⢎⣗⢵⠇⠀⠀⠀⠀⢐⢇⢇⢇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢨⡳⣻⠀⠀⠀⢠⠁⡂⡁⢀⠀⡀⢀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⡂⢱⠀⠀⠀⠀⠀",
                 "    ⠀⠀⠀⡯⣪⡺⣜⣜⣎⢧⣣⡳⣱⡣⣳⡱⣕⣕⢇⣏⢞⣜⢎⡮⣳⡹⣎⢯⠂⠀⠀⠀⠀⠐⡇⡇⡇⡭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⠭⢭⢩⠭⡍⡇⡇⡇⡇⡯⣺⣀⡀⡰⠊⠒⢒⠐⡒⠢⠤⠴⠬⠤⠬⠬⠌⠬⠬⠤⠥⠬⠤⠥⠢⠥⠥⡬⡺⡰⡄⠀⠀⠀",
                 "    ⠀⠀⠀⡯⡎⠍⠌⠌⢌⠅⡅⢍⠅⡍⢕⢙⢚⢚⢛⢚⢓⢓⠫⡚⢕⠫⡺⡽⠀⠀⠀⡴⡪⢫⢓⡓⡓⣓⠫⡫⡙⡎⡏⠧⠯⡭⠽⢼⢹⢬⠣⢧⠣⡇⢧⠣⡇⡯⡳⣕⡇⡇⢈⠈⠄⢂⠐⠐⢐⠀⠅⢂⠨⠀⠅⠨⠀⠅⠨⠀⠅⠨⢈⠨⢐⠵⡕⡕⡇⠀⠀⠀",

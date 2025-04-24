@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Godslayer_New_Age.LJM
 {
     //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
+    [Serializable]
     internal class Player : Unit
     {
         private static Player _instance;
@@ -40,12 +41,17 @@ namespace Godslayer_New_Age.LJM
             }
         }
 
+        public static void SetInstance(Player player)
+        {
+            if (_instance == null)
+                _instance = player;
+        }
 
         public enum Job  
         {
             RiceMonkey = 0,
-            CEO,
-            ProGamer
+            CEO = 1,
+            ProGamer = 2
         }
 
 

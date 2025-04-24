@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.LJM
 {
+    [Serializable]
     public class Skill
     {
         public enum SkillTarget
