@@ -18,7 +18,7 @@ namespace Godslayer_New_Age
 
             //bgm test
             /*
-            BGM_Player.Instance().Play_Stock_Musk();
+            BGM_Player.Instance().Play_Stock_Musk_Loop();
             Console.ReadLine();
             BGM_Player.Instance().Music_Exit();
             */
