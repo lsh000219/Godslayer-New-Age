@@ -59,7 +59,6 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     }
 
                     SceneManager.SetPhase(2);
-                    BGM_Player.Instance().Music_Exit();
                     return GameState.Retry;
 
                 case 2:
