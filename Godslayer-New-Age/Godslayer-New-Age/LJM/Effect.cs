@@ -78,6 +78,9 @@ namespace Godslayer_New_Age.LJM
                 case EffectType.DrainMP:
                     target.MP = Math.Max(0, target.MP - Value);
                     break;
+
+
+
             }
         }
 

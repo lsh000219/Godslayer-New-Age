@@ -101,12 +101,14 @@ namespace Godslayer_New_Age.LJM
             for (int i = Buffs.Count - 1; i >= 0; i--)
             {
                 var buff = Buffs[i];
-                buff.Apply(this); // 자기 자신에게 적용
+                buff.Apply(this); //    자기 자신에게 적용
 
-                if (buff.RemainingTurn <= 0)
+                //    만약 버프가 끝났다면
+                if (buff.IsExpired)
                 {
-                    Buffs.RemoveAt(i);
-                    Console.WriteLine("버프가 사라졌어!");
+                    //    원상복구 등 정리할 작업
+                    buff.Remove(this);  //    이건 Buff클래스 내부의 기능
+                    Buffs.RemoveAt(i); //    이건 List의 기능
                 }
             }
         }
