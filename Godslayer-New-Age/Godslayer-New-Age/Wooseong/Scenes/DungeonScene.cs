@@ -40,7 +40,8 @@ namespace Scenes
 
             box3Text[0] = new List<string>()
             {
-                ""
+                "하고 싶은 행동을 선택해주세요.",
+                "1.      2.      3.      0. 돌아가기"
             };
 
             box1Text[1] = new List<string>()
