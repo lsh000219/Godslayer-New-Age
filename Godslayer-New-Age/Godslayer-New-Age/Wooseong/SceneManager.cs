@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Utils;
 using Core;
 using Scenes;
+using Godslayer_New_Age.Wooseong.Scenes;
+using Godslayer_New_Age;
 
 namespace Managers
 {
@@ -74,10 +76,25 @@ namespace Managers
             {
                 case GameState.Intro:
                     return new IntroScene();
-                case GameState.Shop:
-                    return new ShopScene();
                 case GameState.Start:
                     return new StartScene();
+                case GameState.CreateCharacter:
+                    BGM_Player.Instance().Play_Finally_Awake();
+                    return new CreateCharacterScene();
+                case GameState.Save:
+                    return new SaveScene();
+                case GameState.Load:
+                    return new LoadScene();
+                case GameState.Main:
+                    return new MainScene();
+                case GameState.Inventory:
+                    return new InventoryScene();
+                case GameState.Shop:
+                    return new ShopScene();
+                case GameState.Dungeon:
+                    return new DungeonScene();
+                case GameState.Rest:
+                    return new RestScene();
                 default:
                     throw new InvalidOperationException("등록되지 않은 씬입니다.");
             }

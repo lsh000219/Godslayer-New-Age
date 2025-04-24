@@ -18,12 +18,11 @@ namespace Godslayer_New_Age
 
             //bgm test
             /*
-            bgm_player bgm_Player = new bgm_player();
-            bgm_Player.Music_Start("Finally_Awake.wav", false);
-            bgm_Player.Music_Start("Battle_Musk2.wav", true);
+            BGM_Player.Instance().Play_Stock_Musk_Loop();
             Console.ReadLine();
-            bgm_Player.Music_Exit();
+            BGM_Player.Instance().Music_Exit();
             */
+
 
 
             // UI test
@@ -69,7 +68,11 @@ namespace Godslayer_New_Age
 
 
 
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+            Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
 
+            SceneManager.Run();
         }
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using static Utils.Constants;
+using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.Kiahn;
 
 namespace Utils
 {
@@ -19,24 +21,30 @@ namespace Utils
          */
 
         // TODO: introScene 비활성화
-        public static List<string> box2Data = new List<string>
+        public static List<string> box2Data = new List<string>();
+
+        //2 lines
+        public static List<string> box3Data = new List<string>();
+
+
+        public static List<string> playerStatus = new List<string>
         {
-            $" aaa (쌀숭이)",
-            $" Lv 01 (50/100)",
-            GaugeViewer(50,100,"yellow"),   //view exp percentage
+            $" {Player.Instance.Name} ({Player.Instance.PlayerJob})",
+            $" Lv {Player.Instance.Level:D2} ({Player.Instance.EXP}/{Player.Instance.RequiredExp})",
+            GaugeViewer(Player.Instance.EXP, Player.Instance.RequiredExp, "yellow"),   //view exp percentage
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
             "",
-            $" HP 70 / 100",
-            GaugeViewer(70,100,"red"),      //view hp percentage
-            $" MP 90 / 100",
-            GaugeViewer(90,100,"blue"),     //view mp percentage
+            $" HP {Player.Instance.HP} / {Player.Instance.MaxHP}",
+            GaugeViewer(Player.Instance.HP, Player.Instance.MaxHP, "red"),      //view hp percentage
+            $" MP {Player.Instance.MP} / {Player.Instance.MaxMP}",
+            GaugeViewer(Player.Instance.MP, Player.Instance.MaxMP, "blue"),     //view mp percentage
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            $" ATK {null} {null}",
-            $" DEF {null} {null}",
-            $" CRT {null} {null}",
-            $" EVA {null} {null}",
-            $" SPD {null} {null}",
+            $" ATK {Player.Instance.Damage} {null}",
+            $" DEF {Player.Instance.Defence} {null}",
+            $" CRT {Player.Instance.CritRate} {null}",
+            $" EVA {Player.Instance.DodgeRate} {null}",
+            $" SPD {Player.Instance.Speed} {null}",
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
             " [장비]",
@@ -45,20 +53,12 @@ namespace Utils
             $" {null}",
             "",
             PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            " Gold) " + PrintUtil.AlignRight($"{null} G", BOX2_WIDTH-8)
+            " Gold) " + PrintUtil.AlignRight($"{Player.Instance.Gold} G", BOX2_WIDTH-8)
         };
 
-        //2 lines
-        public static List<string> box3Data = new List<string>
+        private static string GaugeViewer(float nowStat, float maxStat, string color)
         {
-            "하고 싶은 행동을 고르시오.",
-            "1. 자기     4. 저장     5. 불러오기     0. 게임종료"
-        };
-
-
-        private static string GaugeViewer(int nowStat, int maxStat, string color)
-        {
-            int gaugeLength = (int)Math.Floor((double)nowStat / maxStat * (BOX2_WIDTH - 2));
+            int gaugeLength = (int)Math.Floor(nowStat / maxStat * (BOX2_WIDTH - 2));
             int emptyLength = (BOX2_WIDTH - 2) - gaugeLength;
 
             string gauge = new string(' ', gaugeLength);

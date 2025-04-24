@@ -45,7 +45,7 @@ namespace Scenes
 
             box3Text[0] = new List<string>()
             {
-                "하고 싶은 행동을 고르시오.",
+                "하고 싶은 행동을 선택해주세요.",
                 "1. 새로시작     2. 이어하기     0. 게임종료"
             };
 
