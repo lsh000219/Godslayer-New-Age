@@ -68,7 +68,11 @@ namespace Godslayer_New_Age
 
 
 
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+            Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
 
+            SceneManager.Run();
         }
     }
 }
