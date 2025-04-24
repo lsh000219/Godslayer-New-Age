@@ -63,6 +63,7 @@
     <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
     <Compile Include="Wooseong\SceneManager.cs" />
+    <Compile Include="Wooseong\Scenes\CreateCharacterScene.cs" />
     <Compile Include="Wooseong\Scenes\IntroScene.cs" />
     <Compile Include="Wooseong\Scenes\ShopScene.cs" />
     <Compile Include="Wooseong\Scenes\StartScene.cs" />

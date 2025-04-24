@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Utils;
 using Core;
 using Scenes;
+using Godslayer_New_Age.Wooseong.Scenes;
 
 namespace Managers
 {
@@ -78,6 +79,8 @@ namespace Managers
                     return new ShopScene();
                 case GameState.Start:
                     return new StartScene();
+                case GameState.CreateCharacter:
+                    return new CreateCharacterScene();
                 default:
                     throw new InvalidOperationException("등록되지 않은 씬입니다.");
             }
