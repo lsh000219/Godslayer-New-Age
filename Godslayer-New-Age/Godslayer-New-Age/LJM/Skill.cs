@@ -54,7 +54,7 @@ public class Skill
         {
             foreach (var buff in Buffs)
             {
-                target.Buffs.Add(new Buff(buff._Effect, buff.RemainingTurn));
+                target.Buffs.Add(new Buff(buff._Name, buff._Effect, buff.RemainingTurn));
             }
         }
     }
