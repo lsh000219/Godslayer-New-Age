@@ -61,13 +61,13 @@ namespace Godslayer_New_Age.juna
                         MonsterTurn(monster);
                     }
                 }
-                if(monster1.HP == 0)
+                if (monster1.HP == 0)
                 {
                     Player.Instance.EXP += monster1.EXP;
                     Console.WriteLine($"{monster1.Name}을(를) 쓰러뜨렸습니다.");
                     Console.WriteLine($"{monster1.EXP} 경험치를 획득하였습니다.");
                 }
-                if(monster2.HP == 0)
+                if (monster2.HP == 0)
                 {
                     Player.Instance.EXP += monster2.EXP;
                     Console.WriteLine($"{monster2.Name}을(를) 쓰러뜨렸습니다.");
@@ -208,13 +208,13 @@ namespace Godslayer_New_Age.juna
         }
         public bool HasPlusGold()
         {
-            string[] namesToCheck = { "솜크빈","자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지"};
+            string[] namesToCheck = { "솜크빈", "자석펫", "테슬라 기어봉", "화성인 가면", "그랜드 마스터 딱지", "챌린저 딱지" };
 
             return Inventory.equippedList.Any(item => namesToCheck.Contains(item.Name));
         }
         public void BossDrop(string bossname)
         {
-            if(bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
+            if (bossname == "신창섭" && Player.Instance.PlayerJob == Player.Job.RiceMonkey)
             {
                 ItemData absolcalibur = new ItemData("앱솔칼리버", eItemType.Weapon, 100, 0, "신창섭의 가호를 받은 기간제 무기", "", 8500);
                 Inventory.inventoryList.Add(absolcalibur);
