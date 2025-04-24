@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bgm_player.cs" />
+    <Compile Include="lsh\bgm_player.cs" />
     <Compile Include="juna\Battle.cs" />
     <Compile Include="juna\Dungeon.cs" />
     <Compile Include="Kiahn\Inventory.cs" />
@@ -54,6 +54,7 @@
     <Compile Include="LJM\RandomManager.cs" />
     <Compile Include="LJM\Skill.cs" />
     <Compile Include="LJM\Unit.cs" />
+    <Compile Include="lsh\SaveLoad.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Kiahn\Shop.cs" />
