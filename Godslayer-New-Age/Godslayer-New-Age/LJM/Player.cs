@@ -43,8 +43,7 @@ namespace Godslayer_New_Age.LJM
 
         public static void SetInstance(Player player)
         {
-            if (_instance == null)
-                _instance = player;
+            _instance = player;
         }
 
         public enum Job
