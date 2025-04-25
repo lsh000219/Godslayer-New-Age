@@ -105,7 +105,7 @@ public class Skill
 
 
     //    CEO==================
-    public static Skill AllInStock = new Skill("풀매수", 10, 30,
+    public static Skill AllInStock = new Skill("풀매수", 10, 100,
         new List<Effect>
         {
             
@@ -114,7 +114,7 @@ public class Skill
             //    전투쪽이라면 할 수 있으려나?....
         });
 
-    public static Skill StrongHand = new Skill("존버", 10, 50,
+    public static Skill StrongHand = new Skill("존버", 10, 100,
        new List<Effect>
        {
             //   사용자의 공격력에 기반해 증가(시전자 필요)
@@ -131,17 +131,23 @@ public class Skill
             new Effect(EffectType.DamageWithAtkScale, 1f)
             //    체력 감소시키는건 따로 만들기
       });
+
     public static Skill Panic = new Skill("지금 팔아야해!!...", 0, 100,
         new List<Effect>
         {
             //    패닉셀용 플레이어 체력 깎기
             new Effect(EffectType.DrainHP, 5)
         });
-    public static Skill CEONomalAtk = new Skill("영웅호걸의 시간이다!!", 0, 40,
+
+    public static Skill CEONomalAtk0 = new Skill("영웅호걸의 시간이다!!", 0, 100,
+      new List<Effect>
+      {     
+            new Effect(EffectType.DamageWithAtkScale, 1f),
+      });
+    public static Skill CEONomalAtk1 = new Skill("영웅아~ 호걸아~", 0, 100,
       new List<Effect>
       {
-            
-            new Effect(EffectType.DamageWithAtkScale, 1f),
+            new Effect(EffectType.DamageWithAtkScale, 0.7f),
       });
 
 
@@ -225,6 +231,7 @@ public class Skill
         new List<Effect>
         {
             new Effect(EffectType.Heal, 1f)
+            //    임시 수치로 적 데이터가 완성된다면 수정
         });
 
     //    신창섭
@@ -240,11 +247,188 @@ public class Skill
        {
             new Effect(EffectType.DamageWithAtkScale, 1f)
        });
-    public static Skill EradicateRiceMonkey = new Skill("쌀숭이 척결", 0, 100,
+
+    public static Skill EradicateRiceMonkey0 = new Skill("쌀숭이 척결", 0, 100,
        new List<Effect>
        {
-            new Effect(EffectType.DamageWithAtkScale, 1f)
+           //    만약 쌀숭이가 아니라면
+            new Effect(EffectType.DamageWithAtkScale, 0.5f)
        });
+    public static Skill EradicateRiceMonkey1 = new Skill("쌀숭이 척결", 0, 100,
+       new List<Effect>
+       {
+           //    만약 쌀숭이라면
+            new Effect(EffectType.DamageWithAtkScale, 3f)
+       });
+
+    public static Skill ChangPOP = new Skill("창팝", 0, 100,
+       new List<Effect>
+       {
+            new Effect(EffectType.DamageWithAtkScale, 1.4f)
+       });
+
+
+
+    //    코인충
+    public static Skill AllIn0 = new Skill("올인", 0, 100,
+      new List<Effect>
+      {
+           //    올인에 성공했다면
+            new Effect(EffectType.DamageWithAtkScale, 1.3f)
+      });
+    public static Skill AllIn1 = new Skill("응~ 더 떨어져봐~", 0, 100,
+      new List<Effect>
+      {
+           //    올인에 실패했다면
+            new Effect(EffectType.DamageWithAtkScale, 0.5f)
+      });
+
+    //    이룽마
+    public static Skill LOVE = new Skill("I Love you!", 0, 100,
+     new List<Effect>
+     {
+            new Effect(EffectType.DamageWithAtkScale, 1f)
+     });
+
+    //    도지
+    public static Skill VeryHeal0 = new Skill("매우 회복", 0, 100,
+     new List<Effect>
+     {
+            new Effect(EffectType.Heal, 1f)
+            //    임시 수치로 데이터가 완성 된다면 수정
+     });
+    public static Skill VeryHeal1 = new Skill("매우 회복?", 0, 100,
+     new List<Effect>
+     {
+            new Effect(EffectType.Heal, 1f)
+            //    임시 수치로 데이터가 완성 된다면 수정
+     });
+
+    public static Skill MuchDamage0 = new Skill("많이 대미지", 0, 100,
+     new List<Effect>
+     {
+            new Effect(EffectType.DamageWithAtkScale, 1.2f)
+     });
+    public static Skill MuchDamage1 = new Skill("많이 대미지?", 0, 100,
+     new List<Effect>
+     {
+            new Effect(EffectType.DamageWithAtkScale, 0.5f)
+     });
+    public static Skill Wow = new Skill("우왕", 0, 100);
+
+
+
+    //    일론 머스크
+    public static Skill SpaceXLaunchFail = new Skill("스페이스X 프로젝트 실패!", 0, 100,
+        new List<Effect>
+        {
+            //    특정 턴 뒤에 발동하게 만들어야 함
+            new Effect(EffectType.CutHP, 500)
+        });
+
+    public static Skill CybertruckCrash = new Skill("사이버 트럭 충돌", 0, 100,
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 1f)
+        });
+
+    public static Skill PumpIt = new Skill("코인 떡상!", 0, 100, null,
+        new List<Buff>
+        {
+            new Buff("공격력 증가", BuffType.StatUp,
+             new Effect(EffectType.BuffAtk, 1.5f), 1)
+        });
+    public static Skill DumpIt = new Skill("코인 떡락!", 0, 100, null,
+        new List<Buff>
+        {
+            new Buff("공격력 감소", BuffType.StatUp,
+             new Effect(EffectType.BuffAtk, 0.5f), 1)
+        });
+
+    public static Skill Tweeting = new Skill("트윗질", 0, 100, null,
+        new List<Buff>
+        {
+            new Buff("방어력 감소", BuffType.StatUp,
+             new Effect(EffectType.BuffDef, 0.8f), 1)
+        });
+
+
+    //   T1팬
+    //    농담으로 조금 만들어 놓음
+    public static Skill Worship0 = new Skill("젠장 또 대상혁이야!", 0, 100, 
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 1f)
+        });
+    public static Skill Worship1 = new Skill("숭배할 수 밖에 없어!", 0, 100, 
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 1f)
+        });
+    public static Skill Worship2 = new Skill("새삼 대단하다 느껴지네", 0, 100, 
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 1f)
+        });
+
+    //    미니언
+    public static Skill WeaknessAtk = new Skill("나약한 공격", 0, 100, new 
+        List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 0.8f)
+        });
+
+    //    꼬마감독
+    public static Skill AngryFeedback = new Skill("분노의 피드백", 0, 100, null,
+        new List<Buff>
+        {
+             new Buff("공격력 감소", BuffType.StatUp,
+             new Effect(EffectType.BuffAtk, 0.8f), 3)
+        });
+    public static Skill Warding = new Skill("꼬마 와드 꽃기", 0, 100, 
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 0.9f)
+        },
+        new List<Buff>
+        {
+             new Buff("회피율 감소", BuffType.StatUp,
+             new Effect(EffectType.IncreasedDodge, -20f), 3)
+        });
+
+
+    //    대상혁
+    //    스킬 설계 먼저 해야함
+    public static Skill Gotya = new Skill("잡았죠", 0, 100, 
+        new List<Effect>
+        {
+            new Effect(EffectType.DamageWithAtkScale, 1.2f)
+        });
+
+    public static Skill IDodgeThat0 = new Skill("피했죠.", 0, 100, 
+        new List<Effect>
+        {
+            //    피했죠 대미지 주기
+            new Effect(EffectType.DamageWithAtkScale, 0.5f)
+        });
+    public static Skill IDodgeThat1 = new Skill("피했죠?", 0, 100, null,
+        new List<Buff>
+        { 
+            new Buff("회피율 증가", BuffType.StatUp,
+                new Effect(EffectType.IncreasedDodge, 30f), 2)
+        });
+
+    public static Skill God = new Skill("신이죠.", 0, 100,
+        new List<Effect>
+        {
+            //    신이죠 체력 깎기
+            new Effect(EffectType.CutHP, 0.2f)
+        },
+        new List<Buff>
+        { 
+            new Buff("회피율 감소", BuffType.StatUp,
+                new Effect(EffectType.IncreasedDodge, -20), 2)
+        });
 
     ///////////////////////////////////////////////////////////////////////////
 

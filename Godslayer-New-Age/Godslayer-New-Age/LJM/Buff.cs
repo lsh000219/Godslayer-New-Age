@@ -55,8 +55,7 @@ namespace Godslayer_New_Age.LJM
                         switch (_Effect._Type)
                         {
                             case EffectType.BuffAtk:
-                                OriginalValue = target.Damage;
-                                target.Damage += _Effect._Value;
+                                target.Damage = Math.Min(target.Damage * _Effect._Value, 9999f);
                                 break;
 
                             case EffectType.BuffDef:
