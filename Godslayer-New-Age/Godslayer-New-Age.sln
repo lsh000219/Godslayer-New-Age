@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godslayer-New-Age", "Godslayer-New-Age\Godslayer-New-Age.csproj", "{C1969190-C319-4790-893B-D15BC6D43266}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Godslayer-New-Age", "Godslayer-New-Age\Godslayer-New-Age.csproj", "{16D3896D-C735-46B5-9503-1F74FEAE1955}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8D5274F-AC00-46C7-1F8D-E88E81087A52}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +16,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C1969190-C319-4790-893B-D15BC6D43266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1969190-C319-4790-893B-D15BC6D43266}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1969190-C319-4790-893B-D15BC6D43266}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1969190-C319-4790-893B-D15BC6D43266}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16D3896D-C735-46B5-9503-1F74FEAE1955}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {15A00A12-2B0A-418F-A7C2-BB7EB90DD787}
+		SolutionGuid = {D2D20B24-113E-47EE-8559-C86F4DFFED19}
 	EndGlobalSection
 EndGlobal

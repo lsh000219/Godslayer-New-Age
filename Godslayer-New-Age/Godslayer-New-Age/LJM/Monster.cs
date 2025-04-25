@@ -9,7 +9,7 @@ namespace Godslayer_New_Age.LJM
     internal class Monster : Unit
     {
         //    아이템 - 만약 드롭 아이템을 만든다 하면 추가
-        
+
         public Skill MonsterSkill { get; set; }
 
         public List<Skill> MonsterSkills { get; set; }
