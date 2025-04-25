@@ -16,9 +16,11 @@ namespace Godslayer_New_Age.LJM
         Shield,         // 피해 흡수
     }
 
+
     //    버프는 스킬의 이팩트의 효과를 가져와서 Unit 즉, 전체적인 캐릭터와 적군에게 사용이 가능하게 만듦.
     //    이팩트와 따로 분리한 이유는 이팩트는 그 즉시, 버프는 턴 마다 또는 일정 턴 동안 작동해야 하기 때문에
     //    이러한 차별점을 둘 필요가 있었음
+    [Serializable]
     public class Buff
     {
         public string _Name { get; set; } //    버프의 이름

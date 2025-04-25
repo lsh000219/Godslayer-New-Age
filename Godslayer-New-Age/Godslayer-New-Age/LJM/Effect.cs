@@ -20,7 +20,7 @@ namespace Godslayer_New_Age.LJM
         IncreasedProbability,
         DecreasedProbability
     }
-
+    [Serializable]
     public class Effect
     {
         public EffectType _Type { get; set; }
