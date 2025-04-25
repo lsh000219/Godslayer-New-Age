@@ -15,7 +15,7 @@ namespace Godslayer_New_Age.LJM
         Shield,         // 피해 흡수
     }
 
-
+    [Serializable]
     public class Buff
     {
         public string _Name { get; set; }

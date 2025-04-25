@@ -18,7 +18,7 @@ namespace Godslayer_New_Age.LJM
         DrainHP,
         DrainMP
     }
-
+    [Serializable]
     public class Effect
     {
         public EffectType Type { get; set; }
