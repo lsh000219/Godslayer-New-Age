@@ -1,4 +1,5 @@
 using Core;
+using Godslayer_New_Age;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Scenes
             if (input == "4") return GameState.Rest;
             if (input == "5") return GameState.Save;
             if (input == "6") return GameState.Load;
-            if (input == "0") return GameState.Pop;
+            if (input == "0") BGM_Player.Instance().Music_Exit(); return GameState.Pop;
 
             return GameState.Retry; // 다시 실행
         }
