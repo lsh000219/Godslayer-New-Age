@@ -21,7 +21,6 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
             PrintUtil.CreateBox();
-
             string input = Console.ReadLine()?.Trim();
             
 
@@ -47,6 +46,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
 
                     switch (input)
                     {
+
                         case "1":
                             Player.Instance.PlayerJob = (Player.Job)0;
                             break;
@@ -59,7 +59,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                         default:
                             return GameState.Retry;
                     }
-
+                    BGM_Player.Instance().Play_SaveLoad_Loop();
                     SceneManager.SetPhase(2);
                     return GameState.Retry;
 

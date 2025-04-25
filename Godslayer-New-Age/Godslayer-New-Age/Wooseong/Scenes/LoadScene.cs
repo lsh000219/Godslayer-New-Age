@@ -1,4 +1,5 @@
 using Core;
+using Godslayer_New_Age;
 using Godslayer_New_Age.LJM;
 using Godslayer_New_Age.lsh;
 using System;
@@ -20,7 +21,7 @@ namespace Scenes
             PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
             PrintUtil.CreateBox();
-
+            BGM_Player.Instance().Play_SaveLoad_Loop();
             // 입력에 따라 다음 상태 반환
             string input = Console.ReadLine();
             if (input == "1") { Player.SetInstance(SaveLoad.LoadPlayer("player1.dat")); return GameState.Main; }
