@@ -1,4 +1,5 @@
 using Core;
+using Godslayer_New_Age;
 using Godslayer_New_Age.LJM;
 using Godslayer_New_Age.lsh;
 using System;
@@ -21,6 +22,7 @@ namespace Scenes
 
 
             PrintUtil.CreateBox();
+            BGM_Player.Instance().Play_SaveLoad_Loop();
 
             // 입력에 따라 다음 상태 반환
             string input = Console.ReadLine();
