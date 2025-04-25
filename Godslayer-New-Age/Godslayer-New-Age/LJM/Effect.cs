@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.LJM
 {
+
     public enum EffectType { 
         Damage, 
         Heal, 
@@ -34,7 +35,6 @@ namespace Godslayer_New_Age.LJM
 
         //    스킬 프리셋
         public Effect trueDamage10 = new Effect(EffectType.DrainHP, 10);
-
 
 
         //    스킬 효과들

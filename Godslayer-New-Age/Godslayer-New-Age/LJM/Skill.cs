@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using System.Runtime.CompilerServices;
 
+
+[Serializable]
 public class Skill
 {
     public string SkillName { get; set; }
