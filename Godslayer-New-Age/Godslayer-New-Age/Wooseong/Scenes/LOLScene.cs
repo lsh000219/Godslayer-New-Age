@@ -1,5 +1,4 @@
 using Core;
-using Godslayer_New_Age.juna;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Utils;
 
-namespace Scenes
+namespace Godslayer_New_Age.Wooseong.Scenes
 {
-    internal class DungeonScene : IScene
+    internal class LOLScene : IScene
     {
-        public GameState SceneType => GameState.Dungeon;
+        public GameState SceneType => GameState.LOL;
 
         public GameState Run(int phase)
         {
@@ -22,9 +21,7 @@ namespace Scenes
 
             // 입력에 따라 다음 상태 반환
             string input = Console.ReadLine();
-            if (input == "1") return GameState.Maple;
-            if (input == "2") return GameState.Space;
-            if (input == "3") return GameState.LOL;
+            if (input == "1") return GameState.Shop;
             if (input == "0") return GameState.Pop;
 
             return GameState.Retry; // 다시 실행
@@ -33,17 +30,17 @@ namespace Scenes
         public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
         public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
 
-        public DungeonScene()
+        public LOLScene()
         {
             box1Text[0] = new List<string>()
             {
-                
+                ""
             };
 
             box3Text[0] = new List<string>()
             {
                 "하고 싶은 행동을 선택해주세요.",
-                "1. 단풍   2. 우주   3. 협곡   0. 돌아가기"
+                "1.      0. 돌아가기"
             };
 
             box1Text[1] = new List<string>()

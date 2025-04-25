@@ -26,7 +26,8 @@ namespace Godslayer_New_Age.juna
             _battle = battle;
         }
 
-        private bool[] dungeonclear = { false, false, false, false };
+        private bool[] dungeonclear = { false, false, false, false};
+
         public int CheckInput(int min, int max)
         {
             while (true)
@@ -40,6 +41,10 @@ namespace Godslayer_New_Age.juna
                 }
                 Console.WriteLine("잘못된 입력입니다");
             }
+        }
+        public bool isClear(int num)
+        {
+            return dungeonclear[num];
         }
         public void SelectDungeon(int min, int max)
         {
