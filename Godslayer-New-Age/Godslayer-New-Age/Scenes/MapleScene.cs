@@ -164,12 +164,15 @@ internal class MapleScene : IScene
                             case 9:
                                 randnum1 = random.Next(0, 2);
                                 randnum2 = random.Next(0, 2);
+                                BGM_Player.Instance().Play_Maple_Easy_Loop();
                                 SceneManager.SetPhase(2);
                                 return GameState.Retry;
                             case 5:
+                                BGM_Player.Instance().Play_Maple_Gang_Loop();
                                 SceneManager.SetPhase(3);
                                 return GameState.Retry;
                             case 10:
+                                BGM_Player.Instance().Play_Maple_SinChangSup_Loop();
                                 SceneManager.SetPhase(4);
                                 return GameState.Retry;
                             default:
@@ -195,6 +198,7 @@ internal class MapleScene : IScene
 
                 if (Player.Instance.HP == 0)
                 {
+                    BGM_Player.Instance().Play_Lose();
                     box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
                     box1Text[2].Add("신살을 실패하였습니다");
                     life_point--;
@@ -206,6 +210,7 @@ internal class MapleScene : IScene
                 }
                 else
                 {
+                    BGM_Player.Instance().Play_Victory();
                     box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
                     box1Text[2].Add("승리하였습니다");
                     if (HasPlusGold())
@@ -243,6 +248,7 @@ internal class MapleScene : IScene
 
                 if (Player.Instance.HP == 0)
                 {
+                    BGM_Player.Instance().Play_Lose();
                     box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
                     box1Text[3].Add("신살을 실패하였습니다");
                     life_point--;
@@ -254,6 +260,7 @@ internal class MapleScene : IScene
                 }
                 else
                 {
+                    BGM_Player.Instance().Play_Victory();
                     box1Text[3].Clear();
                     box1Text[3].Add($"Stage {room}");
                     box1Text[3].Add("");
@@ -292,6 +299,7 @@ internal class MapleScene : IScene
 
                 if (Player.Instance.HP == 0)
                 {
+                    BGM_Player.Instance().Play_Lose();
                     box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                     box1Text[4].Add("신살을 실패하였습니다");
                     life_point--;
@@ -303,6 +311,7 @@ internal class MapleScene : IScene
                 }
                 else
                 {
+                    BGM_Player.Instance().Play_Victory();
                     box1Text[4].Clear();
                     box1Text[4].Add($"Stage {room}");
                     box1Text[4].Add("");
