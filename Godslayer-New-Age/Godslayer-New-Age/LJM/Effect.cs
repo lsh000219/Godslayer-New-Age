@@ -68,6 +68,7 @@ namespace Godslayer_New_Age.LJM
                     if (user != null)
                     {
                         float scaledDamage = user.Damage * _Value;
+                        if (scaledDamage > float.MaxValue) scaledDamage = float.MaxValue;
                         target.HP -= scaledDamage;
                     }
                     break;
