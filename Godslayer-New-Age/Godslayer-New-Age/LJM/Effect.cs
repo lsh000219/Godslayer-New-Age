@@ -17,8 +17,8 @@ namespace Godslayer_New_Age.LJM
         CutHP,
         DrainHP,
         DrainMP,
-        IncreasedProbability,
-        DecreasedProbability
+        IncreasedCrit,
+        IncreasedDodge
     }
     [Serializable]
     public class Effect
@@ -36,6 +36,7 @@ namespace Godslayer_New_Age.LJM
         //    스킬 프리셋
         public Effect trueDamage10 = new Effect(EffectType.DrainHP, 10);
 
+        public static readonly Effect NomalHit = new Effect(EffectType.DamageWithAtkScale, 1f);
 
         //    스킬 효과들
         public void Apply(Unit target, Unit user = null)
@@ -53,9 +54,9 @@ namespace Godslayer_New_Age.LJM
                     target.HP = Math.Min(target.MaxHP, target.HP + _Value);
                     break;
 
-                //    공격력 증가 시키기(미완성)
+                //    공격력 증가 시키기
                 case EffectType.BuffAtk:
-                    target.Damage += _Value;
+                    target.Damage *= _Value;
                     break;
 
                 //    방어력 버프하기
@@ -87,8 +88,15 @@ namespace Godslayer_New_Age.LJM
                     target.MP = Math.Max(0, target.MP - _Value);
                     break;
 
-               
+                //    크리티컬 확률 증가
+                case EffectType.IncreasedCrit:
+                    target.CritRate += _Value;
+                    break;
 
+                //    회피율 증가
+                case EffectType.IncreasedDodge:
+                    target.DodgeRate += _Value;
+                    break;
             }
         }
 
