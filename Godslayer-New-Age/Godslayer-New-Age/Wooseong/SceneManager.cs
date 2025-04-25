@@ -86,7 +86,6 @@ namespace Managers
                 case GameState.Load:
                     return new LoadScene();
                 case GameState.Main:
-                    BGM_Player.Instance().Play_Main_Loop();
                     return new MainScene();
                 case GameState.Inventory:
                     return new InventoryScene();
@@ -96,6 +95,12 @@ namespace Managers
                     return new DungeonScene();
                 case GameState.Rest:
                     return new RestScene();
+                case GameState.Maple:
+                    return new MapleScene();
+                case GameState.Space:
+                    return new SpaceScene();
+                case GameState.LOL:
+                    return new LOLScene();
                 default:
                     throw new InvalidOperationException("등록되지 않은 씬입니다.");
             }

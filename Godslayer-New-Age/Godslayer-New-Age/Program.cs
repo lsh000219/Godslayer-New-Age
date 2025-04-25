@@ -1,5 +1,6 @@
 using Godslayer_New_Age.Kiahn;
 using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.lsh;
 using Managers;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,10 @@ namespace Godslayer_New_Age
             */
 
 
+            //데이터 초기화
+            //SaveLoad.Delete("player1.dat");
+            //SaveLoad.Delete("player2.dat");
+            //SaveLoad.Delete("player3.dat");
 
             Console.OutputEncoding = Encoding.UTF8;
             Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);

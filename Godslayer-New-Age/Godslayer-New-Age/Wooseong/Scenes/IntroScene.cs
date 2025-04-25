@@ -8,6 +8,7 @@ using Utils;
 using Core;
 using Managers;
 using Godslayer_New_Age;
+using Godslayer_New_Age.Wooseong.Scenes;
 
 namespace Scenes
 {

@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.LJM
 {
-    internal class Unit
+    [Serializable]
+    public class Unit
     {
 
         public string Name { get; set; }
         public int Level { get; set; }
         public float EXP { get; set; }
-        public float MaxHP { get;set; }
+        public float MaxHP { get; set; }
         public float HP { get; set; }
-        public float MaxMP { get;set; }
+        public float MaxMP { get; set; }
         public float MP { get; set; }
         public float Damage { get; set; }
         public int DamageGap { get; set; } = 3;
@@ -27,11 +28,13 @@ namespace Godslayer_New_Age.LJM
         public bool CanMove { get; set; }
 
 
+        //    버프 리스트
+        public List<Buff> Buffs { get; set; } = new List<Buff>();
 
 
         //    플레이어 생성자
-        public Unit(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage, float defence, 
-            int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove) 
+        public Unit(string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage, float defence,
+            int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         {
             Name = name;
             Level = level;
@@ -75,6 +78,20 @@ namespace Godslayer_New_Age.LJM
             return RandomManager.Instance.Next(min, max + 1);
         }
 
+        //    최대 갭 대미지
+        public int GetMaxDamage()
+        {
+            int max = (int)(Damage + DamageGap);
+            return max;
+        }
+        //    최소 갭 + 평타 대미지
+        public int GetLowDamage()
+        {
+            int min = Math.Max(0, (int)(Damage - DamageGap));
+            int max = (int)Damage;
+            return RandomManager.Instance.Next(min, max + 1);
+        }
+
         //    공격 회피하기 
         //    만약 아래의 bool을 거쳐 true가 나온다면 공격 회피
         public bool TryDodge()
@@ -87,6 +104,28 @@ namespace Godslayer_New_Age.LJM
         public bool GetCrit()
         {
             return RandomManager.Instance.Next(0, 100) < CritRate;
+        }
+
+
+
+
+
+        //    버프 작동시키기
+        public void ProcessBuffs()
+        {
+            for (int i = Buffs.Count - 1; i >= 0; i--)
+            {
+                var buff = Buffs[i];
+                buff.Apply(this); //    자기 자신에게 적용
+
+                //    만약 버프가 끝났다면
+                if (buff.IsExpired)
+                {
+                    //    원상복구 등 정리할 작업
+                    buff.Remove(this);  //    이건 Buff클래스 내부의 기능
+                    Buffs.RemoveAt(i); //    이건 List의 기능
+                }
+            }
         }
 
     }
