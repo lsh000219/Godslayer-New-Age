@@ -25,20 +25,14 @@ namespace Godslayer_New_Age.Wooseong.Scenes
 
         private bool[] isClear = { false, false };
 
-        private Monster _monster;
-        public MapleScene(Monster monster)
-        {
-            _monster = monster;
-        }
-
         List<Monster> monsters = new List<Monster>();
         public void AddMonster()//다른 곳에서바꾸기
         {
             room = 1;
-            monsters.Add(_monster.slime);
-            monsters.Add(_monster.orangeMushroom);
-            monsters.Add(_monster.kangWunky);
-            monsters.Add(_monster.godChangseop);
+            monsters.Add(Monster.slime);
+            monsters.Add(Monster.orangeMushroom);
+            monsters.Add(Monster.kangWunky);
+            monsters.Add(Monster.godChangseop);
         }
         public void StartBattle(Monster monster1, Monster monster2, string skill, string target)//일반몹(2명씩 나올 예정)
         {
@@ -147,6 +141,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
             PrintUtil.CreateBox();
+
             AddMonster();
             switch (phase)
             {
@@ -207,7 +202,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
 
                     if (Player.Instance.HP == 0)
                     {
-                        box1Text[2].RemoveRange(2, box1Text.Count - 2);
+                        box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
                         box1Text[2].Add("신살을 실패하였습니다");
                         life_point--;
                         CheckLife();
@@ -218,7 +213,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     }
                     else
                     {
-                        box1Text[2].RemoveRange(2, box1Text.Count - 2);
+                        box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
                         box1Text[2].Add("승리하였습니다");
                         if (HasPlusGold())
                         {
@@ -249,13 +244,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     while (Player.Instance.HP != 0 && monsters[2].HP != 0)
                     {
                         string input2 = Console.ReadLine();
-                        box1Text[3].RemoveRange(19, box1Text.Count - 19);
+                        box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
                         StartBattle(monsters[2],input2);
                     }
 
                     if (Player.Instance.HP == 0)
                     {
-                        box1Text[3].RemoveRange(19, box1Text.Count - 19);
+                        box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
                         box1Text[3].Add("신살을 실패하였습니다");
                         life_point--;
                         CheckLife();
@@ -298,13 +293,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     while (Player.Instance.HP != 0 && monsters[3].HP != 0)
                     {
                         string input2 = Console.ReadLine();
-                        box1Text[4].RemoveRange(19, box1Text.Count - 19);
+                        box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                         StartBattle(monsters[3],input2);
                     }
 
                     if (Player.Instance.HP == 0)
                     {
-                        box1Text[4].RemoveRange(19, box1Text.Count - 19);
+                        box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                         box1Text[4].Add("신살을 실패하였습니다");
                         life_point--;
                         CheckLife();
@@ -347,7 +342,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
         }
 
         public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
-        public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
+        public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();    
 
         public MapleScene()
         {
@@ -401,20 +396,20 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             //2
             box1Text[2] = new List<string>()
             {
-                $"Stage {room}",
+                "Stage 1",
                 " ",
-                $"{monsters[randnum1].Name}와(과) {monsters[randnum2].Name}이(가) 공격해온다!"
+                "슬라임과 주황버섯이 공격해온다!"
             };
 
             box3Text[2] = new List<string>()
             {
-                "원하시는 공격을 선택해주세요",
-                $"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
+                "원하시는 공격을 선택해주세요"
+                //$"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
             };
             //3
             box1Text[3] = new List<string>()
             {
-               $"Stage {room}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀               {monsters[2].Name} HP {monsters[2].HP}/{monsters[2].MaxHP}⠀⠀",
+               "Stage 5",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣠⣄⣀⣀⡔⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡯⠉⠀⠀⠀⢈⣙⣿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣟⣒⡒⣲⣊⡙⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -433,18 +428,18 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⠀⡀⠀⠀⠉⠈⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡙⠧⢤⣀⣀⡀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⠿⠿⠟⢛⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 " ",
-                $"{monsters[2].Name}이(가) 공격해온다!"
+                "윙키가 공격해온다!"
             };
 
             box3Text[3] = new List<string>()
             {
-                "원하시는 공격을 선택해주세요",
-                $"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
+                "원하시는 공격을 선택해주세요"
+                //$"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
             };
             //4
             box1Text[4] = new List<string>()
             {
-                $"Stage {room}⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀         {monsters[3].Name} HP {monsters[3].HP}/{monsters[3].MaxHP}⠀⠀",
+                "Stage 10",
                 "                                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠟⠛⠛⠿⠛⠛⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
                 "                                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
                 "                                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
@@ -463,13 +458,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "                                     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠿⠟⠛⠋⠀⢀⣼⣿⡟⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
                 "                                     ⣿⣿⣿⣿⡿⠟⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⡿⠁⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
                 "                                     ",
-                $"{monsters[3].Name}이(가) 공격해온다!"
+                "신창섭이 공격해온다!"
             };
 
             box3Text[4] = new List<string>()
             {
-                "원하시는 공격을 선택해주세요",
-                $"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
+                "원하시는 공격을 선택해주세요"
+                //$"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}"
             };
             //5
             box1Text[5] = new List<string>()

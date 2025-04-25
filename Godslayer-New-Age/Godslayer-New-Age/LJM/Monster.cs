@@ -31,13 +31,13 @@ namespace Godslayer_New_Age.LJM
 
         //    메이플
         
-        public Monster slime = new Monster("슬라임", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
+        public static Monster slime = new Monster("슬라임", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
             new List<Skill> { Skill.justHit });
-        public Monster orangeMushroom = new Monster("주황버섯", 65f, 15f, 5f, 20, 10f, 1.5f, 1f, 5f, true, 
+        public static Monster orangeMushroom = new Monster("주황버섯", 65f, 15f, 5f, 20, 10f, 1.5f, 1f, 5f, true, 
             new List<Skill> { Skill.justHit });
-        public Monster kangWunky = new Monster("강웡키", 200f, 20f, 20f, 500, 10f, 1.5f, 0f, 0f, true, 
+        public static Monster kangWunky = new Monster("강웡키", 200f, 20f, 20f, 500, 10f, 1.5f, 0f, 0f, true, 
             new List<Skill> { Skill.justHit });
-        public Monster godChangseop = new Monster("신창섭", 500f, 40f, 30f, 1000, 20f, 1.7f, 3f, 10f, true, 
+        public static Monster godChangseop = new Monster("신창섭", 500f, 40f, 30f, 1000, 20f, 1.7f, 3f, 10f, true, 
             new List<Skill> { Skill.justHit });
         /*
         //    코인판

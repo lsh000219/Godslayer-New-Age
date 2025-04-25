@@ -34,7 +34,7 @@ namespace Godslayer_New_Age.LJM
 
 
         //    스킬 프리셋
-        public Effect trueDamage10 = new Effect(EffectType.DrainHP, 10);
+        //public Effect trueDamage10 = new Effect(EffectType.DrainHP, 10);
 
 
         //    스킬 효과들
@@ -55,7 +55,7 @@ namespace Godslayer_New_Age.LJM
 
                 //    공격력 증가 시키기(미완성)
                 case EffectType.BuffAtk:
-                    target.Damage += _Value;
+                    target.Damage = Math.Min(target.Damage * _Value, 9999f);
                     break;
 
                 //    방어력 버프하기
