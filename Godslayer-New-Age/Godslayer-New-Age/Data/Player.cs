@@ -77,6 +77,13 @@ internal class Player : Unit
         //    장비 - 장신구
     }
 
+    public float currentMaxHP => MaxHP + PlayerInventory.GetStatBonus(StatType.HP);
+    public float currentATK => Damage + PlayerInventory.GetStatBonus(StatType.ATK);
+    public float currentDEF => Defence + PlayerInventory.GetStatBonus(StatType.DEF);
+    public float currentCRT => CritRate + PlayerInventory.GetStatBonus(StatType.CRT);
+    public float currentEVA => DodgeRate + PlayerInventory.GetStatBonus(StatType.EVA);
+    public float currentSPD => Speed + PlayerInventory.GetStatBonus(StatType.SPD);
+
     //    플레이어 레벨 업
     public void LevelUp()
     {
