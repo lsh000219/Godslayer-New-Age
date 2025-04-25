@@ -1,4 +1,5 @@
 using Core;
+using Godslayer_New_Age.LJM;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,10 +57,24 @@ namespace Data
                 equipped.Add(nextItem);
         }
 
-        public float GetStatBonus(StatType type)
+        public static float GetStatBonus(StatType type)
         {
             return equipped.Where(i => i.Option.ContainsKey(type)).Sum(i => i.Option[type]);
         }
+
+
+        public static string GetStatBonusToStr(StatType stat)
+        {
+            float bonus = GetStatBonus(stat);
+
+            if (bonus > 0)
+                return $"( +{bonus} )";
+            else if (bonus < 0)
+                return $"( {bonus} )";
+            else
+                return "";
+        }
+
 
         public static void Display(ref List<string> list)
         {
