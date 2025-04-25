@@ -43,12 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LJM\Buff.cs" />
     <Compile Include="lsh\bgm_player.cs" />
     <Compile Include="juna\Battle.cs" />
     <Compile Include="juna\Dungeon.cs" />
     <Compile Include="Kiahn\Inventory.cs" />
     <Compile Include="Kiahn\ItemData.cs" />
-    <Compile Include="LJM\EffectManager.cs" />
+    <Compile Include="LJM\Effect.cs" />
     <Compile Include="LJM\Monster.cs" />
     <Compile Include="LJM\Player.cs" />
     <Compile Include="LJM\RandomManager.cs" />
@@ -72,10 +73,13 @@
     <Compile Include="Wooseong\Scenes\IntroScene.cs" />
     <Compile Include="Wooseong\Scenes\InventoryScene.cs" />
     <Compile Include="Wooseong\Scenes\LoadScene.cs" />
+    <Compile Include="Wooseong\Scenes\LOLScene.cs" />
     <Compile Include="Wooseong\Scenes\MainScene.cs" />
+    <Compile Include="Wooseong\Scenes\MapleScene.cs" />
     <Compile Include="Wooseong\Scenes\RestScene.cs" />
     <Compile Include="Wooseong\Scenes\SaveScene.cs" />
     <Compile Include="Wooseong\Scenes\ShopScene.cs" />
+    <Compile Include="Wooseong\Scenes\SpaceScene.cs" />
     <Compile Include="Wooseong\Scenes\StartScene.cs" />
   </ItemGroup>
   <ItemGroup>

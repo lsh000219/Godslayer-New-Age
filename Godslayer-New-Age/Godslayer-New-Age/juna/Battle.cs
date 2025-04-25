@@ -166,10 +166,10 @@ namespace Godslayer_New_Age.juna
                 enemyMonster.Clear();
             }
         }
-
+        
         public void PlayerTurn()
         {
-            if (Player.Instance.CanMove)
+            if(Player.Instance.CanMove)
             {
                 Console.WriteLine("원하시는 공격을 선택해주세요");
                 Console.WriteLine($"1.   2.   3.   4.   ");//스킬이나 평타 이름을 저장한 것을 넣기
@@ -198,7 +198,7 @@ namespace Godslayer_New_Age.juna
 
         public void MonsterTurn(Monster monster)
         {
-            if (monster.CanMove)
+            if(monster.CanMove)
             {
                 int num = monster.MonsterSkills.Count;
                 int skillnum = random.Next(0, num);
@@ -254,10 +254,10 @@ namespace Godslayer_New_Age.juna
             switch (playerselect)
             {
                 case 1:
-
+                    
                     break;
                 case 2:
-
+                    
                     break;
             }
         }

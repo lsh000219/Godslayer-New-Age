@@ -30,10 +30,10 @@ namespace Godslayer_New_Age.LJM
                         20f,            // 공격력
                         5f,             // 방어력
                         100,            // 소지금
-                        0.1f,           // 크리 확률
+                        20f,           // 크리 확률
                         1.5f,           // 크리 대미지
                         1f,             // 속도
-                        50f,            // 회피율
+                        50f,            // 회피율           
                         true            // 행동 가능 여부
                     );
                 }
@@ -47,7 +47,7 @@ namespace Godslayer_New_Age.LJM
                 _instance = player;
         }
 
-        public enum Job  
+        public enum Job
         {
             RiceMonkey = 0,
             CEO = 1,
@@ -65,7 +65,7 @@ namespace Godslayer_New_Age.LJM
         //    레벨업에 필요한 경험치로 레벨에 비례해 커짐
         public float RequiredExp => (float)(50 * Math.Pow(1.15, Level - 1));
         //    50 * (1.15 ^ 레벨 - 1)
-         
+
         public Player(Job playerJob, string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage,
             float defence, int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         : base(name, level, exp, maxHP, hp, maxMP, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate, canMove)
@@ -81,7 +81,7 @@ namespace Godslayer_New_Age.LJM
         public void LevelUp()
         {
             Level++;
-            
+
             HP += 10f;
             MP += 5f;
             Damage += 0.5f;
@@ -101,7 +101,7 @@ namespace Godslayer_New_Age.LJM
         //    경험치를 얻었을 때 레벨업이 가능한지 확인하기
         void CheckLevelUp()
         {
-            while(EXP >= GetTotalExpForLevel(Level + 1))
+            while (EXP >= GetTotalExpForLevel(Level + 1))
             {
                 LevelUp();
             }
@@ -114,6 +114,7 @@ namespace Godslayer_New_Age.LJM
             EXP += exp;
             CheckLevelUp();
         }
+
 
     }
 }

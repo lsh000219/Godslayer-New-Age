@@ -26,7 +26,8 @@ namespace Godslayer_New_Age.juna
             _battle = battle;
         }
 
-        private bool[] dungeonclear = { false, false, false, false };
+        private bool[] dungeonclear = { false, false, false, false};
+
         public int CheckInput(int min, int max)
         {
             while (true)
@@ -40,6 +41,10 @@ namespace Godslayer_New_Age.juna
                 }
                 Console.WriteLine("잘못된 입력입니다");
             }
+        }
+        public bool isClear(int num)
+        {
+            return dungeonclear[num];
         }
         public void SelectDungeon(int min, int max)
         {
@@ -190,30 +195,30 @@ namespace Godslayer_New_Age.juna
         }
         public void AddMonster(int num)
         {
-            switch (num)
-            {
-                case 1:
-                    monsters.Add(_monster.slime);
-                    monsters.Add(_monster.orangeMushroom);
-                    monsters.Add(_monster.kangWunky);
-                    monsters.Add(_monster.godChangseop);
-                    break;
-                case 2:
-                    monsters.Add(_monster.stockInvestor);
-                    monsters.Add(_monster.yiLongMa);
-                    monsters.Add(_monster.doge);
-                    monsters.Add(_monster.elonMusk);
-                    break;
-                case 3:
-                    monsters.Add(_monster.t1Fan);
-                    monsters.Add(_monster.minion);
-                    monsters.Add(_monster.kkOma);
-                    monsters.Add(_monster.GOD);
-                    break;
-                case 4:
-                    //히든 몬스터 
-                    break;
-            }
+            //switch (num)
+            //{
+            //    case 1:
+            //        monsters.Add(_monster.slime);
+            //        monsters.Add(_monster.orangeMushroom);
+            //        monsters.Add(_monster.kangWunky);
+            //        monsters.Add(_monster.godChangseop);
+            //        break;
+            //    case 2:
+            //        monsters.Add(_monster.stockInvestor);
+            //        monsters.Add(_monster.yiLongMa);
+            //        monsters.Add(_monster.doge);
+            //        monsters.Add(_monster.elonMusk);
+            //        break;
+            //    case 3:
+            //        monsters.Add(_monster.t1Fan);
+            //        monsters.Add(_monster.minion);
+            //        monsters.Add(_monster.kkOma);
+            //        monsters.Add(_monster.GOD);
+            //        break;
+            //    case 4:
+            //        //히든 몬스터 
+            //        break;
+            //}
         }
     }
 }

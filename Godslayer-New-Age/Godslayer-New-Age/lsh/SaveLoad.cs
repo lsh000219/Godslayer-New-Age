@@ -41,6 +41,11 @@ namespace Godslayer_New_Age.lsh
             return SaveManager;
         }
 
+        public static void Delete(string fileName)
+        {
+            if (File.Exists(fileName)) { File.Delete(fileName); }
+        }
+
         public static void SavePlayer(Player player, string fileName)
         {
             using (FileStream fs = new FileStream(fileName, FileMode.Create))
