@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Data;
-using Godslayer_New_Age.LJM;
 
 public class ShopScene : IScene
 {

@@ -50,7 +50,6 @@
     <Compile Include="LJM\Player.cs" />
     <Compile Include="LJM\RandomManager.cs" />
     <Compile Include="LJM\Skill.cs" />
-    <Compile Include="LJM\Effect.cs" />
     <Compile Include="LJM\Unit.cs" />
     <Compile Include="System\SaveLoad.cs" />
     <Compile Include="Entry\Program.cs" />

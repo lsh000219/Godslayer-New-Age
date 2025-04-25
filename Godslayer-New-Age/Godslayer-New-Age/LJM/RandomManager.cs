@@ -5,11 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Godslayer_New_Age.LJM
+internal class RandomManager
 {
-    internal class RandomManager
-    {
-        //    랜덤값을 사용하는 값
-        public static Random Instance { get; } = new Random();
-    }
+    //    랜덤값을 사용하는 값
+    public static Random Instance { get; } = new Random();
 }
