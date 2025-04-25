@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,104 +10,106 @@ namespace Godslayer_New_Age.LJM
     public enum BuffType
     {
         StatUp,         // 공격력/방어력 증가 등
-        DamageOverTime, // 지속 피해
-        HealOverTime,   // 지속 회복
+        DamageOnTurn, // 지속 피해
+        HealOnTurn,   // 지속 회복
         Stun,           // 행동 불가
         Shield,         // 피해 흡수
     }
 
+
+    //    버프는 스킬의 이팩트의 효과를 가져와서 Unit 즉, 전체적인 캐릭터와 적군에게 사용이 가능하게 만듦.
+    //    이팩트와 따로 분리한 이유는 이팩트는 그 즉시, 버프는 턴 마다 또는 일정 턴 동안 작동해야 하기 때문에
+    //    이러한 차별점을 둘 필요가 있었음
     [Serializable]
     public class Buff
     {
-        public string _Name { get; set; }
-        public BuffType Type { get; set; }
-        public Effect _Effect { get; set; }
-        public int RemainingTurn { get; set; }
+        public string _Name { get; set; } //    버프의 이름
+        public BuffType _Type { get; set; } //    버프의 타임
+        //    이 부분에 따라 효과가 다르게 나타남
+        public Effect _Effect { get; set; } //    버프의 효과
+        //    해당 버프가 주는 효과로 이팩트에 관한건 Effect에서 다룸
+        public int _RemainingTurn { get; set; }
 
         private bool IsApplied = false;
-        private float OriginalValue;
+
+        private float? OriginalValue = null;
 
         public Buff(string name, BuffType type, Effect effect, int duration)
         {
             _Name = name;
-            Type = type;
+            _Type = type;
             _Effect = effect;
-            RemainingTurn = duration;
+            _RemainingTurn = duration;
         }
 
+        public Buff Poison = new Buff("독", BuffType.DamageOnTurn,
+            new Effect(EffectType.DrainHP, 10), 5);
+
+
+        //    실질적인 버프의 효과를 주는 곳
         public void Apply(Unit target)
         {
-            switch (Type)
+            switch (_Type)
             {
-                //    만약 스탯 증가라면?
                 case BuffType.StatUp:
-                    //    만약 아직 버프가 만료가 안됬다면
                     if (!IsApplied)
                     {
-                        //    해당 버프 적용시키고
-                        //    값을 받았다는 bool값 조정
-                        ApplyStatBuff(target);
+                        switch (_Effect._Type)
+                        {
+                            case EffectType.BuffAtk:
+                                OriginalValue = target.Damage;
+                                target.Damage += _Effect._Value;
+                                break;
+
+                            case EffectType.BuffDef:
+                                OriginalValue = target.Defence;
+                                target.Defence += _Effect._Value;
+                                break;
+                        }
                         IsApplied = true;
                     }
                     break;
 
-                //    턴 마다 회복/대미지라면
-                case BuffType.DamageOverTime:
-                case BuffType.HealOverTime:
+                case BuffType.DamageOnTurn:
+                case BuffType.HealOnTurn:
                     _Effect.Apply(target);
                     break;
             }
 
-            RemainingTurn--;
+            _RemainingTurn--;
         }
 
         //    만약 타입이 스탯 증가고 만료가 됬다면
         public void Remove(Unit target)
         {
-            if (Type == BuffType.StatUp && IsApplied)
+            if (_Type == BuffType.StatUp && IsApplied)
             {
                 //    다시 원래 스탯으로 되돌리기
-                RestoreStat(target);
-            }
-        }
-
-
-
-        //    버프 적용시키기
-        private void ApplyStatBuff(Unit target)
-        {
-            switch (_Effect.Type)
-            {
-                //    공격력 증가
-                case EffectType.BuffAtk:
-                    //    우선 원래의 값을 저장하고 공격력 증가 시키기
-                    OriginalValue = target.Damage;
-                    target.Damage += (int)_Effect.Value;
-                    break;
-
-                //    방어력 증가
-                case EffectType.BuffDef:
-                    OriginalValue = target.Defence;
-                    target.Defence += (int)_Effect.Value;
-                    break;
+                Revert(target);
             }
         }
 
         //    다시 원상태로 돌리기
-        private void RestoreStat(Unit target)
+        public void Revert(Unit target)
         {
-            switch (_Effect.Type)
+            if (!IsApplied || OriginalValue == null) return;
+
+            switch (_Effect._Type)
             {
                 case EffectType.BuffAtk:
-                    //    저장해놨었던 원래 값으로 다시 되돌리기
-                    target.Damage = OriginalValue;
+                    target.Damage = OriginalValue.Value;
                     break;
+
                 case EffectType.BuffDef:
-                    target.Defence = OriginalValue;
+                    target.Defence = OriginalValue.Value;
                     break;
             }
+
+            IsApplied = false;
+            OriginalValue = null;
         }
 
-        public bool IsExpired => RemainingTurn <= 0;
+        public bool IsExpired => _RemainingTurn <= 0;
     }
 }
+

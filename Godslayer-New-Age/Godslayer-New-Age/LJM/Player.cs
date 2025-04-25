@@ -114,7 +114,5 @@ namespace Godslayer_New_Age.LJM
             EXP += exp;
             CheckLevelUp();
         }
-
-
     }
 }
