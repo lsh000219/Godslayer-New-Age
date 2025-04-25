@@ -64,6 +64,7 @@
     <Compile Include="Wooseong\Core\Interfaces.cs" />
     <Compile Include="Wooseong\Item.cs" />
     <Compile Include="Wooseong\ItemDB.cs" />
+    <Compile Include="Wooseong\PlayerInventory.cs" />
     <Compile Include="Wooseong\PrintDB.cs" />
     <Compile Include="Wooseong\PrintUtil.cs" />
     <Compile Include="Wooseong\SceneManager.cs" />

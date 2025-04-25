@@ -15,7 +15,7 @@ namespace Scenes
         public GameState Run(int phase)
         {
             PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
-            PrintDB.box2Data = PrintDB.playerStatus;
+            PrintDB.box2Data = PrintDB.GetPlayerStatus();
             PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
             PrintUtil.CreateBox();
