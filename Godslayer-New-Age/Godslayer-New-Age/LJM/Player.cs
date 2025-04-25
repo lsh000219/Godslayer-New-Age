@@ -20,7 +20,7 @@ namespace Godslayer_New_Age.LJM
                 {
                     _instance = new Player(
                         Job.RiceMonkey, // 기본 직업
-                        "플레이어",      // 이름
+                        "데이터 없음",      // 이름
                         1,              // 레벨
                         0f,             // 경험치
                         100f,           // 최대 체력
