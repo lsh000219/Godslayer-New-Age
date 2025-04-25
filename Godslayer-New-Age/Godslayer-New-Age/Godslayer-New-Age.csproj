@@ -73,10 +73,13 @@
     <Compile Include="Wooseong\Scenes\IntroScene.cs" />
     <Compile Include="Wooseong\Scenes\InventoryScene.cs" />
     <Compile Include="Wooseong\Scenes\LoadScene.cs" />
+    <Compile Include="Wooseong\Scenes\LOLScene.cs" />
     <Compile Include="Wooseong\Scenes\MainScene.cs" />
+    <Compile Include="Wooseong\Scenes\MapleScene.cs" />
     <Compile Include="Wooseong\Scenes\RestScene.cs" />
     <Compile Include="Wooseong\Scenes\SaveScene.cs" />
     <Compile Include="Wooseong\Scenes\ShopScene.cs" />
+    <Compile Include="Wooseong\Scenes\SpaceScene.cs" />
     <Compile Include="Wooseong\Scenes\StartScene.cs" />
   </ItemGroup>
   <ItemGroup>

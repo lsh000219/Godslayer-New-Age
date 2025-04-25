@@ -26,7 +26,8 @@ namespace Godslayer_New_Age.juna
             _battle = battle;
         }
 
-        private bool[] dungeonclear = { false, false, false, false };
+        private bool[] dungeonclear = { false, false, false, false};
+
         public int CheckInput(int min, int max)
         {
             while (true)
