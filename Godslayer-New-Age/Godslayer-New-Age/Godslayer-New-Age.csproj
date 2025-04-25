@@ -43,14 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LJM\Buff.cs" />
+    <Compile Include="Data\Buff.cs" />
     <Compile Include="System\bgm_player.cs" />
-    <Compile Include="LJM\Effect.cs" />
-    <Compile Include="LJM\Monster.cs" />
-    <Compile Include="LJM\Player.cs" />
-    <Compile Include="LJM\RandomManager.cs" />
-    <Compile Include="LJM\Skill.cs" />
-    <Compile Include="LJM\Unit.cs" />
+    <Compile Include="Data\Effect.cs" />
+    <Compile Include="Data\Monster.cs" />
+    <Compile Include="Data\Player.cs" />
+    <Compile Include="Data\Skill.cs" />
+    <Compile Include="Data\Unit.cs" />
     <Compile Include="System\SaveLoad.cs" />
     <Compile Include="Entry\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

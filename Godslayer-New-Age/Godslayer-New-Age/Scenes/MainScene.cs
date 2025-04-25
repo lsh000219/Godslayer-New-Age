@@ -26,7 +26,7 @@ internal class MainScene : IScene
         if (input == "4") return GameState.Rest;
         if (input == "5") return GameState.Save;
         if (input == "6") return GameState.Load;
-        if (input == "0") BGM_Player.Instance().Music_Exit(); return GameState.Pop;
+        if (input == "0") BGM_Player.Instance().Music_Exit(); return GameState.Exit;
 
         return GameState.Retry; // 다시 실행
     }
