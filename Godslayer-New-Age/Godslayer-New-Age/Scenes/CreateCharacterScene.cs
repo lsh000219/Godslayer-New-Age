@@ -57,7 +57,27 @@ internal class CreateCharacterScene : IScene
                 return GameState.Retry;
 
             case 2:
-                // 슬롯 선택 로직은 아직 미구현
+                if (input == "0")
+                {
+                    SceneManager.SetPhase(0);
+                    return GameState.Retry;
+                }
+
+                switch (input)
+                {
+
+                    case "1":
+                        SaveLoad.SavePlayer(Player.Instance, "player1.dat");
+                        break;
+                    case "2":
+                        SaveLoad.SavePlayer(Player.Instance, "player2.dat");
+                        break;
+                    case "3":
+                        SaveLoad.SavePlayer(Player.Instance, "player3.dat");
+                        break;
+                    default:
+                        return GameState.Retry;
+                }
 
 
 
