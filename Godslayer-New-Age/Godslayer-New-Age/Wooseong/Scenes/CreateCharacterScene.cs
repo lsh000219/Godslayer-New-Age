@@ -1,111 +1,110 @@
-using Core;
-using Godslayer_New_Age.LJM;
-using Godslayer_New_Age.lsh;
-using Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Core;
+using Godslayer_New_Age.LJM;
+using Godslayer_New_Age.lsh;
+using Godslayer_New_Age;
+using Managers;
 using Utils;
 
-namespace Godslayer_New_Age.Wooseong.Scenes
+internal class CreateCharacterScene : IScene
 {
-    internal class CreateCharacterScene : IScene
+    public GameState SceneType => GameState.CreateCharacter;
+
+    public GameState Run(int phase)
     {
-        public GameState SceneType => GameState.CreateCharacter;
+        PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
+        PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
-        public GameState Run(int phase)
+        PrintUtil.CreateBox();
+        string input = Console.ReadLine()?.Trim();
+
+
+        switch (phase)
         {
-            PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
-            PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
-            PrintUtil.CreateBox();
-            string input = Console.ReadLine()?.Trim();
-            
+            case 0:
+                BGM_Player.Instance().Play_Job_Select_Loop();
+                if (string.IsNullOrWhiteSpace(input))
+                    return GameState.Pop;
 
-            switch (phase)
-            {
+                Player.Instance.Name = input;
+                SceneManager.SetPhase(1);
+                return GameState.Retry;
 
-                case 0:
-                    BGM_Player.Instance().Play_Job_Select_Loop();
-                    if (string.IsNullOrWhiteSpace(input))
-                        return GameState.Pop;
+            case 1:
 
-                    Player.Instance.Name = input;
-                    SceneManager.SetPhase(1);
+                if (input == "0")
+                {
+                    SceneManager.SetPhase(0);
                     return GameState.Retry;
+                }
 
-                case 1:
-                    
-                    if (input == "0")
-                    {
-                        SceneManager.SetPhase(0);
+                switch (input)
+                {
+
+                    case "1":
+                        Player.Instance.PlayerJob = (Player.Job)0;
+                        break;
+                    case "2":
+                        Player.Instance.PlayerJob = (Player.Job)1;
+                        break;
+                    case "3":
+                        Player.Instance.PlayerJob = (Player.Job)2;
+                        break;
+                    default:
                         return GameState.Retry;
-                    }
+                }
+                BGM_Player.Instance().Play_SaveLoad_Loop();
+                SceneManager.SetPhase(2);
+                return GameState.Retry;
 
-                    switch (input)
-                    {
-
-                        case "1":
-                            Player.Instance.PlayerJob = (Player.Job)0;
-                            break;
-                        case "2":
-                            Player.Instance.PlayerJob = (Player.Job)1;
-                            break;
-                        case "3":
-                            Player.Instance.PlayerJob = (Player.Job)2;
-                            break;
-                        default:
-                            return GameState.Retry;
-                    }
-                    BGM_Player.Instance().Play_SaveLoad_Loop();
-                    SceneManager.SetPhase(2);
+            case 2:
+                if (input == "0")
+                {
+                    SceneManager.SetPhase(0);
                     return GameState.Retry;
+                }
 
-                case 2:
-                    // 슬롯 선택 로직은 아직 미구현
-                    if (input == "0")
-                    {
-                        SceneManager.SetPhase(0);
+                switch (input)
+                {
+
+                    case "1":
+                        SaveLoad.SavePlayer(Player.Instance, "player1.dat");
+                        break;
+                    case "2":
+                        SaveLoad.SavePlayer(Player.Instance, "player2.dat");
+                        break;
+                    case "3":
+                        SaveLoad.SavePlayer(Player.Instance, "player3.dat");
+                        break;
+                    default:
                         return GameState.Retry;
-                    }
-
-                    switch (input)
-                    {
-
-                        case "1":
-                            SaveLoad.SavePlayer(Player.Instance, "player1.dat");
-                            break;
-                        case "2":
-                            SaveLoad.SavePlayer(Player.Instance, "player2.dat");
-                            break;
-                        case "3":
-                            SaveLoad.SavePlayer(Player.Instance, "player3.dat");
-                            break;
-                        default:
-                            return GameState.Retry;
-                    }
+                }
 
 
-                    return GameState.Main;
 
-                default:
-                    return GameState.Retry;
-            }
+                return GameState.Main;
+
+            default:
+                return GameState.Retry;
         }
+    }
 
-        public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
-        public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
+    public Dictionary<int, List<string>> box1Text = new Dictionary<int, List<string>>();
+    public Dictionary<int, List<string>> box3Text = new Dictionary<int, List<string>>();
 
-        Player player1 = SaveLoad.LoadPlayer("player1.dat");
-        Player player2 = SaveLoad.LoadPlayer("player2.dat");
-        Player player3 = SaveLoad.LoadPlayer("player3.dat");
+    Player player1 = SaveLoad.LoadPlayer("player1.dat");
+    Player player2 = SaveLoad.LoadPlayer("player2.dat");
+    Player player3 = SaveLoad.LoadPlayer("player3.dat");
 
-        public CreateCharacterScene()
-        {
-            
-            box1Text[0] = new List<string>()
+    public CreateCharacterScene()
+    {
+
+        box1Text[0] = new List<string>()
             {
                 "⠀      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢄⠢⠨⡂⠢⠢⢠⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢳⣗⣗⣽⣺⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 "⠀      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⡢⠪⡘⡜⢌⠪⣨⢬⢬⢂⢆⠣⢢⠀⠀⠀⠀⠀⠀⠀⠀⠀Hey You, Finally Awake⠀⠀⠀⠀⠀⠀⠀⠀⠀⢟⣮⢞⣮⣻⡄⠀⠀⠀⠀⣀⣠⢤⢲⢪",
@@ -133,13 +132,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "                   ⠀⠀⠀⠀⠀⠀⠀⣀⣔⣗⣽⣯⢿⢽⢝⢵⢕⡕⣝⢜⡜⣽⡟⣯⣿⢿⡾⣿⣾⣿⣷⣿⣻⣿⣿⢿⣿⣿⣿⢿⣾⣿⡮⣺⡕⡕⢌⢑⢌⢎⢮⣺⡿⣯⣟⣷⣻⣳⣻⣾⣯⢿⡳⡯⣟⣟⣟⢟⠯⡯⡺⡪⡎⡯⣪⡳⡳⣕⢽⢜⡵",
                 "                   ⠀⠀⠀⠀⠀⣠⢲⣕⡷⣷⣻⣾⣻⡪⣇⢗⡳⣕⢕⡵⣝⢾⠅⠙⣿⣿⣻⣯⡿⣿⣟⣿⣿⣽⣾⣿⣿⣾⣿⢿⣿⢟⢫⠣⡑⡑⡱⡐⢌⢎⢎⣾⡽⡯⣟⡾⡽⡽⣝⡮⣺⡪⢮⢝⢜⢖⡳⡝⡽⡸⡪⡚⡎⡳⡱⡹⡱⣕⢕⢧⢳"
             };
-            
-            box3Text[0] = new List<string>()
+
+        box3Text[0] = new List<string>()
             {
                 "이름을 입력해주세요. (공백 입력시 취소)"
             };
 
-            box1Text[1] = new List<string>()
+        box1Text[1] = new List<string>()
             {
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
                 "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠤⠄⠃⠈⠀⠉⠉⠁⠒⠂⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
@@ -168,13 +167,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "⠀⠀⠀⠘⢿⣯⣶⣤⣾⣡⢉⣲⣿⣿⣿⣿⣿⣴⣾⣿⣿⣿⣿⣦⣄⣠⣼⣿⣿⠇⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀⠀⣼⣿⣾⣿⣟⡄⢜⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⡰⡗⣸⣿⣶⣿⣧⠀⠀⠀⠀⠀"
             };
 
-            box3Text[1] = new List<string>()
+        box3Text[1] = new List<string>()
             {
                 "직업을 선택해주세요.",
                 "1. 쌀숭이          2. 주갤러          3. 프로게이머          0. 돌아가기"
             };
 
-            box1Text[2] = new List<string>()
+        box1Text[2] = new List<string>()
             {
                 "",
                 "",
@@ -203,16 +202,15 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "",
             };
 
-            box3Text[2] = new List<string>()
+        box3Text[2] = new List<string>()
             {
                 "데이터를 저장할 슬롯을 선택해주세요(1~3) (0. 돌아가기)"
             };
-        }
+    }
 
-        public static class TempPlayerData
-        {
-            public static string TempPlayerName { get; set; }
-            public static string TempPlayerJob { get; set; }
-        }
+    public static class TempPlayerData
+    {
+        public static string TempPlayerName { get; set; }
+        public static string TempPlayerJob { get; set; }
     }
 }
