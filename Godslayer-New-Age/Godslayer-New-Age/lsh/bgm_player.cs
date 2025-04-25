@@ -76,6 +76,12 @@ namespace Godslayer_New_Age
             Music_Start("Job_Select.wav", 0);
         }
 
+        public void Play_SaveLoad_Loop()
+        {
+            BGM_Player.Instance().Music_Exit();
+            Music_Start("SaveLoad.wav", 0);
+        }
+
         public void Play_Main_Loop()
         {
             BGM_Player.Instance().Music_Exit();

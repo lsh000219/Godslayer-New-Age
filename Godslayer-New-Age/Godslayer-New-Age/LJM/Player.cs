@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Godslayer_New_Age.LJM
 {
     //    플레이어 생성자 - 후에 장비 추가가 된다면 적용 시키기
+    [Serializable]
     internal class Player : Unit
     {
         private static Player _instance;
@@ -19,7 +20,7 @@ namespace Godslayer_New_Age.LJM
                 {
                     _instance = new Player(
                         Job.RiceMonkey, // 기본 직업
-                        "플레이어",      // 이름
+                        "데이터 없음",      // 이름
                         1,              // 레벨
                         0f,             // 경험치
                         100f,           // 최대 체력
@@ -29,10 +30,10 @@ namespace Godslayer_New_Age.LJM
                         20f,            // 공격력
                         5f,             // 방어력
                         100,            // 소지금
-                        0.1f,           // 크리 확률
+                        20f,           // 크리 확률
                         1.5f,           // 크리 대미지
                         1f,             // 속도
-                        50f,            // 회피율
+                        50f,            // 회피율           
                         true            // 행동 가능 여부
                     );
                 }
@@ -40,12 +41,17 @@ namespace Godslayer_New_Age.LJM
             }
         }
 
+        public static void SetInstance(Player player)
+        {
+            if (_instance == null)
+                _instance = player;
+        }
 
-        public enum Job  
+        public enum Job
         {
             RiceMonkey = 0,
-            CEO,
-            ProGamer
+            CEO = 1,
+            ProGamer = 2
         }
 
 
@@ -59,7 +65,7 @@ namespace Godslayer_New_Age.LJM
         //    레벨업에 필요한 경험치로 레벨에 비례해 커짐
         public float RequiredExp => (float)(50 * Math.Pow(1.15, Level - 1));
         //    50 * (1.15 ^ 레벨 - 1)
-         
+
         public Player(Job playerJob, string name, int level, float exp, float maxHP, float hp, float maxMP, float mp, float damage,
             float defence, int gold, float critRate, float critDmg, float speed, float dodgeRate, bool canMove)
         : base(name, level, exp, maxHP, hp, maxMP, mp, damage, defence, gold, critRate, critDmg, speed, dodgeRate, canMove)
@@ -75,7 +81,7 @@ namespace Godslayer_New_Age.LJM
         public void LevelUp()
         {
             Level++;
-            
+
             HP += 10f;
             MP += 5f;
             Damage += 0.5f;
@@ -95,7 +101,7 @@ namespace Godslayer_New_Age.LJM
         //    경험치를 얻었을 때 레벨업이 가능한지 확인하기
         void CheckLevelUp()
         {
-            while(EXP >= GetTotalExpForLevel(Level + 1))
+            while (EXP >= GetTotalExpForLevel(Level + 1))
             {
                 LevelUp();
             }
@@ -108,6 +114,7 @@ namespace Godslayer_New_Age.LJM
             EXP += exp;
             CheckLevelUp();
         }
+
 
     }
 }
