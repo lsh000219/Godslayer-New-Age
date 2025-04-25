@@ -21,7 +21,7 @@ namespace Godslayer_New_Age.LJM
         IncreasedCrit,
         IncreasedDodge
     }
-
+    [Serializable]
     public class Effect
     {
         public EffectType _Type { get; set; }

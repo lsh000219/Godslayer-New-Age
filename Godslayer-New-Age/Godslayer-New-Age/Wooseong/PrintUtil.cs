@@ -7,17 +7,6 @@ namespace Utils
 {
     public static class PrintUtil
     {
-        // TODO: Implement InvalidInput method
-        public static void InvalidInput()
-        {
-
-        }
-
-
-
-
-
-
         //NewWrite method (font, background color changer)
         public static void NewWrite(string text)
         {
@@ -117,6 +106,7 @@ namespace Utils
         //CreateBox methods
         public static void CreateBox()
         {
+            Console.Clear();
             Console.WriteLine();
 
             CreateBoxTop(BOX1_WIDTH, ConsoleColor.DarkGray);
@@ -142,15 +132,16 @@ namespace Utils
 
             CreateBoxTop(BOX3_WIDTH, ConsoleColor.Gray);
             Console.WriteLine();
-            for (int i = 0; i < DOWNSIDE_BOX_HEIGTH; i++)
+            for (int i = 0; i < DOWNSIDE_BOX_HEIGTH-1; i++)
             {
                 string content = (i < PrintDB.box3Data.Count) ?
                     PrintUtil.AlignLeft(PrintDB.box3Data[i], BOX3_WIDTH) :
                     PrintUtil.AlignLeft("", BOX3_WIDTH);
-                if (i == DOWNSIDE_BOX_HEIGTH - 1) content = PrintUtil.AlignLeft(">> ", BOX3_WIDTH);
                 CreateBoxSides(BOX3_WIDTH, ConsoleColor.Gray, content);
                 Console.WriteLine();
             }
+            CreateBoxSides(BOX3_WIDTH, ConsoleColor.Gray, PrintUtil.AlignLeft(">> ", BOX3_WIDTH));
+            Console.WriteLine();
             CreateBoxBottom(BOX3_WIDTH, ConsoleColor.Gray);
 
             Console.SetCursorPosition(CURSOR_POS_X, CURSOR_POS_Y);

@@ -1,6 +1,7 @@
 
 using Godslayer_New_Age.LJM;
-
+using Godslayer_New_Age.lsh;
+using Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,6 +64,18 @@ namespace Godslayer_New_Age
                 Console.WriteLine($"{Player.Instance.GetRandomDamage()} 만큼의 데미지를 받음!");
             }
             */
+
+
+            //데이터 초기화
+            //SaveLoad.Delete("player1.dat");
+            //SaveLoad.Delete("player2.dat");
+            //SaveLoad.Delete("player3.dat");
+
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.SetWindowSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+            Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
+
+            SceneManager.Run();
 
         }
     }

@@ -13,13 +13,13 @@ namespace Scenes
 {
     internal class SaveScene : IScene
     {
-        
         public GameState SceneType => GameState.Save;
 
         public GameState Run(int phase)
         {
             PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
             PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
+
 
             PrintUtil.CreateBox();
             BGM_Player.Instance().Play_SaveLoad_Loop();
@@ -64,10 +64,10 @@ namespace Scenes
                 "⠀    ⠀⠀⠀⠀⠀⡮⣳⢵⢹⢜⢕⡝⣜⢮⢲⢱⢣⢳⢹⢸⢪⢺⢸⡱⡹⣸⢱⢽⠀⠀⠀⠀⠀⠀⠀⡠⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡣⡳⡫⣗⡄⠀⠀⠀⠀⠀⢰⠁⡐⢀⠡⠀⠂⠄⢐⠀⠅⠡⠈⠄⠡⠉⠌⠡⠡⠑⠠⢁⠡⢁⢰⠬⡹⡂⠀⠀",
                 "⠀    ⠀⠀⠀⠀⢐⢝⢮⡪⡳⠓⠓⠓⠑⠓⠓⠙⠊⠓⠙⠊⠓⠓⠓⠑⡏⣎⢞⢾⢝⡆⠀⠀⠀⣠⢪⢪⢪⢪⠪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡪⡳⣝⢶⡄⠀⠀⠀⢸⠠⢐⢀⢂⠡⢈⢐⢀⠂⠡⠈⠄⠡⠈⠄⠡⠈⠄⠡⠈⠄⢂⠐⢜⢝⡎⡇⠀⠀",
                 "⠀    ⠀⠀⠀⠀⢸⢕⣗⢝⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣏⢎⢮⢯⣳⠃⠀⠀⠈⡖⡕⡕⡕⠕⠱⠑⠕⠱⠑⠕⠕⠕⠕⠕⠕⠕⠕⠕⢕⢕⢕⢜⢵⣻⠀⠀⠀⠀⠣⢣⠲⡰⠱⡢⠲⡰⡡⠥⠥⠥⠥⡡⡡⡅⡅⣅⡅⢅⢕⠄⠅⣇⢗⡕⡇⠀⠀",
-                "⠀    ⠀⠀⠀⠀⡪⡳⡕⡧⡇" + PrintUtil.AlignLeft($"{player1.Level}",14) + "⢀⢗⢕⣳⡳⣵⠁⠀⠀⢈⢮⢪⠪⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢨⢪⢺⣺⠀⠀⠀⠀⠀⢸⠐⡈⠈⠈⠈⠐⠈⠈⠈⠈⠈⠂⠑⠐⠑⠐⠨⠘⠌⠪⠩⡊⡣⢪⠃⠀⠀",
+                "⠀    ⠀⠀⠀⠀⡪⡳⡕⡧⡇" + PrintUtil.AlignLeft($"Level : {player1.Level}",14) + "⢀⢗⢕⣳⡳⣵⠁⠀⠀⢈⢮⢪⠪⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢨⢪⢺⣺⠀⠀⠀⠀⠀⢸⠐⡈⠈⠈⠈⠐⠈⠈⠈⠈⠈⠂⠑⠐⠑⠐⠨⠘⠌⠪⠩⡊⡣⢪⠃⠀⠀",
                 "⠀    ⠀⠀⠀⠀⡯⣺⢕⣳⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢱⢣⡳⣝⠾⠀⠀⠀⢀⢇⢇⢇⡇" + PrintUtil.AlignCenter($"{player2.Name}",14) + "⠀⢸⢸⢸⢨⡳⣵⠀⠀⠀⠀⠀⠸⢀⠐⠀" + PrintUtil.AlignLeft($"날짜변수자리",14) + "⠀⠀⠀⠐⠠⠈⠼⠀⠀⠀",
                 "⠀    ⠀⠀⠀⢠⢫⢮⡣⣳⠀" + PrintUtil.AlignRight($"{player1.Name}",14) + "⢸⢱⢣⣻⡪⡇⠀⠀⠀⠠⡣⡣⡣⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠸⡸⡺⣺⠀⠀⠀⠀⠀⡣⠀⢂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠂⠡⡃⠀⠀⠀",
-                "⠀    ⠀⠀⠀⢸⢕⡗⣝⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⣎⢧⡳⣝⡇⠀⠀⠀⢐⢕⢕⢕⠇" + PrintUtil.AlignLeft($"{player2.Level}",14) + "⠀⢸⢸⢸⢘⢮⣫⠀⠀⠀⠀⠀⡇⠈⠄⠀" + PrintUtil.AlignLeft($"{player3.Level}",14) + "⠀⠀⠀⠂⠄⢡⠃⠀⠀⠀",
+                "⠀    ⠀⠀⠀⢸⢕⡗⣝⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⣎⢧⡳⣝⡇⠀⠀⠀⢐⢕⢕⢕⠇" + PrintUtil.AlignLeft($"Level : {player2.Level}",14) + "⠀⢸⢸⢸⢘⢮⣫⠀⠀⠀⠀⠀⡇⠈⠄⠀" + PrintUtil.AlignLeft($"Level :  {player3.Level}",14) + "⠀⠀⠀⠂⠄⢡⠃⠀⠀⠀",
                 "    ⠀⠀⠀⠀⣜⢵⢝⡲⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⡮⣪⢾⢵⠁⠀⠀⠀⢐⡕⡕⡕⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⠸⡸⣱⢽⠀⠀⠀⠀⢨⠂⡁⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠐⡈⢸⠀⠀⠀⠀",
                 "    ⠀⠀⠀⠀⣗⢵⢳⢭⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢣⡳⣕⡟⣞⠀⠀⠀⠀⠠⡣⡣⡪⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢸⣪⣻⠀⠀⠀⠀⡘⠠⠐⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠄⠐⡌⠀⠀⠀⠀",
                 "    ⠀⠀⠀⢠⡳⣹⢕⢽⠀" + PrintUtil.AlignRight($"날짜변수자리",14) + "⢸⢱⡱⡵⣝⢞⠀⠀⠀⠀⢈⡇⡇⡇⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢸⢸⢰⢕⢷⠀⠀⠀⠀⡎⠀⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠈⠄⡇⠀⠀⠀⠀",

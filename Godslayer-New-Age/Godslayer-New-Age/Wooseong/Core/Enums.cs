@@ -29,8 +29,8 @@ namespace Core
 
     public enum Job
     {
-        RiceMonkey,
-        Jugaller,
-        ProGamer
+        RiceMonkey = 0,
+        Jugaller = 1,
+        ProGamer = 2
     }
 }
