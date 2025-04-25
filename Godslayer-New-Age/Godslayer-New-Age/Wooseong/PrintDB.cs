@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using static Utils.Constants;
 using Godslayer_New_Age.LJM;
 using Godslayer_New_Age.Kiahn;
+using Data;
+using Core;
 
 namespace Utils
 {
@@ -26,35 +28,37 @@ namespace Utils
         //2 lines
         public static List<string> box3Data = new List<string>();
 
-
-        public static List<string> playerStatus = new List<string>
+        public static List<string> GetPlayerStatus()
         {
-            $" {Player.Instance.Name} ({Player.Instance.PlayerJob})",
-            $" Lv {Player.Instance.Level:D2} ({Player.Instance.EXP}/{Player.Instance.RequiredExp})",
-            GaugeViewer(Player.Instance.EXP, Player.Instance.RequiredExp, "yellow"),   //view exp percentage
-            PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            "",
-            $" HP {Player.Instance.HP} / {Player.Instance.MaxHP}",
-            GaugeViewer(Player.Instance.HP, Player.Instance.MaxHP, "red"),      //view hp percentage
-            $" MP {Player.Instance.MP} / {Player.Instance.MaxMP}",
-            GaugeViewer(Player.Instance.MP, Player.Instance.MaxMP, "blue"),     //view mp percentage
-            "",
-            PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            $" ATK {Player.Instance.Damage} {null}",
-            $" DEF {Player.Instance.Defence} {null}",
-            $" CRT {Player.Instance.CritRate} {null}",
-            $" EVA {Player.Instance.DodgeRate} {null}",
-            $" SPD {Player.Instance.Speed} {null}",
-            "",
-            PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            " [장비]",
-            $" {null}",
-            $" {null}",
-            $" {null}",
-            "",
-            PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
-            " Gold) " + PrintUtil.AlignRight($"{Player.Instance.Gold} G", BOX2_WIDTH-8)
-        };
+            return new List<string>
+            {
+                $" {Player.Instance.Name} ({Player.Instance.PlayerJob})",
+                $" Lv {Player.Instance.Level:D2} ({Player.Instance.EXP}/{Player.Instance.RequiredExp})",
+                GaugeViewer(Player.Instance.EXP, Player.Instance.RequiredExp, "yellow"),
+                PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
+                "",
+                $" HP {Player.Instance.HP} / {Player.Instance.MaxHP}",
+                GaugeViewer(Player.Instance.HP, Player.Instance.MaxHP, "red"),
+                $" MP {Player.Instance.MP} / {Player.Instance.MaxMP}",
+                GaugeViewer(Player.Instance.MP, Player.Instance.MaxMP, "blue"),
+                "",
+                PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
+                $" ATK {Player.Instance.Damage}",
+                $" DEF {Player.Instance.Defence}",
+                $" CRT {Player.Instance.CritRate}",
+                $" EVA {Player.Instance.DodgeRate}",
+                $" SPD {Player.Instance.Speed}",
+                "",
+                PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
+                " [장비]",
+                $" {PlayerInventory.GetEquippedName(ItemType.Weapon)}",
+                $" {PlayerInventory.GetEquippedName(ItemType.Armor)}",
+                $" {PlayerInventory.GetEquippedName(ItemType.Accessory)}",
+                "",
+                PrintUtil.AlignCenter(new string('-', BOX2_WIDTH - 2), BOX2_WIDTH),
+                " Gold) " + PrintUtil.AlignRight($"{Player.Instance.Gold} G", BOX2_WIDTH - 8)
+            };
+        }
 
         private static string GaugeViewer(float nowStat, float maxStat, string color)
         {
