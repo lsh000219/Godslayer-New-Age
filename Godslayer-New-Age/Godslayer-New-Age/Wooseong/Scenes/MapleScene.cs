@@ -35,10 +35,10 @@ namespace Godslayer_New_Age.Wooseong.Scenes
         public void AddMonster()//다른 곳에서바꾸기
         {
             room = 1;
-            monsters.Add(_monster.slime);
-            monsters.Add(_monster.orangeMushroom);
-            monsters.Add(_monster.kangWunky);
-            monsters.Add(_monster.godChangseop);
+            //monsters.Add(_monster.slime);
+            //monsters.Add(_monster.orangeMushroom);
+            //monsters.Add(_monster.kangWunky);
+            //monsters.Add(_monster.godChangseop);
         }
         public void StartBattle(Monster monster1, Monster monster2, string skill, string target)//일반몹(2명씩 나올 예정)
         {
