@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Godslayer_New_Age.LJM
 {
+    [Serializable]
     public class Unit
+
     {
 
         public string Name { get; set; }

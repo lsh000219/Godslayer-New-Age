@@ -2,6 +2,7 @@ using Godslayer_New_Age.LJM;
 using System.Collections.Generic;
 using System;
 
+[Serializable]
 public class Skill
 {
     public string SkillName { get; set; }
@@ -11,6 +12,9 @@ public class Skill
     public List<Buff> Buffs { get; set; } = new List<Buff>();
 
     public Skill(string name, float cost, float probability, List<Effect> effects, List<Buff> buffs = null)
+
+    public class Skill
+
     {
         SkillName = name;
         Cost = cost;
