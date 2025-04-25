@@ -61,6 +61,11 @@ namespace Godslayer_New_Age.LJM
                                 OriginalValue = target.Defence;
                                 target.Defence += _Effect._Value;
                                 break;
+
+                            case EffectType.IncreasedCrit:
+                                OriginalValue = target.CritRate;
+                                target.CritRate += _Effect._Value;
+                                break;
                         }
                         IsApplied = true;
                     }
@@ -98,6 +103,10 @@ namespace Godslayer_New_Age.LJM
 
                 case EffectType.BuffDef:
                     target.Defence = OriginalValue.Value;
+                    break;
+
+                case EffectType.IncreasedCrit:
+                    target.CritRate = OriginalValue.Value;
                     break;
             }
 

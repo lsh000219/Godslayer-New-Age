@@ -77,6 +77,20 @@ namespace Godslayer_New_Age.LJM
             return RandomManager.Instance.Next(min, max + 1);
         }
 
+        //    최대 갭 대미지
+        public int GetMaxDamage()
+        {
+            int max = (int)(Damage + DamageGap);
+            return max;
+        }
+        //    최소 갭 + 평타 대미지
+        public int GetLowDamage()
+        {
+            int min = Math.Max(0, (int)(Damage - DamageGap));
+            int max = (int)Damage;
+            return RandomManager.Instance.Next(min, max + 1);
+        }
+
         //    공격 회피하기 
         //    만약 아래의 bool을 거쳐 true가 나온다면 공격 회피
         public bool TryDodge()
