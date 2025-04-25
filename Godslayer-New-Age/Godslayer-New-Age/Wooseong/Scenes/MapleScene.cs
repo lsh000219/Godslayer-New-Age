@@ -146,6 +146,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             switch (phase)
             {
                 case 0:
+                    Console.ReadKey(true);
                     SceneManager.SetPhase(1);
                     return GameState.Retry;
                 case 1:
@@ -330,11 +331,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     }
                 case 5:
                     BossDrop();
-                    if (Console.KeyAvailable)
-                    {
-                        Console.ReadKey(true);
-                        return GameState.Main;
-                    }
+                    Console.ReadKey(true);
                     return GameState.Main;
                 default:
                     return GameState.Main;
@@ -356,7 +353,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
 
             box3Text[0] = new List<string>()
             {
-                " "
+                "아무 키나 눌러 던전을 나아간다"
             };
             //1
             box1Text[1] = new List<string>()
