@@ -7,6 +7,7 @@ using Utils;
 using Core;
 using Scenes;
 using Godslayer_New_Age.Wooseong.Scenes;
+using Godslayer_New_Age;
 
 namespace Managers
 {
@@ -78,12 +79,14 @@ namespace Managers
                 case GameState.Start:
                     return new StartScene();
                 case GameState.CreateCharacter:
+                    BGM_Player.Instance().Play_Finally_Awake();
                     return new CreateCharacterScene();
                 case GameState.Save:
                     return new SaveScene();
                 case GameState.Load:
                     return new LoadScene();
                 case GameState.Main:
+                    BGM_Player.Instance().Play_Main_Loop();
                     return new MainScene();
                 case GameState.Inventory:
                     return new InventoryScene();

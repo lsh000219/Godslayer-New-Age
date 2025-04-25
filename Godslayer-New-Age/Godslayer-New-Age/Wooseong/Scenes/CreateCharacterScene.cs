@@ -21,10 +21,13 @@ namespace Godslayer_New_Age.Wooseong.Scenes
             PrintUtil.CreateBox();
 
             string input = Console.ReadLine()?.Trim();
+            
 
             switch (phase)
             {
+
                 case 0:
+                    BGM_Player.Instance().Play_Job_Select_Loop();
                     if (string.IsNullOrWhiteSpace(input))
                         return GameState.Pop;
 
@@ -33,6 +36,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                     return GameState.Retry;
 
                 case 1:
+                    
                     if (input == "0")
                     {
                         SceneManager.SetPhase(0);
@@ -104,7 +108,7 @@ namespace Godslayer_New_Age.Wooseong.Scenes
                 "                   ⠀⠀⠀⠀⠀⠀⠀⣀⣔⣗⣽⣯⢿⢽⢝⢵⢕⡕⣝⢜⡜⣽⡟⣯⣿⢿⡾⣿⣾⣿⣷⣿⣻⣿⣿⢿⣿⣿⣿⢿⣾⣿⡮⣺⡕⡕⢌⢑⢌⢎⢮⣺⡿⣯⣟⣷⣻⣳⣻⣾⣯⢿⡳⡯⣟⣟⣟⢟⠯⡯⡺⡪⡎⡯⣪⡳⡳⣕⢽⢜⡵",
                 "                   ⠀⠀⠀⠀⠀⣠⢲⣕⡷⣷⣻⣾⣻⡪⣇⢗⡳⣕⢕⡵⣝⢾⠅⠙⣿⣿⣻⣯⡿⣿⣟⣿⣿⣽⣾⣿⣿⣾⣿⢿⣿⢟⢫⠣⡑⡑⡱⡐⢌⢎⢎⣾⡽⡯⣟⡾⡽⡽⣝⡮⣺⡪⢮⢝⢜⢖⡳⡝⡽⡸⡪⡚⡎⡳⡱⡹⡱⣕⢕⢧⢳"
             };
-            BGM_Player.Instance().Play_Finally_Awake();
+            
             box3Text[0] = new List<string>()
             {
                 "이름을 입력해주세요. (공백 입력시 취소)"
