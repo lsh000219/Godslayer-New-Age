@@ -1,4 +1,4 @@
-using Godslayer_New_Age.Kiahn;
+
 using Godslayer_New_Age.LJM;
 using Godslayer_New_Age.lsh;
 using Managers;
@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Utils;
-using static Utils.Constants;
 
 namespace Godslayer_New_Age
 {
@@ -78,6 +76,7 @@ namespace Godslayer_New_Age
             Console.SetBufferSize(Constants.CONSOLE_WIDTH, Constants.CONSOLE_HEIGTH);
 
             SceneManager.Run();
+
         }
     }
 }

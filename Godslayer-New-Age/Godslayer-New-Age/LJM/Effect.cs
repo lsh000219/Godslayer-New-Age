@@ -11,7 +11,8 @@ namespace Godslayer_New_Age.LJM
     public enum EffectType { 
         Damage, 
         Heal, 
-        BuffAtk, 
+        BuffAtk,
+        NerfAtk,
         BuffDef,
         DamageWithAtkScale,
         CutHP,
@@ -32,11 +33,6 @@ namespace Godslayer_New_Age.LJM
             _Value = value;
         }
 
-
-        //    스킬 프리셋
-        public Effect trueDamage10 = new Effect(EffectType.DrainHP, 10);
-
-        public static readonly Effect NomalHit = new Effect(EffectType.DamageWithAtkScale, 1f);
 
         //    스킬 효과들
         public void Apply(Unit target, Unit user = null)
