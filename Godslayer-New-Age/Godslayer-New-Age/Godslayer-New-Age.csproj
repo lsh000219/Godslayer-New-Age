@@ -45,8 +45,6 @@
   <ItemGroup>
     <Compile Include="LJM\Buff.cs" />
     <Compile Include="lsh\bgm_player.cs" />
-    <Compile Include="juna\Battle.cs" />
-    <Compile Include="juna\Dungeon.cs" />
     <Compile Include="Kiahn\Inventory.cs" />
     <Compile Include="Kiahn\ItemData.cs" />
     <Compile Include="LJM\Effect.cs" />

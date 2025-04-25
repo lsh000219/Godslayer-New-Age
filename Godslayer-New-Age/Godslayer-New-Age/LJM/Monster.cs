@@ -30,16 +30,16 @@ namespace Godslayer_New_Age.LJM
         //    체력 0짜리 몬스터가 계속 나타날 수 있음
 
         //    메이플
-        /*
+        
         public Monster slime = new Monster("슬라임", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
-            new List<Skill> { Skill.jumpAtk });
+            new List<Skill> { Skill.justHit });
         public Monster orangeMushroom = new Monster("주황버섯", 65f, 15f, 5f, 20, 10f, 1.5f, 1f, 5f, true, 
-            new List<Skill> { Skill.jumpAtk });
+            new List<Skill> { Skill.justHit });
         public Monster kangWunky = new Monster("강웡키", 200f, 20f, 20f, 500, 10f, 1.5f, 0f, 0f, true, 
-            new List<Skill> { Skill.jumpAtk });
+            new List<Skill> { Skill.justHit });
         public Monster godChangseop = new Monster("신창섭", 500f, 40f, 30f, 1000, 20f, 1.7f, 3f, 10f, true, 
-            new List<Skill> { Skill.jumpAtk });
-
+            new List<Skill> { Skill.justHit });
+        /*
         //    코인판
         public Monster stockInvestor = new Monster("코인충", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true, 
             new List<Skill> { Skill.jumpAtk });

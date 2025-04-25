@@ -361,12 +361,12 @@ namespace Godslayer_New_Age.Wooseong.Scenes
 
             box1Text[1] = new List<string>()
             {
-                ""
+                "sadffas"
             };
 
             box3Text[1] = new List<string>()
             {
-                ""
+                "asfasdfsd"
             };
         }
     }
