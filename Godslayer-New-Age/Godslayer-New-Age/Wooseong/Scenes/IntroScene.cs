@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Utils;
 using Core;
 using Managers;
+using Godslayer_New_Age;
 
 namespace Scenes
 {
@@ -28,7 +29,7 @@ namespace Scenes
                 Console.ReadKey(true);
                 return GameState.Start;
             }
-
+           
             SceneManager.SetPhase(phase == 0 ? 1 : 0);
             return GameState.Retry;
         }
@@ -38,6 +39,7 @@ namespace Scenes
 
         public IntroScene()
         {
+            BGM_Player.Instance().Play_Intro_Loop();
             box1Text[0] = new List<string>()
             {
                 "`darkred,`⠀     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣄⣀⠀⠀⠀⠀⡀⠀⢀⣠⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",
