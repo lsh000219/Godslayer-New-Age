@@ -40,8 +40,8 @@ public class Buff
         _RemainingTurn = duration;
     }
 
-    public Buff Poison = new Buff("독", BuffType.DamageOnTurn,
-        new Effect(EffectType.DrainHP, 10), 5);
+    //public Buff Poison = new Buff("독", BuffType.DamageOnTurn,
+    //    new Effect(EffectType.DrainHP, 10), 5);
 
 
     //    실질적인 버프의 효과를 주는 곳
