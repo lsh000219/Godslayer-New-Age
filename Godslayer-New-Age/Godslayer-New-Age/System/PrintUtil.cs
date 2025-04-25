@@ -175,3 +175,9 @@ public static class PrintUtil
         Console.ResetColor();
     }
 }
+
+internal class RandomManager
+{
+    //    랜덤값을 사용하는 값
+    public static Random Instance { get; } = new Random();
+}
