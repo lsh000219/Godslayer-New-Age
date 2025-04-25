@@ -1,10 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Godslayer_New_Age.Wooseong.Scenes;
-using Godslayer_New_Age;
 
 public static class SceneManager
 {

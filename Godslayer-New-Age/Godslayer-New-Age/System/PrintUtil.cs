@@ -1,7 +1,4 @@
 using System;
-using System.Text;
-
-
 public static class PrintUtil
 {
     //NewWrite method (font, background color changer)
