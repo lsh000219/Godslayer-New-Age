@@ -60,11 +60,9 @@ internal class CreateCharacterScene : IScene
                         Player.Instance.PlayerSkills.Add(Skill.Click); //    딸깍
                         Player.Instance.PlayerSkills.Add(Skill.ChatMute); //    채팅 금지
 
-                        Player.Instance.PlayerSkills.Add(Skill.POTG); //    MVP각 ㅇㅈ
-                        Player.Instance.PlayerSkills.Add(Skill.POTGBuff); //    MVP각 ㅇㅈ
+                        Player.Instance.PlayerSkills.Add(Skill.POTG); //    MVP각 ㅇㅈ //    MVP각 ㅇㅈ
 
                         Player.Instance.PlayerSkills.Add(Skill.Multikill);
-                        Player.Instance.PlayerSkills.Add(Skill.MultikillBuff);
                         break;
                     default:
                         return GameState.Retry;

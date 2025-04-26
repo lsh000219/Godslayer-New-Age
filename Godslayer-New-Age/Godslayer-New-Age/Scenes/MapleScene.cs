@@ -10,7 +10,7 @@ internal class MapleScene : IScene
     Random random = new Random();
     public GameState SceneType => GameState.Maple;
 
-    private int room;
+    private int room = 1;
     private int turn;
     private int randnum1;
     private int randnum2;
@@ -20,15 +20,18 @@ internal class MapleScene : IScene
     List<Monster> monsters = new List<Monster>();
     public void AddMonster()//다른 곳에서바꾸기
     {
-        room = 1;
-        monsters.Add(Monster.slime);
-        monsters.Add(Monster.orangeMushroom);
+        monsters.Clear();
+        monsters.Add(Monster.slime.Clone());
+        monsters.Add(Monster.orangeMushroom.Clone());
+        monsters.Add(Monster.slime.Clone());
+        monsters.Add(Monster.orangeMushroom.Clone());
         monsters.Add(Monster.kangWunky);
         monsters.Add(Monster.godChangseop);
     }
     public void StartBattle(Monster monster1, Monster monster2, int skillnum, int targetnum)//일반몹(2명씩 나올 예정)
     {
         Unit unit;
+        bool[] isDie = { false, false };
         float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
         float monster1_rand_Spd = random.Next(0, 5) + monster1.Speed;
         float monster2_rand_Spd = random.Next(0, 5) + monster2.Speed;
@@ -73,19 +76,21 @@ internal class MapleScene : IScene
                 MonsterTurn(monster,alpa);
             }
         }
-        if (monster1.HP <= 0)
+        if (monster1.HP <= 0 && isDie[0]==false)
         {
             monster1.HP = 0;
             Player.Instance.EXP += monster1.EXP;
             box1Text[2].Add($"{monster1.Name}A을(를) 쓰러뜨렸습니다.");
             box1Text[2].Add($"{monster1.EXP} 경험치를 획득하였습니다.");
+            isDie[0] = true;
         }
-        if (monster2.HP <= 0)
+        if (monster2.HP <= 0 && isDie[1] == false)
         {
             monster2.HP = 0;
             Player.Instance.EXP += monster2.EXP;
             box1Text[2].Add($"{monster2.Name}B을(를) 쓰러뜨렸습니다.");
             box1Text[2].Add($"{monster2.EXP} 경험치를 획득하였습니다.");
+            isDie[1] = true;
         }
         Player.Instance.ProcessBuffs();
         monster1.ProcessBuffs();
@@ -161,7 +166,7 @@ internal class MapleScene : IScene
             PlayerInventory.Add(absolcalibur);
             Item challengerArmor = new Item("도전자의 갑옷", ItemType.Armor, new Dictionary<StatType, float> { { StatType.DEF, 80 } }, "신창섭의 가호를 받은 기간제 갑옷", "", 9000);
             PlayerInventory.Add(challengerArmor);
-            box1Text[5].Add($"{Player.Instance.Name}은(는) {monsters[3].Name}을(를) 꺾고 {absolcalibur.Name}와 {challengerArmor.Name}을 획득하였다!!");
+            box1Text[5].Add($"{Player.Instance.Name}은(는) {monsters[5].Name}을(를) 꺾고 {absolcalibur.Name}와 {challengerArmor.Name}을 획득하였다!!");
         }
     }
     public void PlayerTurn(int skillnum, Unit unit, int num)
@@ -190,20 +195,23 @@ internal class MapleScene : IScene
                 textnum = 2;
                 break;
         }
-        Player.Instance.PlayerSkills[skillnum].Use(unit,Player.Instance);
-        if(unit.HP < FHP)
+        if (Player.Instance.HP > 0)
         {
-            if(num ==1)
+            Player.Instance.PlayerSkills[skillnum].Use(unit, Player.Instance);
+            if (unit.HP < FHP)
             {
-                box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}A에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
-            }
-            else if(num == 2)
-            {
-                box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}B에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
-            }
-            else
-            {
-                box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
+                if (num == 1)
+                {
+                    box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}A에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
+                }
+                else if (num == 2)
+                {
+                    box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}B에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
+                }
+                else
+                {
+                    box1Text[textnum].Add($"{Player.Instance.Name}이(가) {unit.Name}에게 {FHP - unit.HP}만큼 피해를 입혔다!!");
+                }
             }
         }
     }
@@ -234,21 +242,24 @@ internal class MapleScene : IScene
                 textnum = 2;
                 break;
         }
-        monster.MonsterSkills[randomskill].Use(Player.Instance, monster);
-        if (Player.Instance.HP < FHP)
+        if (monster.HP > 0)
         {
-            if (num == 1)
+            monster.MonsterSkills[randomskill].Use(Player.Instance, monster);
+            if (Player.Instance.HP < FHP)
             {
-                box1Text[textnum].Add($"{monster.Name}A가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                if (num == 1)
+                {
+                    box1Text[textnum].Add($"{monster.Name}A가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                }
+                else if (num == 2)
+                {
+                    box1Text[textnum].Add($"b.{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                }
+                else
+                {
+                    box1Text[textnum].Add($"{monster.Name}이(가) {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                }
             }
-            else if (num == 2)
-            {
-                box1Text[textnum].Add($"b.{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
-            }
-            else
-            {
-                box1Text[textnum].Add($"{monster.Name}이(가) {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
-            } 
         }
     }
     public void StageText(int Scene)
@@ -263,6 +274,8 @@ internal class MapleScene : IScene
         box3Text[Scene].Clear();
         box3Text[Scene].Add("대상을 선택해주세요");
         box3Text[Scene].Add($"0.{Player.Instance.Name}   1.{monsters[randnum1].Name}A   2.{monsters[randnum2].Name}B");
+        PrintDB.box2Data = PrintDB.GetPlayerStatus();
+        PrintUtil.CreateBox();
         while (true)
         {
             if (int.TryParse(Console.ReadLine(), out input3)&&(input3 >= 0 && input3 <= 2))
@@ -277,8 +290,10 @@ internal class MapleScene : IScene
         int input3;
         box3Text[Scene].Clear();
         box3Text[Scene].Add("대상을 선택해주세요");
-        string bossname = (room == 5) ? $"{monsters[2].Name}" : $"{monsters[3].Name}";
+        string bossname = (room == 5) ? $"{monsters[4].Name}" : $"{monsters[5].Name}";
         box3Text[Scene].Add($"0.{Player.Instance.Name}   1.{bossname}");
+        PrintDB.box2Data = PrintDB.GetPlayerStatus();
+        PrintUtil.CreateBox();
         while (true)
         {
             if (int.TryParse(Console.ReadLine(), out input3) && (input3 >= 0 && input3 <= 1))
@@ -294,6 +309,8 @@ internal class MapleScene : IScene
         box3Text[Scene].Clear();
         box3Text[Scene].Add("사용할 스킬을 선택해주세요");
         box3Text[Scene].Add($"1.{Player.Instance.PlayerSkills[0].SkillName} 2.{Player.Instance.PlayerSkills[1].SkillName} 3.{Player.Instance.PlayerSkills[2].SkillName} 4.{Player.Instance.PlayerSkills[3].SkillName}");
+        PrintDB.box2Data = PrintDB.GetPlayerStatus();
+        PrintUtil.CreateBox();
         while (true)
         {
             int.TryParse(Console.ReadLine(), out input2);
@@ -308,11 +325,13 @@ internal class MapleScene : IScene
     {
         box3Text[Scene].Clear();
         box3Text[Scene].Add("아무 키나 눌러 진행");
+        PrintUtil.CreateBox();
         Console.ReadKey(true);
     }
     public GameState Run(int phase)
     {
         PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
+        PrintDB.box2Data = PrintDB.GetPlayerStatus();
         PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
         PrintUtil.CreateBox();
@@ -346,7 +365,7 @@ internal class MapleScene : IScene
                             case 8:
                             case 9:
                                 randnum1 = random.Next(0, 2);
-                                randnum2 = random.Next(0, 2);
+                                randnum2 = random.Next(2, 4);
                                 BGM_Player.Instance().Play_Maple_Easy_Loop();
                                 SceneManager.SetPhase(2);
                                 return GameState.Retry;
@@ -369,6 +388,7 @@ internal class MapleScene : IScene
                 box1Text[2].Add($"{monsters[randnum1].Name}A와 {monsters[randnum2].Name}B가 공격해온다!!");
                 while (Player.Instance.HP > 0 && (monsters[randnum1].HP >0 || monsters[randnum2].HP > 0))
                 {
+                    box1Text[2].Add(" ");
                     int skillnum = PlayerSkillText(2);
                     int targetnum = TargetText(2);
                     if (box1Text[2].Count > 18)
@@ -380,27 +400,28 @@ internal class MapleScene : IScene
                 Player.Instance.Buffs.Clear();
                 monsters[0].Buffs.Clear();
                 monsters[1].Buffs.Clear();
+                monsters[2].Buffs.Clear();
+                monsters[3].Buffs.Clear();
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
                     BGM_Player.Instance().Play_Lose();
-                    box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
+                    box1Text[2].Add(" ");
                     box1Text[2].Add("신살을 실패하였습니다");
                     life_point--;
                     CheckLife();
                     box1Text[2].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
                     box1Text[2].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                     Player.Instance.Gold = Player.Instance.Gold / 2;
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(2);
                     Player.Instance.HP = 1.0f;
-                    monsters[0].HP = monsters[0].MaxHP;
-                    monsters[1].HP = monsters[1].MaxHP;
                     return GameState.Main;
                 }
                 else
                 {
                     BGM_Player.Instance().Play_Victory();
-                    box1Text[2].RemoveRange(2, box1Text[2].Count - 2);
+                    box1Text[2].Add(" ");
                     box1Text[2].Add("승리하였습니다");
                     if (HasPlusGold())
                     {
@@ -412,9 +433,8 @@ internal class MapleScene : IScene
                         box1Text[2].Add($"+{monsters[randnum1].Gold + monsters[randnum2].Gold}gold");
                         Player.Instance.Gold += monsters[randnum1].Gold + monsters[randnum2].Gold;
                     }
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(2);
-                    monsters[0].HP = monsters[0].MaxHP;
-                    monsters[1].HP = monsters[1].MaxHP;
                     room++;
                     SceneManager.SetPhase(1);
                     return GameState.Retry;
@@ -429,12 +449,12 @@ internal class MapleScene : IScene
                     SceneManager.SetPhase(1);
                     return GameState.Retry;
                 }
-                while (Player.Instance.HP > 0 && monsters[2].HP > 0)
+                while (Player.Instance.HP > 0 && monsters[4].HP > 0)
                 {
                     int skillnum = PlayerSkillText(3);
                     int targetnum = TargetText2(3);
                     box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
-                    StartBattle(monsters[2], skillnum, targetnum);
+                    StartBattle(monsters[4], skillnum, targetnum);
                 }
                 if (Player.Instance.HP <= 0)
                 {
@@ -447,6 +467,7 @@ internal class MapleScene : IScene
                     box1Text[3].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
                     box1Text[3].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                     Player.Instance.Gold = Player.Instance.Gold / 2;
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(3);
                     Player.Instance.HP = 1.0f;
                     return GameState.Main;
@@ -459,14 +480,15 @@ internal class MapleScene : IScene
                     isClear[0] = true;
                     if (HasPlusGold())
                     {
-                        box1Text[3].Add($"+{(monsters[2].Gold) * 2}gold");
-                        Player.Instance.Gold += (monsters[2].Gold) * 2;
+                        box1Text[3].Add($"+{(monsters[4].Gold) * 2}gold");
+                        Player.Instance.Gold += (monsters[4].Gold) * 2;
                     }
                     else
                     {
-                        box1Text[3].Add($"+{(monsters[2].Gold) * 2}gold");
-                        Player.Instance.Gold += (monsters[2].Gold) * 2;
+                        box1Text[3].Add($"+{(monsters[4].Gold) * 2}gold");
+                        Player.Instance.Gold += (monsters[4].Gold) * 2;
                     }
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(3);
                     room++;
                     SceneManager.SetPhase(1);
@@ -480,12 +502,12 @@ internal class MapleScene : IScene
                     PressAnyKey(4);
                     return GameState.Main;
                 }
-                while (Player.Instance.HP > 0 && monsters[3].HP > 0)
+                while (Player.Instance.HP > 0 && monsters[5].HP > 0)
                 {
                     int skillnum = PlayerSkillText(4);
                     int targetnum = TargetText2(4);
                     box1Text[3].RemoveRange(19, box1Text[4].Count - 19);
-                    StartBattle(monsters[4], skillnum, targetnum);
+                    StartBattle(monsters[5], skillnum, targetnum);
                 }
 
                 if (Player.Instance.HP <= 0)
@@ -499,6 +521,7 @@ internal class MapleScene : IScene
                     box1Text[4].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
                     box1Text[4].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
                     Player.Instance.Gold = Player.Instance.Gold / 2;
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(4);
                     Player.Instance.HP = 1;
                     return GameState.Main;
@@ -511,20 +534,23 @@ internal class MapleScene : IScene
                     isClear[1] = true;
                     if (HasPlusGold())
                     {
-                        box1Text[4].Add($"+{(monsters[3].Gold) * 2}gold");
-                        Player.Instance.Gold += (monsters[2].Gold) * 2;
+                        box1Text[4].Add($"+{(monsters[5].Gold) * 2}gold");
+                        Player.Instance.Gold += (monsters[5].Gold) * 2;
                     }
                     else
                     {
-                        box1Text[4].Add($"+{(monsters[3].Gold) * 2}gold");
-                        Player.Instance.Gold += (monsters[2].Gold) * 2;
+                        box1Text[4].Add($"+{(monsters[5].Gold) * 2}gold");
+                        Player.Instance.Gold += (monsters[5].Gold) * 2;
                     }
+                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
                     PressAnyKey(4);
                     SceneManager.SetPhase(5);
                     return GameState.Retry;
                 }
             case 5:
                 BossDrop();
+                PrintDB.box2Data = PrintDB.GetPlayerStatus();
+                PrintUtil.CreateBox();
                 Console.ReadKey(true);
                 return GameState.Main;
             default:

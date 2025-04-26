@@ -29,6 +29,10 @@ internal class Monster : Unit
 
 
     //    메이플
+    public Monster Clone()
+    {
+        return new Monster(Name, HP, Damage, Defence, Gold, CritRate, CritDmg, Speed, DodgeRate, CanMove, MonsterSkills);
+    }
 
     public static Monster slime = new Monster("슬라임", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true,
         new List<Skill> { Skill.jumpAtk });
@@ -45,7 +49,6 @@ internal class Monster : Unit
         {
                 Skill.Normalize,
                 Skill.ChangFu,
-                Skill.EradicateRiceMonkey0,
                 Skill.EradicateRiceMonkey1,
                 Skill.ChangPOP
         });
@@ -64,9 +67,7 @@ internal class Monster : Unit
         new List<Skill>
         {
                 Skill.VeryHeal0,
-                Skill.VeryHeal1,
                 Skill.MuchDamage0,
-                Skill.MuchDamage1,
                 Skill.Wow
         });
     public static Monster elonMusk = new Monster("일론 머스크", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true,
@@ -75,7 +76,6 @@ internal class Monster : Unit
                 Skill.CybertruckCrash,
                 Skill.PumpIt,
                 Skill.DumpIt,
-                Skill.Tweeting
         });
 
 
