@@ -380,15 +380,15 @@ internal class LOLScene : IScene
                             case 9:
                                 randnum1 = random.Next(0, 2);
                                 randnum2 = random.Next(2, 4);
-                                BGM_Player.Instance().Play_Maple_Easy_Loop();
+                                BGM_Player.Instance().Play_Gaming_Easy_Loop();
                                 SceneManager.SetPhase(2);
                                 return GameState.Retry;
                             case 5:
-                                BGM_Player.Instance().Play_Maple_Gang_Loop();
+                                BGM_Player.Instance().Play_Gaming_Kkoma_Loop();
                                 SceneManager.SetPhase(3);
                                 return GameState.Retry;
                             case 10:
-                                BGM_Player.Instance().Play_Maple_SinChangSup_Loop();
+                                BGM_Player.Instance().Play_Gaming_Faker_Loop();
                                 SceneManager.SetPhase(4);
                                 return GameState.Retry;
                             default:
