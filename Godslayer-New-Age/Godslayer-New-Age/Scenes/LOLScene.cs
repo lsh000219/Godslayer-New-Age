@@ -439,18 +439,7 @@ internal class LOLScene : IScene
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[2].Add(" ");
-                    box1Text[2].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[2].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[2].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(2);
-                    Player.Instance.HP = 1.0f;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {
@@ -501,18 +490,7 @@ internal class LOLScene : IScene
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
-                    box1Text[3].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[3].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[3].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(3);
-                    Player.Instance.HP = 1.0f;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {
@@ -562,18 +540,7 @@ internal class LOLScene : IScene
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
-                    box1Text[4].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[4].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[4].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(4);
-                    Player.Instance.HP = 1;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {

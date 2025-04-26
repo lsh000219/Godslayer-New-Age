@@ -309,10 +309,13 @@ internal class SpaceScene : IScene
         {
             if (int.TryParse(Console.ReadLine(), out input3) && (input3 >= 0 && input3 <= 2))
             {
-                break;
+                return input3;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input3;
     }
     public int TargetText2(int Scene)
     {
@@ -327,10 +330,13 @@ internal class SpaceScene : IScene
         {
             if (int.TryParse(Console.ReadLine(), out input3) && (input3 >= 0 && input3 <= 1))
             {
-                break;
+                return input3;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input3;
     }
     public int PlayerSkillText(int Scene)
     {
@@ -345,10 +351,13 @@ internal class SpaceScene : IScene
             int.TryParse(Console.ReadLine(), out input2);
             if (input2 >= 1 && input2 <= 4)
             {
-                break;
+                return input2 - 1;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input2 - 1;
     }
     public void PressAnyKey(int Scene)
     {
@@ -430,7 +439,15 @@ internal class SpaceScene : IScene
                 {
                     box1Text[2].Add(" ");
                     int skillnum = PlayerSkillText(2);
+                    if (skillnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText(2);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     if (box1Text[2].Count > 18)
                     {
                         box1Text[2].RemoveRange(2, box1Text.Count - 2);
@@ -447,18 +464,7 @@ internal class SpaceScene : IScene
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[2].Add(" ");
-                    box1Text[2].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[2].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[2].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(2);
-                    Player.Instance.HP = 1.0f;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {
@@ -494,25 +500,22 @@ internal class SpaceScene : IScene
                 while (Player.Instance.HP > 0 && monsters[4].HP > 0)
                 {
                     int skillnum = PlayerSkillText(3);
+                    if (skillnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText2(3);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
                     StartBattle(monsters[4], skillnum, targetnum);
                 }
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
-                    box1Text[3].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[3].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[3].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(3);
-                    Player.Instance.HP = 1.0f;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {
@@ -546,7 +549,15 @@ internal class SpaceScene : IScene
                 while (Player.Instance.HP > 0 && monsters[5].HP > 0)
                 {
                     int skillnum = PlayerSkillText(4);
+                    if (skillnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText2(4);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                     StartBattle(monsters[5], skillnum, targetnum);
                 }
@@ -554,18 +565,7 @@ internal class SpaceScene : IScene
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
-                    BGM_Player.Instance().Play_Lose();
-                    box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
-                    box1Text[4].Add("신살을 실패하였습니다");
-                    life_point--;
-                    CheckLife();
-                    box1Text[4].Add("당신은 의식을 잃고 무엇인가의 힘에 의해 집으로 복귀했습니다.");
-                    box1Text[4].Add($"돈의 절반을 잃어버렸습니다(-{Player.Instance.Gold - Player.Instance.Gold / 2})gold");
-                    Player.Instance.Gold = Player.Instance.Gold / 2;
-                    PrintDB.box2Data = PrintDB.GetPlayerStatus();
-                    PressAnyKey(4);
-                    Player.Instance.HP = 1;
-                    return GameState.Main;
+                    return GameState.GameOver;
                 }
                 else
                 {
