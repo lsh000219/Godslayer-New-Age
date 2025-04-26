@@ -95,6 +95,8 @@ public static class SceneManager
                 return new SpaceScene();
             case GameState.LOL:
                 return new LOLScene();
+            case GameState.GameOver:
+                return new GameOverScene();
             default:
                 throw new InvalidOperationException("등록되지 않은 씬입니다.");
         }

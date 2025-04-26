@@ -284,10 +284,13 @@ internal class LOLScene : IScene
         {
             if (int.TryParse(Console.ReadLine(), out input3) && (input3 >= 0 && input3 <= 2))
             {
-                break;
+                return input3;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input3;
     }
     public int TargetText2(int Scene)
     {
@@ -302,10 +305,13 @@ internal class LOLScene : IScene
         {
             if (int.TryParse(Console.ReadLine(), out input3) && (input3 >= 0 && input3 <= 1))
             {
-                break;
+                return input3;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input3;
     }
     public int PlayerSkillText(int Scene)
     {
@@ -320,10 +326,13 @@ internal class LOLScene : IScene
             int.TryParse(Console.ReadLine(), out input2);
             if (input2 >= 1 && input2 <= 4)
             {
-                break;
+                return input2 - 1;
+            }
+            else
+            {
+                return 100;
             }
         }
-        return input2 - 1;
     }
     public void PressAnyKey(int Scene)
     {
@@ -405,7 +414,15 @@ internal class LOLScene : IScene
                 {
                     box1Text[2].Add(" ");
                     int skillnum = PlayerSkillText(2);
+                    if(skillnum==100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText(2);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     if (box1Text[2].Count > 18)
                     {
                         box1Text[2].RemoveRange(2, box1Text.Count - 2);
@@ -469,7 +486,15 @@ internal class LOLScene : IScene
                 while (Player.Instance.HP > 0 && monsters[4].HP > 0)
                 {
                     int skillnum = PlayerSkillText(3);
+                    if (skillnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText2(3);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     box1Text[3].RemoveRange(19, box1Text[3].Count - 19);
                     StartBattle(monsters[4], skillnum, targetnum);
                 }
@@ -521,7 +546,15 @@ internal class LOLScene : IScene
                 while (Player.Instance.HP > 0 && monsters[5].HP > 0)
                 {
                     int skillnum = PlayerSkillText(4);
+                    if (skillnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     int targetnum = TargetText2(4);
+                    if (targetnum == 100)
+                    {
+                        return GameState.Retry;
+                    }
                     box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                     StartBattle(monsters[5], skillnum, targetnum);
                 }
