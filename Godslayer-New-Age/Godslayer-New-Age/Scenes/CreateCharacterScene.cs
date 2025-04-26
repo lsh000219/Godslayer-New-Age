@@ -42,12 +42,29 @@ internal class CreateCharacterScene : IScene
 
                     case "1":
                         Player.Instance.PlayerJob = (Player.Job)0;
+                        Player.Instance.PlayerSkills.Add(Skill.HuntingInPlace); //    제자리 사냥
+                        Player.Instance.PlayerSkills.Add(Skill.PostInInven); //    인벤에 글쓰기
+                        Player.Instance.PlayerSkills.Add(Skill.WWE); //    WWE
+                        Player.Instance.PlayerSkills.Add(Skill.Origin); //    오리진
                         break;
                     case "2":
                         Player.Instance.PlayerJob = (Player.Job)1;
+                        Player.Instance.PlayerSkills.Add(Skill.AllInStock); //    올인
+                        Player.Instance.PlayerSkills.Add(Skill.StrongHand); //    존버
+                        Player.Instance.PlayerSkills.Add(Skill.PanicSell); //    패닉셀
+                        Player.Instance.PlayerSkills.Add(Skill.CEONomalAtk); //    영웅호걸의 시간이다
+
                         break;
                     case "3":
                         Player.Instance.PlayerJob = (Player.Job)2;
+                        Player.Instance.PlayerSkills.Add(Skill.Click); //    딸깍
+                        Player.Instance.PlayerSkills.Add(Skill.ChatMute); //    채팅 금지
+
+                        Player.Instance.PlayerSkills.Add(Skill.POTG); //    MVP각 ㅇㅈ
+                        Player.Instance.PlayerSkills.Add(Skill.POTGBuff); //    MVP각 ㅇㅈ
+
+                        Player.Instance.PlayerSkills.Add(Skill.Multikill);
+                        Player.Instance.PlayerSkills.Add(Skill.MultikillBuff);
                         break;
                     default:
                         return GameState.Retry;
