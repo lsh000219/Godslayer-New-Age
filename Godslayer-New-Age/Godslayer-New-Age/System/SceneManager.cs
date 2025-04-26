@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Godslayer_New_Age.Scenes;
 using Godslayer_New_Age.Wooseong.Scenes;
 
 public static class SceneManager
@@ -92,6 +93,10 @@ public static class SceneManager
                 return new SpaceScene();
             case GameState.LOL:
                 return new LOLScene();
+            case GameState.Clear:
+                return new ClearScene();
+            case GameState.GameOver:
+                return new GameOverScene();
             default:
                 throw new InvalidOperationException("등록되지 않은 씬입니다.");
         }
