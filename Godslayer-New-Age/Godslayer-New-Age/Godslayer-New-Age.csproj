@@ -65,6 +65,8 @@
     <Compile Include="System\SceneManager.cs" />
     <Compile Include="Scenes\CreateCharacterScene.cs" />
     <Compile Include="Scenes\DungeonScene.cs" />
+    <Compile Include="Scenes\ClearScene.cs" />
+    <Compile Include="Scenes\GameOverScene.cs" />
     <Compile Include="Scenes\IntroScene.cs" />
     <Compile Include="Scenes\InventoryScene.cs" />
     <Compile Include="Scenes\LoadScene.cs" />
