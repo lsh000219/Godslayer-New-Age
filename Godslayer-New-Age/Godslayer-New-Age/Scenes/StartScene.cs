@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 internal class StartScene : IScene
 {
@@ -42,26 +39,6 @@ internal class StartScene : IScene
             {
                 "하고 싶은 행동을 선택해주세요.",
                 "1. 새로시작     2. 이어하기     0. 게임종료"
-            };
-
-        box1Text[1] = new List<string>()
-            {
-                ""
-            };
-
-        box3Text[1] = new List<string>()
-            {
-                ""
-            };
-
-        box1Text[2] = new List<string>()
-            {
-                ""
-            };
-
-        box3Text[2] = new List<string>()
-            {
-                ""
             };
     }
 }

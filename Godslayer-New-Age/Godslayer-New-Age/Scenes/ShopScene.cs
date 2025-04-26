@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
 using System.Data;
 
 public class ShopScene : IScene
@@ -184,7 +181,23 @@ public class ShopScene : IScene
                 break;
         }
 
-        var list = new List<string>();
+        List<string> list = new List<string>();
+
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⣴⢴⣲⢤⢶⣲⢿⡽⣯⢯⡯⣟⣷⣳⣖⣗⣷⡀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⢀⡾⣯⢿⣺⢽⢽⣺⢽⡽⡽⡽⣽⣳⣳⣳⣳⣗⣗⡿⡄⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⣞⣯⢿⡽⡾⣽⣻⢾⡽⡽⡽⣽⣳⣳⣳⣳⣳⣳⣳⢯⢿⡀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⣼⣻⣞⣯⢿⡽⣽⣞⣯⢿⣽⢽⣳⣳⣳⣳⣳⣳⣳⢯⢯⢯⢿⡀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⢰⣯⢷⣻⣞⣯⣟⣷⢟⢮⡣⡣⡫⡳⡳⡷⣳⣳⣳⢯⢯⢯⢯⡯⣷⠀⠀⠀⠀⠀               `gray,black`지르라냥");
+        list.Add("`darkgray,black`               ⠀⣿⣞⣯⢷⣻⡾⡳⡕⣕⠕⢍⠪⡘⡘⠜⢜⢜⢝⢾⢯⡯⡯⡯⣯⣟⡇⠀                         `gray,black`지르라냥");
+        list.Add("`darkgray,black`               ⠘⣷⣟⡾⣯⡏⡎⡎⡌⡺⣌⣢⣱⢮⣨⣪⢼⢐⢅⢇⢗⣝⣯⡯⣗⣯⠇⠀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠹⣾⣻⣿⣿⣾⣮⣮⣮⣲⣕⢵⡱⣜⣦⣧⣧⣷⣵⣷⣿⣿⢿⡽⠃⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠈⠙⠚⠯⠯⠯⣿⣽⣽⣽⣳⣽⣺⡷⣷⢷⣿⡽⠝⠗⠛⠉⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⠀⢰⣿⣺⣗⣟⣾⣳⡯⡯⡯⣟⣾⣳⡀⠀⡀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⢠⣿⣳⣟⣾⣺⣺⣗⡯⡯⡯⣗⣟⡾⣧⠘⢌⢳⡀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⣾⣗⣿⣺⣞⣾⣺⣗⣯⢯⢯⣗⡷⡯⣿⡆⢨⢪⡢⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⢸⣷⣻⣞⣷⣳⣗⣿⣺⣞⡯⣟⣾⣻⡽⡷⣷⣕⠕⠁⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠿⢷⣻⣗⣿⣺⣗⣿⣗⣯⣟⣗⣿⣺⣟⡯⡿⠀⠀⠀⠀⠀⠀");
+        list.Add(new string('═', Constants.BOX1_WIDTH));
 
         for (int i = 0; i < shopItems.Length; i++)
         {
