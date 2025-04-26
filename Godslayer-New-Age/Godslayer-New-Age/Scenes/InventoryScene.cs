@@ -78,6 +78,24 @@ internal class InventoryScene : IScene
     public void AppendItemList()
     {
         List<string> tempitems = new List<string>();
+
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`",25) + PrintUtil.AlignLeft("`blue,black`",25) + PrintUtil.AlignLeft("",25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⡴⠚⠁⠉⠑⠒⢦⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⢤⢠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`",25) + PrintUtil.AlignLeft("",25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⠀⠀⠀⢀⡀⣜⢸⣉⢉⣉⢉⡑⡇⣇⡀⡀⠀⠀⠀⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠈⠊⡎⡧⡅⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ", 25) + PrintUtil.AlignLeft("`blue,black`",25) + PrintUtil.AlignLeft("",25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⡠⠊⣹⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣏⠱⢄⠀⠀⠀⠀", 24));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠈⠪⡺⣹⣔⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`",25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠠⡠⡀⠀⠀⠀⠀⠀⠀⠀⠠⡠⡠⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⠀⡇⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⢸⠀⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠈⢳⣻⣽⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⢐⢔⢠⣠⢶⡆⠀⠀⠀⠀⠀⢰⡶⣄⡄⡔⡐⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⡀⡕⠝⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⠪⣒⢀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⢸⠀⠀⡇⠀⡤⢤⠀⠀⠀⠀⠀⡤⢤⠀⢸⠀⠈⡆⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠘⢺⣟⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⣸⢮⣪⢯⢷⣹⡽⣆⣤⣄⣤⣰⣟⡧⣻⣞⢼⡼⡇⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⡪⡈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡁⡕⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⢸⠀⠀⠳⣀⡧⢸⣀⣀⣀⣀⣀⠇⣹⢠⠚⠀⠀⡇⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠘⠽⣾⣿⣥⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⢸⣞⣟⡾⣯⣻⣼⢯⣿⡺⣞⣷⣻⢾⣽⣺⢞⡯⡿⣽⡃⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⢝⢜⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⢬⢚⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⡏⠀⠀⠀⠀⣇⢰⠀⠀⠀⠀⠀⡇⢼⠀⠀⠀⠀⢹⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠩⢺⣿⣻⣦⡀⠀⠀⠀⢀⡴⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠈⠺⡺⠾⣺⡷⡯⣟⣾⡪⣒⢮⡯⣟⡾⣽⡷⠯⢟⠎⠁⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⡕⡕⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠨⢪⢢⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠀⡇⠀⠀⡠⡠⡇⠸⢤⢠⠤⢄⢤⠃⡺⡄⣄⠀⠀⢸⠀⠀⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣻⣽⣟⡦⣤⡬⡏⠂⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⠿⣽⢯⣷⡳⣟⢾⣺⢯⣷⣻⢷⠻⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠕⢕⢄⠀⠀⠀⠀⠀⠀⢀⢠⠱⠱⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⢠⠎⡇⠀⢐⡇⢸⠩⢩⢱⠀⠀⠀⡇⡍⠌⡇⢸⠄⠀⢸⠱⡄⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⡆⢒⢐⡇⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⠀⣿⡽⣮⢿⣽⣟⣾⣯⣞⣞⣿⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠀⠈⠢⢇⢆⢀⢀⡀⡰⡸⠌⠈⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⡇⠀⡇⠀⢐⡇⠸⡼⢺⠼⠀⠀⠀⠧⠷⢥⠇⢸⠂⠀⢸⠀⢸⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠝⠑⠱⢿⣲⡀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⣤⣟⢿⢽⢯⡳⣛⢺⣳⣻⢽⣻⡤⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡏⡋⡏⡏⡯⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⡇⠀⡇⠀⢐⡇⠀⠣⠜⠀⠀⠀⠀⠀⠣⠊⠀⢸⡁⠀⡸⠀⣸⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠛⠈⠀⠀⠀⠀⠫⣻⣖⡄⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⣿⣺⣟⡿⣝⣾⣺⣮⡻⣞⡿⣽⡯⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⡮⡺⡪⣫⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⢸⠀⢸⠀⢐⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠄⠀⡇⠀⡆⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢙⢗⠡⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⠷⣫⣞⣽⠵⠟⠾⠷⢯⣫⣯⣳⠟⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`green,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣳⢽⢮⢯⢾⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("`yellow,black`⠀⢸⠀⠸⡀⠀⠣⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠜⠀⢀⠇⠀⡇⠀", 25));
+        tempitems.Add(PrintUtil.AlignLeft("`red,black`⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀", 25) + PrintUtil.AlignLeft("`blue,black`⠀⠀⠀⠀⠀⠀⠀⠁⠁⠉⠀⠀⠀⠀⠀⠁⠁⠑⠀⠀⠀⠀⠀⠀⠀", 25) + PrintUtil.AlignLeft("",25) + PrintUtil.AlignLeft("`yellow,black`⠀⠀⠑⠒⠓⠦⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠴⠚⠒⠊⠀⠀", 25));
+
+        tempitems.Add(new string('═', Constants.BOX1_WIDTH));
+
         PlayerInventory.Display(ref tempitems);
         PrintDB.box1Data = tempitems;
     }

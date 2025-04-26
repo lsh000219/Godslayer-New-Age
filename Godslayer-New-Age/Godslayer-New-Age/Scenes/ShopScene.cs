@@ -181,7 +181,23 @@ public class ShopScene : IScene
                 break;
         }
 
-        var list = new List<string>();
+        List<string> list = new List<string>();
+
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⣴⢴⣲⢤⢶⣲⢿⡽⣯⢯⡯⣟⣷⣳⣖⣗⣷⡀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⢀⡾⣯⢿⣺⢽⢽⣺⢽⡽⡽⡽⣽⣳⣳⣳⣳⣗⣗⡿⡄⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⣞⣯⢿⡽⡾⣽⣻⢾⡽⡽⡽⣽⣳⣳⣳⣳⣳⣳⣳⢯⢿⡀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⣼⣻⣞⣯⢿⡽⣽⣞⣯⢿⣽⢽⣳⣳⣳⣳⣳⣳⣳⢯⢯⢯⢿⡀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⢰⣯⢷⣻⣞⣯⣟⣷⢟⢮⡣⡣⡫⡳⡳⡷⣳⣳⣳⢯⢯⢯⢯⡯⣷⠀⠀⠀⠀⠀               `gray,black`지르라냥");
+        list.Add("`darkgray,black`               ⠀⣿⣞⣯⢷⣻⡾⡳⡕⣕⠕⢍⠪⡘⡘⠜⢜⢜⢝⢾⢯⡯⡯⡯⣯⣟⡇⠀                         `gray,black`지르라냥");
+        list.Add("`darkgray,black`               ⠘⣷⣟⡾⣯⡏⡎⡎⡌⡺⣌⣢⣱⢮⣨⣪⢼⢐⢅⢇⢗⣝⣯⡯⣗⣯⠇⠀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠹⣾⣻⣿⣿⣾⣮⣮⣮⣲⣕⢵⡱⣜⣦⣧⣧⣷⣵⣷⣿⣿⢿⡽⠃⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠈⠙⠚⠯⠯⠯⣿⣽⣽⣽⣳⣽⣺⡷⣷⢷⣿⡽⠝⠗⠛⠉⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⠀⢰⣿⣺⣗⣟⣾⣳⡯⡯⡯⣟⣾⣳⡀⠀⡀⠀⠀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⢠⣿⣳⣟⣾⣺⣺⣗⡯⡯⡯⣗⣟⡾⣧⠘⢌⢳⡀⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠀⣾⣗⣿⣺⣞⣾⣺⣗⣯⢯⢯⣗⡷⡯⣿⡆⢨⢪⡢⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⢸⣷⣻⣞⣷⣳⣗⣿⣺⣞⡯⣟⣾⣻⡽⡷⣷⣕⠕⠁⠀⠀⠀");
+        list.Add("`darkgray,black`               ⠀⠀⠀⠀⠀⠿⢷⣻⣗⣿⣺⣗⣿⣗⣯⣟⣗⣿⣺⣟⡯⡿⠀⠀⠀⠀⠀⠀");
+        list.Add(new string('═', Constants.BOX1_WIDTH));
 
         for (int i = 0; i < shopItems.Length; i++)
         {

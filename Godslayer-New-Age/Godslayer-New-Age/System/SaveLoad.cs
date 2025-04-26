@@ -48,10 +48,10 @@ internal class SaveLoad
 
     public static Player LoadPlayer(string fileName)
     {
-        if (!File.Exists(fileName)) return new Player(0, "데이터 없음", 1, 0f, 100f, 100f, 50f, 50f, 20f, 5f, 100, 20f, 1.5f, 1f, 50f, true);
+        if (!File.Exists(fileName)) return new Player(0, null, 0, 0f, 100f, 100f, 50f, 50f, 20f, 5f, 100, 20f, 1.5f, 1f, 50f, true);
 
         FileInfo fileInfo = new FileInfo(fileName);
-        if (fileInfo.Length == 0) return new Player(0, "데이터 없음", 1, 0f, 100f, 100f, 50f, 50f, 20f, 5f, 100, 20f, 1.5f, 1f, 50f, true); // 빈 파일이면 기본 인스턴스 반환
+        if (fileInfo.Length == 0) return new Player(0, null, 0, 0f, 100f, 100f, 50f, 50f, 20f, 5f, 100, 20f, 1.5f, 1f, 50f, true); // 빈 파일이면 기본 인스턴스 반환
 
         using (FileStream fs = new FileStream(fileName, FileMode.Open))
         {
