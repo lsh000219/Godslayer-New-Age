@@ -107,6 +107,12 @@ internal class BGM_Player
         Music_Start("Lose.wav", 1);
     }
 
+    public void Play_Gameover()
+    {
+        BGM_Player.Instance().Music_Exit();
+        Music_Start("GameOver.wav", 1);
+    }
+
     public void Play_Maple_Easy_Loop()
     {
         BGM_Player.Instance().Music_Exit();

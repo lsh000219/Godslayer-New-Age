@@ -16,6 +16,7 @@ internal class GameOverScene : IScene
         }
         else if (life_point == 0)
         {
+            BGM_Player.Instance().Play_Gameover();
             box1Text[0].Add("You Die...");
             //강종 및 데이터 삭제 함수
         }
