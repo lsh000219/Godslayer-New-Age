@@ -344,6 +344,7 @@ internal class LOLScene : IScene
         switch (phase)
         {
             case 0:
+                BGM_Player.Instance().Music_Exit();
                 PressAnyKey(0);
                 SceneManager.SetPhase(1);
                 return GameState.Retry;

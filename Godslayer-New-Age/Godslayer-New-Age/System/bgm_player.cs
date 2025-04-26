@@ -83,6 +83,17 @@ internal class BGM_Player
         BGM_Player.Instance().Music_Exit();
         Music_Start("Main.wav", 0);
     }
+    public void Play_Rest()
+    {
+        BGM_Player.Instance().Music_Exit();
+        Music_Start("Rest.wav", 1);
+    }
+
+    public void Play_Dungeon()
+    {
+        BGM_Player.Instance().Music_Exit();
+        Music_Start("Dungeon.wav", 1);
+    }
 
     public void Play_Victory()
     {
@@ -93,7 +104,7 @@ internal class BGM_Player
     public void Play_Lose()
     {
         BGM_Player.Instance().Music_Exit();
-        Music_Start("Victory.wav", 1);
+        Music_Start("Lose.wav", 1);
     }
 
     public void Play_Maple_Easy_Loop()
