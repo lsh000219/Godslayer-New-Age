@@ -50,7 +50,7 @@ public class Effect
 
             //    방어력 버프하기
             case EffectType.BuffDef:
-                target.Defence += _Value;
+                target.Defence *= _Value;
                 break;
 
             //    공격력에 비례해서 대미지 주기
@@ -64,7 +64,7 @@ public class Effect
 
             //    최대 체력에 비례해 체력을 깎아버리기(정상화 전용으로 0.5f를 넣으면 반타작을 냄)
             case EffectType.CutHP:
-                target.HP = Math.Max(0, target.HP - (target.MaxHP * _Value));
+                target.HP = target.MaxHP / 2;
                 break;
 
             //    방어력 무시 공격
