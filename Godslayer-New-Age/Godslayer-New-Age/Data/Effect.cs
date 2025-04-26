@@ -55,7 +55,7 @@ public class Effect
 
             //    방어력 버프하기
             case EffectType.BuffDef:
-                target.Defence += _Value;
+                target.Defence *= _Value;
                 break;
 
             //    공격력에 비례해서 대미지 주기

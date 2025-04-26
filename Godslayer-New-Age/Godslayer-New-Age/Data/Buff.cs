@@ -55,17 +55,23 @@ public class Buff
                     switch (_Effect._Type)
                     {
                         case EffectType.BuffAtk:
-                            target.Damage = Math.Min(target.Damage * _Effect._Value, 9999f);
+                            OriginalValue = target.Damage;
+                            target.Damage *= _Effect._Value;
                             break;
 
                         case EffectType.BuffDef:
                             OriginalValue = target.Defence;
-                            target.Defence += _Effect._Value;
+                            target.Defence *= _Effect._Value;
                             break;
 
                         case EffectType.IncreasedCrit:
                             OriginalValue = target.CritRate;
                             target.CritRate += _Effect._Value;
+                            break;
+
+                        case EffectType.IncreasedDodge:
+                            OriginalValue = target.DodgeRate;
+                            target.DodgeRate += _Effect._Value;
                             break;
                     }
                     IsApplied = true;
