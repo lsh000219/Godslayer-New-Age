@@ -16,7 +16,7 @@ internal class MapleScene : IScene
     private int randnum2;
     private int life_point = 5;
     private bool[] isClear = { false, false };
-
+    bool[] isDie = { false, false };
     List<Monster> monsters = new List<Monster>();
     public void AddMonster()//다른 곳에서바꾸기
     {
@@ -31,7 +31,6 @@ internal class MapleScene : IScene
     public void StartBattle(Monster monster1, Monster monster2, int skillnum, int targetnum)//일반몹(2명씩 나올 예정)
     {
         Unit unit;
-        bool[] isDie = { false, false };
         float player_rand_Spd = random.Next(0, 5) + Player.Instance.Speed;
         float monster1_rand_Spd = random.Next(0, 5) + monster1.Speed;
         float monster2_rand_Spd = random.Next(0, 5) + monster2.Speed;
@@ -217,7 +216,7 @@ internal class MapleScene : IScene
     }
     public void MonsterTurn(Monster monster, int num)
     {
-        int randomskill = random.Next(0, monster.MonsterSkills.Count);
+        int randomskill;
         float FHP = Player.Instance.HP;
         int textnum;
         switch (room)
@@ -242,22 +241,51 @@ internal class MapleScene : IScene
                 textnum = 2;
                 break;
         }
-        if (monster.HP > 0)
+        if(monster.Name == "신창섭")
         {
-            monster.MonsterSkills[randomskill].Use(Player.Instance, monster);
-            if (Player.Instance.HP < FHP)
+            randomskill = random.Next(1, monster.MonsterSkills.Count);
+            if (monster.HP > 0)
             {
-                if (num == 1)
+                if(turn == 1)
                 {
-                    box1Text[textnum].Add($"{monster.Name}A가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
-                }
-                else if (num == 2)
-                {
-                    box1Text[textnum].Add($"b.{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                    monster.MonsterSkills[0].Use(Player.Instance, monster);
+                    box1Text[textnum].Add($"{monster.Name}이 {Player.Instance.Name}을(를) 정상화시켰다!!");
                 }
                 else
                 {
+                    monster.MonsterSkills[randomskill].Use(Player.Instance, monster);
                     box1Text[textnum].Add($"{monster.Name}이(가) {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                }
+            }
+            else
+            {
+                box1Text[textnum].Add($"{monster.Name}가 어떤 스킬을 썼다!");
+            }
+        }
+        else
+        {
+            randomskill = random.Next(0, monster.MonsterSkills.Count);
+            if (monster.HP > 0)
+            {
+                monster.MonsterSkills[randomskill].Use(Player.Instance, monster);
+                if (Player.Instance.HP < FHP)
+                {
+                    if (num == 1)
+                    {
+                        box1Text[textnum].Add($"{monster.Name}A가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                    }
+                    else if (num == 2)
+                    {
+                        box1Text[textnum].Add($"b.{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                    }
+                    else
+                    {
+                        box1Text[textnum].Add($"{monster.Name}이(가) {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                    }
+                }
+                else
+                {
+                    box1Text[textnum].Add($"{monster.Name}가 어떤 스킬을 썼다!");
                 }
             }
         }
@@ -350,6 +378,16 @@ internal class MapleScene : IScene
                     monsters.Clear();
                     return GameState.Pop;
                 }
+                else if(input =="q")
+                {
+                    room = 5;
+                    return GameState.Retry;
+                }
+                else if(input =="w")
+                {
+                    room = 10;
+                    return GameState.Retry;
+                }
                 switch (input)
                 {
                     case "1":
@@ -402,6 +440,8 @@ internal class MapleScene : IScene
                 monsters[1].Buffs.Clear();
                 monsters[2].Buffs.Clear();
                 monsters[3].Buffs.Clear();
+                isDie[0] = false;
+                isDie[1] = false;
                 if (Player.Instance.HP <= 0)
                 {
                     Player.Instance.HP = 0;
@@ -506,7 +546,7 @@ internal class MapleScene : IScene
                 {
                     int skillnum = PlayerSkillText(4);
                     int targetnum = TargetText2(4);
-                    box1Text[3].RemoveRange(19, box1Text[4].Count - 19);
+                    box1Text[4].RemoveRange(19, box1Text[4].Count - 19);
                     StartBattle(monsters[5], skillnum, targetnum);
                 }
 
