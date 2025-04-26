@@ -314,13 +314,13 @@ public static Skill Multikill = new Skill("멀티킬", 50,
         new List<Buff>
         {
             new Buff("공격력 증가", BuffType.StatUp,
-             new Effect(EffectType.BuffAtk, 0.5f), 1)
+             new Effect(EffectType.BuffAtk, 1.5f), 1)
         });
     public static Skill DumpIt = new Skill("코인 떡락!", 0, null,
         new List<Buff>
         {
             new Buff("공격력 감소", BuffType.StatUp,
-             new Effect(EffectType.BuffAtk, -0.5f), 1)
+             new Effect(EffectType.BuffAtk, 0.5f), 1)
         });
 
 
@@ -382,6 +382,7 @@ public static Skill Multikill = new Skill("멀티킬", 50,
             //    피했죠 대미지 주기
             new Effect(EffectType.DamageWithAtkScale, 0.5f)
         });
+
     public static Skill IDodgeThat1 = new Skill("피했죠?", 0, null,
         new List<Buff>
         { 
