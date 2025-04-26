@@ -98,7 +98,7 @@ internal class Monster : Unit
                 Skill.AngryFeedback,
                 Skill.Warding
         });
-    public static Monster GOD = new Monster("신", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true,
+    public static Monster GOD = new Monster("Faker", 50f, 10f, 2f, 10, 5f, 1.5f, 1f, 10f, true,
         new List<Skill>
         {
                 Skill.Gotya,

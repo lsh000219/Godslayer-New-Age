@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Godslayer_New_Age;
-using Godslayer_New_Age.Wooseong.Scenes;
+
 
 public class IntroScene : IScene
 {
