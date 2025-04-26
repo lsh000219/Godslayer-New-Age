@@ -44,7 +44,7 @@ internal class MapleScene : IScene
         {
             if (entry.character is Player)
             {
-                //PlayerTurn(input2,input3);
+                //PlayerTurn(skill,target);
             }
             else if (entry.character is Monster monster)
             {
