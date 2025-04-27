@@ -7,7 +7,6 @@ internal class RestScene : IScene
 
     public GameState Run(int phase)
     {
-        BGM_Player.Instance().Play_Rest();
         PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
         PrintDB.box2Data = PrintDB.GetPlayerStatus();
         PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();

@@ -12,6 +12,7 @@ internal class GameOverScene : IScene
     {
         if (life_point > 0)
         {
+            BGM_Player.Instance().Play_Lose();
             box1Text[0].Add($"기회가 {life_point}번 남았습니다...");
         }
         else if (life_point == 0)
@@ -35,7 +36,7 @@ internal class GameOverScene : IScene
 
         PrintUtil.CreateBox();
 
-        BGM_Player.Instance().Play_Lose();
+        //BGM_Player.Instance().Play_Lose();
         box1Text[0].Add("신살을 실패하였습니다");
         life_point--;
         CheckLife();

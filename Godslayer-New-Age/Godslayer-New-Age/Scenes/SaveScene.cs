@@ -12,7 +12,6 @@ internal class SaveScene : IScene
 
 
         PrintUtil.CreateBox();
-        BGM_Player.Instance().Play_SaveLoad_Loop();
 
         // 입력에 따라 다음 상태 반환
         string input = Console.ReadLine();

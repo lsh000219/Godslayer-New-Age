@@ -11,13 +11,14 @@ internal class LoadScene : IScene
         PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
         PrintUtil.CreateBox();
-        BGM_Player.Instance().Play_SaveLoad_Loop();
         // 입력에 따라 다음 상태 반환
         string input = Console.ReadLine();
-        if (input == "1") { Player.SetInstance(SaveLoad.LoadPlayer("player1.dat")); return GameState.Main; }
-        if (input == "2") { Player.SetInstance(SaveLoad.LoadPlayer("player2.dat")); return GameState.Main; }
-        if (input == "3") { Player.SetInstance(SaveLoad.LoadPlayer("player3.dat")); return GameState.Main; }
+        if (input == "1") { if (SaveLoad.LoadPlayer("player1.dat").Name != null) { Player.SetInstance(SaveLoad.LoadPlayer("player1.dat")); return GameState.Main; } }
+        if (input == "2") { if (SaveLoad.LoadPlayer("player2.dat").Name != null) { Player.SetInstance(SaveLoad.LoadPlayer("player2.dat")); return GameState.Main; } }
+        if (input == "3") { if (SaveLoad.LoadPlayer("player3.dat").Name != null) { Player.SetInstance(SaveLoad.LoadPlayer("player3.dat")); return GameState.Main; } }
         if (input == "0") return GameState.Pop;
+
+        
 
         return GameState.Retry; // 다시 실행
     }

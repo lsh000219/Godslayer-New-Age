@@ -7,7 +7,6 @@ internal class DungeonScene : IScene
 
     public GameState Run(int phase)
     {
-        BGM_Player.Instance().Play_Dungeon();
         PrintDB.box1Data = box1Text.ContainsKey(phase) ? box1Text[phase] : new List<string>();
         PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 

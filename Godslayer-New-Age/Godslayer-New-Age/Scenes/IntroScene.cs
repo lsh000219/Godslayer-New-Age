@@ -31,7 +31,6 @@ public class IntroScene : IScene
 
     public IntroScene()
     {
-        BGM_Player.Instance().Play_Intro_Loop();
         box1Text[0] = new List<string>()
             {
                 "`darkred,`⠀     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣄⣀⠀⠀⠀⠀⡀⠀⢀⣠⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀",

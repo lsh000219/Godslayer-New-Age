@@ -12,7 +12,6 @@ internal class MainScene : IScene
         PrintDB.box3Data = box3Text.ContainsKey(phase) ? box3Text[phase] : new List<string>();
 
         PrintUtil.CreateBox();
-        BGM_Player.Instance().Play_Main_Loop();
 
         // 입력에 따라 다음 상태 반환
         string input = Console.ReadLine();
