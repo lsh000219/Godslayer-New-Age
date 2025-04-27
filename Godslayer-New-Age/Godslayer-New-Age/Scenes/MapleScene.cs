@@ -266,7 +266,7 @@ internal class MapleScene : IScene
                     }
                     else if (num == 2)
                     {
-                        box1Text[textnum].Add($"b.{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
+                        box1Text[textnum].Add($"{monster.Name}B가 {Player.Instance.Name}에게 {FHP - Player.Instance.HP}만큼 피해를 입혔다!!");
                     }
                     else
                     {
