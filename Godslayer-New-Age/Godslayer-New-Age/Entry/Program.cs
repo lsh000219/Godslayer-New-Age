@@ -7,11 +7,11 @@ internal class Program
     {
 
         //bgm test
-        /*
-        BGM_Player.Instance().Play_Stock_Musk_Loop();
-        Console.ReadLine();
-        BGM_Player.Instance().Music_Exit();
-        */
+
+        //BGM_Player.Instance().Play_Clear_Loop();
+        //Console.ReadLine();
+        //BGM_Player.Instance().Music_Exit();
+
 
 
 

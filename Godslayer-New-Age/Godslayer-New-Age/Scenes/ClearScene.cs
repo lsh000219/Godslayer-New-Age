@@ -30,11 +30,12 @@ internal class ClearScene : IScene
                 SceneManager.SetPhase(1);
                 return GameState.Retry;
             case 1:
-                BGM_Player.Instance().Play_Hidden_Loop();
+                
                 PressAnyKey(1);
                 SceneManager.SetPhase(2);
                 return GameState.Retry;
             case 2:
+                BGM_Player.Instance().Play_Hidden_Loop();
                 PressAnyKey(2);
                 return GameState.Main;
         }
