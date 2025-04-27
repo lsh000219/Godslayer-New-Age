@@ -24,6 +24,8 @@ internal class SpaceScene : IScene
         monsters.Add(Monster.yiLongMa.Clone());
         monsters.Add(Monster.doge);
         monsters.Add(Monster.elonMusk);
+        monsters.Add(Monster.godChangseop);
+        monsters.Add(Monster.GOD);
     }
     public void StartBattle(Monster monster1, Monster monster2, int skillnum, int targetnum)//일반몹(2명씩 나올 예정)
     {
@@ -592,6 +594,10 @@ internal class SpaceScene : IScene
                 PrintDB.box2Data = PrintDB.GetPlayerStatus();
                 PrintUtil.CreateBox();
                 Console.ReadKey(true);
+                if (monsters[5].HP <= 0 && monsters[6].HP <= 0 && monsters[7].HP <= 0)
+                {
+                    return GameState.Clear;
+                }
                 return GameState.Main;
             default:
                 return GameState.Main;
@@ -710,7 +716,7 @@ internal class SpaceScene : IScene
             "                          ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠋⠀⠀⠀⠙⢿⣿⣿⡿⠿⠟⣩⣾⣿⣿⣿⣿⠀⠈⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿",
             "                          ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠋⠁⠀⠀⠀⣷⡄⠀⠀⠀⠀⠀⣀⣴⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠉⠙⠛⠿⢿⣿⣿",
             "                                     ",
-            "신창섭이 공격해온다!"
+            "일론 머스크가 공격해온다!"
         };
 
         box3Text[4] = new List<string>()

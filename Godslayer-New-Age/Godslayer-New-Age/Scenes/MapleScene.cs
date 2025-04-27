@@ -23,6 +23,8 @@ internal class MapleScene : IScene
         monsters.Add(Monster.orangeMushroom.Clone());
         monsters.Add(Monster.kangWunky);
         monsters.Add(Monster.godChangseop);
+        monsters.Add(Monster.elonMusk);
+        monsters.Add(Monster.GOD);
     }
     public void StartBattle(Monster monster1, Monster monster2, int skillnum, int targetnum)//일반몹(2명씩 나올 예정)
     {
@@ -579,6 +581,10 @@ internal class MapleScene : IScene
                 PrintDB.box2Data = PrintDB.GetPlayerStatus();
                 PrintUtil.CreateBox();
                 Console.ReadKey(true);
+                if (monsters[5].HP <= 0 && monsters[6].HP <= 0 && monsters[7].HP <= 0)
+                {
+                    return GameState.Clear;
+                }
                 return GameState.Main;
             default:
                 return GameState.Main;

@@ -97,6 +97,8 @@ public static class SceneManager
                 return new LOLScene();
             case GameState.GameOver:
                 return new GameOverScene();
+            case GameState.Clear:
+                return new ClearScene();
             default:
                 throw new InvalidOperationException("등록되지 않은 씬입니다.");
         }
