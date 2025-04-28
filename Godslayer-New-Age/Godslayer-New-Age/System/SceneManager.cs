@@ -83,7 +83,7 @@ public static class SceneManager
                 BGM_Player.Instance().Play_SaveLoad_Loop();
                 return new LoadScene();
             case GameState.Main:
-                BGM_Player.Instance().Play_Main_Loop();
+                //BGM_Player.Instance().Play_Main_Loop();
                 return new MainScene();
             case GameState.Inventory:
                 return new InventoryScene();
@@ -104,6 +104,7 @@ public static class SceneManager
             case GameState.GameOver:
                 return new GameOverScene();
             case GameState.Clear:
+                BGM_Player.Instance().Play_Clear_Loop();
                 return new ClearScene();
             default:
                 throw new InvalidOperationException("등록되지 않은 씬입니다.");

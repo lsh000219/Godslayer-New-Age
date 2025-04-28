@@ -166,6 +166,12 @@ internal class BGM_Player
         Music_Start("Gaming_Faker.wav", 0);
     }
 
+    public void Play_Clear_Loop()
+    {
+        BGM_Player.Instance().Music_Exit();
+        Music_Start("Clear.wav", 0);
+    }
+
     public void Play_Hidden_Loop()
     {
         BGM_Player.Instance().Music_Exit();
